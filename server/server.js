@@ -3,15 +3,8 @@ const app = express();
 const path = require('path');
 const PORT = 3000;
 
-const leaderList = [
-  { name: 'Anna', id: 'a0' },
-  { name: 'Ben', id: 'b0' },
-  { name: 'Clara', id: 'c0' },
-  { name: 'David', id: 'd0' },
-];
-
-app.get('/api/leaders', (req, res) => {
-  return res.status(200).send(leaderList);
+app.get('/', (req, res) => {
+  return res.status(200).send();
 });
 
 if (process.env.NODE_ENV === 'production') {
