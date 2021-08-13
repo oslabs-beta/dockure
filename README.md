@@ -1,1 +1,3 @@
-cooking recipe app v.1.0
+Dockure
+
+Simplifying the containerization process
