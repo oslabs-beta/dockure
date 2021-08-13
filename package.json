@@ -1,5 +1,5 @@
 {
-  "name": "cooking-recipe",
+  "name": "dockure",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -14,7 +14,7 @@
       "client"
     ]
   },
-  "author": "Hazel Na",
+  "author": "Alex Zayas, Nathanael Tracy, Liam Talty, Van Nguyen, Hazel Na",
   "license": "ISC",
   "dependencies": {
     "express": "^4.12.3",
