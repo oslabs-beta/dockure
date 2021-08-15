@@ -3,8 +3,9 @@ import React, { Component } from 'react';
 const App = () => {
   return (
     <div>
-      <div> This is React hooks</div>
-      <div> testing stil? </div>
+      <h1>Hello from app.js</h1>
+      <p>keep testing it </p>
+      <p>let's make things tmrw</p>
     </div>
   );
 };
