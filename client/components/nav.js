@@ -1,13 +1,13 @@
-import React, {component} from ('react');
+import React, { component } from 'react';
 
 const Nav = () => {
   return (
     <ul>
-        <li>Home</li>
-        <li>Sign out</li>
-        <li>something else</li>
+      <li>Home</li>
+      <li>Sign out</li>
+      <li>something else</li>
     </ul>
-  )
-}
+  );
+};
 
 export default Nav;

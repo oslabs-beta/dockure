@@ -1,4 +1,4 @@
-import React, {component} from ('react');
+import React, { component } from 'react';
 
 const Header = () => {
   return (
@@ -6,7 +6,7 @@ const Header = () => {
       <div>logo</div>
       <div>login</div>
     </div>
-  )
-}
+  );
+};
 
 export default Header;
