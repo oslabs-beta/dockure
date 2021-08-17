@@ -2,10 +2,10 @@ import React, { component } from 'react';
 
 const Nav = () => {
   return (
-    <ul>
-      <li>Home</li>
-      <li>Sign out</li>
-      <li>something else</li>
+    <ul className='nav'>
+      <li className='nav_list'>something else</li>
+      <li className='nav_list'>something else</li>
+      <li className='nav_signout'>Sign out</li>
     </ul>
   );
 };

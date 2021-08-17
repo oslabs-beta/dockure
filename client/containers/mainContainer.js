@@ -5,9 +5,9 @@ import ContentContainer from './contentContainer';
 
 const MainContainer = () => {
   return (
-    <div>
+    <div className='main_container'>
       <Header />
-      <div>
+      <div className='nav_content'>
         <Nav />
         <ContentContainer />
       </div>

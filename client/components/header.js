@@ -2,10 +2,11 @@ import React, { component } from 'react';
 
 const Header = () => {
   return (
-    <div>
-      <div>logo</div>
-      <div>login</div>
-    </div>
+    <header className='header'>
+      <div className='header_home'>home</div>
+      <div className='header_logo'>logo</div>
+      <button className='header_workspace'>Export Workspace</button>
+    </header>
   );
 };
 

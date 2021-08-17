@@ -4,7 +4,7 @@ import Stats from '../components/stats';
 
 const ContentContainer = () => {
   return (
-    <div>
+    <div className='content_container'>
       <DockerCommand />
       <Stats />
     </div>
