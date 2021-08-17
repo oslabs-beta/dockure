@@ -53,6 +53,10 @@ module.exports = {
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
     mainFields: ['main', 'module', 'browser'],
+    // fallback: {
+    //   “child_process”: false,
+    //   // and also other packages that are not found
+    // } 
   },
   plugins: [
     new HtmlWebpackPlugin({
