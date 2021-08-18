@@ -5,7 +5,7 @@ const Nav = () => {
     <ul className='nav'>
       <li className='nav_list'>something else</li>
       <li className='nav_list'>something else</li>
-      <li className='nav_signout'>Sign out</li>
+      <button className='nav_signout'>Sign out</button>
     </ul>
   );
 };

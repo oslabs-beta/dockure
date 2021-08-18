@@ -1,0 +1,13 @@
+.docker_command {
+  width: 46vw;
+  height: 92vh;
+  padding: 1rem;
+  background-color: lighten($gray-color, 10%);
+}
+
+.docker_buttons {
+  display: flex;
+  align-items: center;
+  height: 6vh;
+  margin-bottom: 1rem;
+}
