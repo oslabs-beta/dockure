@@ -5,16 +5,16 @@
   padding: 2rem;
 }
 
-.stats_box {
-  margin: auto;
-  min-width: 38vw;
-  min-height: 80vh;
-  overflow-y: scroll;
-}
+// .stats_box {
+//   margin: auto;
+//   min-width: 38vw;
+//   min-height: 80vh;
+//   overflow-y: scroll;
+// }
 
 .stats div {
   background-color: lighten($primary-color, 30%);
-  width: 30vw;
-  height: 40vh;
+  width: 10rem;
+  height: 10rem;
   margin: 2rem 0;
 }
