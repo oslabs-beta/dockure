@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import MainContainer from './containers/mainContainer';
 import Login from './components/login';
 import SignUP from './components/signUp';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 
 const App = () => {
   return (
