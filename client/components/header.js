@@ -3,7 +3,7 @@ import React, { component } from 'react';
 const Header = () => {
   return (
     <header className='header'>
-      <a href='#' className='header_home'>
+      <a href='/main' className='header_home'>
         Home
       </a>
       <div className='header_logo'>Logo</div>
