@@ -1,0 +1,30 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 100px;
+  font-size: $font-large;
+  // height: 4rem;
+  height: 8vh;
+  background-color: $primary-color;
+  color: $white-color;
+}
+
+.header a {
+  color: $white-color;
+}
+
+.header_workspace {
+  width: 8rem;
+  height: 1.5rem;
+  border-radius: 5px;
+  color: lighten($accent-color, 5%);
+  background-color: $white-color;
+  font-weight: bold;
+}
+
+.header_workspace:hover {
+  border-radius: 5px;
+  background-color: lighten($yellow-color, 20%);
+  color: $orange-color;
+}

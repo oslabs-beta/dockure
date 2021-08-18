@@ -1,0 +1,17 @@
+.nav {
+  display: flex;
+  flex-direction: column;
+  width: 12vw;
+  // the background color is for temp to see the div
+  background-color: lighten($primary-color, 40%);
+  height: 92vh;
+  padding: 2rem 1rem;
+}
+
+.nav_signout {
+  border-radius: 5px;
+  width: 7rem;
+  height: 1.5rem;
+  margin: 1rem 0;
+  align-self: center;
+}
