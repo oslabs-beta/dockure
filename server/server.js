@@ -18,7 +18,22 @@ app.use('/api', containerRouter);
 //routing for prometheus metrics
 app.use('/metrics', promMetricsRouter);
 
+//unknown path handler
+app.use('*', (req, res) => {
+    res.status(404).send('That is an unknown url');
+});
+
 //global error handlings
+app.use((err, req, res, next) => {
+    const defaultErr = {
+        log: 'Express error handler caught an unknown middleware error',
+        status: 500,
+        message: {err: 'An error occurred'}
+    }
+    const errorObj = Object.assign(defaultErr, err);
+    console.log(errorObj.log);
+    res.status(errorObj.status).json(errorObj.message);
+})
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
 
