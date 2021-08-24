@@ -19,7 +19,7 @@ yamlParserController.yamlConfig = (req, res, next) => {
 
         //write data
         const yamlStr = yaml.dump(data);
-        fs.writeFileSync(path.resolve(__dirname, '../assets/data-out.yaml'), yamlStr, 'utf8');
+        fs.writeFileSync(path.resolve(__dirname, '../assets/promConfigFile.yaml'), yamlStr, 'utf8');
 
         return next();
     } catch (error) {
