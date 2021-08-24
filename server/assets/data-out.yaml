@@ -1,0 +1,25 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+  external_labels:
+    monitor: codelab-monitor
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets: null
+rule_files:
+  - prometheus.rules.yml
+scrape_configs:
+  - job_name: prometheus
+    scrape_interval: 5s
+    static_configs:
+      - targets:
+          - localhost:9090
+  - job_name: node
+    scrape_interval: 5s
+    static_configs:
+      - targets:
+          - host.docker.internal:9100
+          - localhost:9095
+        labels:
+          group: production
