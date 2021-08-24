@@ -1,9 +1,9 @@
 import React from 'react';
-import CodeMirror from 'codemirror/lib/codemirror.js';
-import 'codemirror/lib/codemirror.css'
-import 'codemirror/theme/material.css'
-import 'codemirror/mode/Dockerfile/Dockerfile'
-import { Controlled as ControlledEditor} from 'react-codemirror2'
+// import CodeMirror from 'codemirror/lib/codemirror.js';
+// import 'codemirror/lib/codemirror.css'
+// import 'codemirror/theme/material.css'
+// import 'codemirror/mode/Dockerfile/Dockerfile'
+// import { Controlled as ControlledEditor} from 'react-codemirror2'
 
 const Editor = () => {
 
