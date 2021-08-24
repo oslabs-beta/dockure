@@ -1,16 +1,20 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 const url = require('url');
 
+let mainWindow;
+
 function createWindow() {
-  const mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
-    minWidth: 600,
-    minHeight: 450,
-    // frame:false,
+  mainWindow = new BrowserWindow({
+    width: 1024,
+    height: 728,
+    minWidth: 800,
+    minHeight: 600,
+    frame: false,
     webPreferences: {
       nodeIntegration: true,
+      contextIsolation: false,
+      enableRemoteModule: true,
     },
   });
 
@@ -21,7 +25,7 @@ function createWindow() {
   } else {
     // when it is production mode, we are open the electron app
     // need to yarn build first, and then yarn start.
-    mainWindow.loadFile('index.html').loadURL(
+    mainWindow.loadURL(
       url.format({
         pathname: path.join(__dirname, '../index.html'),
         protocol: 'file:',
@@ -33,7 +37,39 @@ function createWindow() {
   mainWindow.on('closed', () => {
     mainWindow = null;
   });
+
+  mainWindow.on('maximize', () => {
+    mainWindow.webContents.send('maximized');
+  });
+
+  mainWindow.on('unmaximize', () => {
+    mainWindow.webContents.send('unmaximized');
+  });
 }
+
+ipcMain.handle('minimize-event', () => {
+  mainWindow.minimize();
+});
+
+ipcMain.handle('maximize-event', () => {
+  mainWindow.maximize();
+});
+
+ipcMain.handle('unmaximize-event', () => {
+  mainWindow.unmaximize();
+});
+
+ipcMain.handle('close-event', () => {
+  app.quit();
+});
+
+app.on('browser-window-focus', () => {
+  mainWindow.webContents.send('focused');
+});
+
+app.on('browser-window-blur', () => {
+  mainWindow.webContents.send('blurred');
+});
 
 app.whenReady().then(() => {
   createWindow();
