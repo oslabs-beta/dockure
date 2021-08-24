@@ -13,14 +13,20 @@ const checkRepoTag = ({image}) => {
     } 
     return image.RepoTags;
 }
+
+const startClick = (e) => {
+    console.log('start clicked')
+}
+
+const stopClick = (e) => {
+    console.log('stop clicked')
+}
     return (
-    <li className="image_item">
-        <div className='image-name'>{checkRepoTag({image})}</div>
-        <div className="image_button">
-        <button>Start</button>
-        <button>Stop</button>
-        </div>
-    </li>
+    <div className="image_item">
+        <div className='image_name'>Image Name: {checkRepoTag({image})}</div>
+        <button className="image_button" onClick={startClick}>Start</button>
+        <button className="image_button" onClick={stopClick}>Stop</button>        
+    </div>
     )
 
 }
