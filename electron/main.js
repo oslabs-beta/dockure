@@ -10,7 +10,6 @@ function createWindow() {
     height: 728,
     minWidth: 800,
     minHeight: 600,
-    // titleBarStyle: 'hidden',
     frame: false,
     webPreferences: {
       nodeIntegration: true,
@@ -48,7 +47,29 @@ function createWindow() {
   });
 }
 
-ipcMain.handle('minimize-event', () => {});
+ipcMain.handle('minimize-event', () => {
+  mainWindow.minimize();
+});
+
+ipcMain.handle('maximize-event', () => {
+  mainWindow.maximize();
+});
+
+ipcMain.handle('unmaximize-event', () => {
+  mainWindow.unmaximize();
+});
+
+ipcMain.handle('close-event', () => {
+  app.quit();
+});
+
+app.on('browser-window-focus', () => {
+  mainWindow.webContents.send('focused');
+});
+
+app.on('browser-window-blur', () => {
+  mainWindow.webContents.send('blurred');
+});
 
 app.whenReady().then(() => {
   createWindow();

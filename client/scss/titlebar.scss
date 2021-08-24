@@ -30,16 +30,20 @@
   margin: 0 5px;
 }
 
+.traffic_gray {
+  background-color: $gray-color;
+}
+
 .traffic_red {
-  background-color: rgb(231, 95, 85);
+  background-color: rgb(236, 62, 49);
 }
 
 .traffic_yellow {
-  background-color: rgb(250, 226, 119);
+  background-color: rgb(247, 218, 56);
 }
 
 .traffic_green {
-  background-color: rgb(116, 209, 136);
+  background-color: rgb(69, 218, 101);
 }
 
 .traffic_btns {
@@ -56,9 +60,18 @@
   padding: 0 0 0 2.8px;
 }
 
+.title_unmaximumBtn {
+  font-size: 8px;
+  padding: 2px 0 0 3px;
+}
+
 .title_maximumBtn {
   font-size: 8px;
   padding: 2px 0 0 3px;
+}
+
+.traffic_inactive {
+  display: none;
 }
 
 .titlebar_toggle {
@@ -66,7 +79,7 @@
   height: 2.5vh;
   font-size: 2.5vh;
   cursor: pointer;
-  margin-left: 6vw;
+  margin-left: 7vw;
 }
 
 .titlebar_toggle:hover {
