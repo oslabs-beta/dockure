@@ -22,4 +22,12 @@ promMetricsRouter.get('/yamlParse',
     }
 )
 
+promMetricsRouter.get('/getMetrics',
+    promMetricsControllers.metricQuery,
+    (req, res) => {
+        console.log('Finished /getMetrics');
+        return res.status(200).send('It worked!');
+    }
+)
+
 module.exports = promMetricsRouter;
