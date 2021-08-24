@@ -1,0 +1,1 @@
+export const CONTAINER_INFO_GET = 'CONTAINER_INFO_GET';

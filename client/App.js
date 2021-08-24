@@ -1,12 +1,20 @@
 import React, { Component } from 'react';
+import MainContainer from './containers/mainContainer';
+import Login from './components/login';
+import SignUP from './components/signUp';
+import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 
 const App = () => {
   return (
-    <div>
-      <h1>Hello from app.js</h1>
-      <p>keep testing it </p>
-      <p>let's make things tmrw</p>
-    </div>
+    <Router>
+      <div>
+        <Switch>
+          <Route path='/' exact component={Login} />
+          <Route path='/signup' component={SignUP} />
+          <Route path='/main' component={MainContainer} />
+        </Switch>
+      </div>
+    </Router>
   );
 };
 
