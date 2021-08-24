@@ -1,0 +1,14 @@
+.image_list {
+    background-color: $white_color;
+    text-align: center;
+    min-height: 50vh;
+    padding: 1rem;
+  }
+  
+  .image_list li {
+    display: flex;
+    align-items: center;
+    text-align: left;
+    height: 5vh;
+    border-bottom: 1px solid lighten($gray_color, 5%);
+  }
