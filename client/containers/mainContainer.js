@@ -16,7 +16,7 @@ const MainContainer = () => {
   let main = useRouteMatch();
   return (
     <div className='main_container'>
-      <Header />
+      {/* <Header /> */}
       <div className='nav_content'>
         <Nav />
         <Switch>
