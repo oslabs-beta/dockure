@@ -3,14 +3,17 @@ const path = require('path');
 const url = require('url');
 
 function createWindow() {
-  const mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
-    minWidth: 600,
-    minHeight: 450,
-    // frame:false,
+  let mainWindow = new BrowserWindow({
+    width: 1024,
+    height: 728,
+    minWidth: 800,
+    minHeight: 600,
+    // titleBarStyle: 'hidden',
+    frame: false,
     webPreferences: {
       nodeIntegration: true,
+      contextIsolation: false,
+      enableRemoteModule: true,
     },
   });
 
@@ -21,7 +24,7 @@ function createWindow() {
   } else {
     // when it is production mode, we are open the electron app
     // need to yarn build first, and then yarn start.
-    mainWindow.loadFile('index.html').loadURL(
+    mainWindow.loadURL(
       url.format({
         pathname: path.join(__dirname, '../index.html'),
         protocol: 'file:',
