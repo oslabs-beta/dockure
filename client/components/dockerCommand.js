@@ -1,7 +1,7 @@
 import React, { component } from 'react';
 import ContainerList from './containerList';
 import { Link } from 'react-router-dom';
-const DockerCommand = () => {
+const DockerCommand = ({conList}) => {
   return (
     <div className='docker_command'>
       <ul className='docker_buttons'>
@@ -21,7 +21,7 @@ const DockerCommand = () => {
       </ul>
       {/* get data of the which container got picked, and apply the buttons // or
       we can send all the button functions to the containerlist as props. */}
-      <ContainerList />
+      <ContainerList conList={conList} />
     </div>
   );
 };
