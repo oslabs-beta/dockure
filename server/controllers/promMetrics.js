@@ -15,7 +15,7 @@ promMetricsController.startProm = (req, res, next) => {
     console.log('Entered PromMetricsController.startProm');
     console.log('Res.locals.running came through: ', res.locals.running );
     if (res.locals.running) return next();
-    exec(`docker run -p 9090:9090 -v ${path.join(__dirname, '../assets/prometheus.yaml')}:/etc/prometheus/prometheus.yml prom/prometheus`, (error, stdout, stderr) => {
+    exec(`docker run -p 9090:9090 -v ${path.join(__dirname, '../assets/data-out.yaml')}:/etc/prometheus/prometheus.yml prom/prometheus`, (error, stdout, stderr) => {
         console.log('Entered prometheusStart');
         if (error) {
             console.log(`error: ${error.message}`);
