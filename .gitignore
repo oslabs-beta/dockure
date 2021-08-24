@@ -2,6 +2,7 @@ node_modules
 build
 package-lock.json
 .env
+promConfigFile.yaml
 data-out.yaml
 yarn.lock
 yarn.lock

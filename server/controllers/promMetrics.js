@@ -15,7 +15,7 @@ promMetricsController.startProm = (req, res, next) => {
     console.log('Entered PromMetricsController.startProm');
     console.log('Res.locals.running came through: ', res.locals.running );
     if (res.locals.running) return next();
-    exec(`docker run -p 9090:9090 -v ${path.join(__dirname, '../assets/data-out.yaml')}:/etc/prometheus/prometheus.yml prom/prometheus`, (error, stdout, stderr) => {
+    exec(`docker run -p 9090:9090 -v ${path.join(__dirname, '../assets/promConfigFile.yaml')}:/etc/prometheus/prometheus.yml prom/prometheus`, (error, stdout, stderr) => {
         console.log('Entered prometheusStart');
         if (error) {
             console.log(`error: ${error.message}`);
@@ -29,6 +29,7 @@ promMetricsController.startProm = (req, res, next) => {
     });    
     return next();
 }
+
 
 promMetricsController.checkProm = async (req, res, next) => {
     console.log('entered CheckProm');
@@ -69,40 +70,29 @@ promMetricsController.checkProm = async (req, res, next) => {
 }
 
 
+promMetricsController.metricQuery = async (req, res, next) => {
+    //recieve a query for metrics 
+    const startTime = req.body.startTime; 
+    // the out put will be an object full of metric data 
+    const currentDate = new Date();
+    let currentUnixTime = currentDate.now();
+    console.log('Current Unix Time test: ', currentUnixTime, '\n start time: ', startTime);
+    return next();
+    //get a query string out of req body 
+        //req body will receive time in unix time already parsed
+    //get current date and time in unix format 
+    //send query to local host 9090 with correct time
+    //hardcode query
+    // send query
+    //console.log the object to see what it looks like //possible need to parse object 
 
+
+
+
+    
+}
 
 
 module.exports = promMetricsController;
-
-// exec("docker image ls", (error, stdout, stderr) => {
-//     if (error) {
-//         console.log(`error: ${error.message}`);
-//         return;
-//     }
-//     if (stderr) {
-//         console.log(`stderr: ${stderr}`);
-//         return;
-//     }
-
-//     const result = stdout.split('\n');
-//     let values = [];
-//     result.forEach(ele => {
-//     values.push(ele.split(" ").filter(item => item !== ""));    
-// })
-//     const keys = values.shift();
-
-//     values = values.map(function (element) {
-//         const obj = {}; 
-//         keys.forEach(function (key, index) {
-//             if(element.length){
-//             obj[key] = element[index];
-//         }
-//     });
-//     return obj;
-// });
-//     if(JSON.stringify(values[values.length - 1]) === '{}') values.pop(); 
-//     console.log(values)
-// });
-
 
 

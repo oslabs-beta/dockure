@@ -1,9 +1,9 @@
 .nav {
   display: flex;
   flex-direction: column;
-  width: 12vw;
+  width: 14vw;
   // the background color is for temp to see the div
-  background-color: lighten($primary-color, 40%);
+  background-color: darken($primary-color, 32%);
   height: 92vh;
   padding: 2rem 1rem;
 }
