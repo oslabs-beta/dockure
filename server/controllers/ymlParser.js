@@ -15,11 +15,20 @@ yamlParserController.yamlConfig = (req, res, next) => {
 
         //update data 
         const addressesArray = data.scrape_configs[1].static_configs[0].targets;
-        addressesArray.push("localhost:9095");
+
+        //concat ports, loop through res.locals.ports
+        //push to addressesArray
+        // host.docker.internal:port-number
+        //for loop thru res,locals,ports
+        //each element in array needs to be concat to address array 
+        //within loop add array of i to host.docker.internal:\
+        for(let i = 0; i < res.locals.ports.length; i += 1){
+            addressesArray.push(`host.docker.internal:${res.locals.ports[i]}`)
+        }
 
         //write data
         const yamlStr = yaml.dump(data);
-        fs.writeFileSync(path.resolve(__dirname, '../assets/data-out.yaml'), yamlStr, 'utf8');
+        fs.writeFileSync(path.resolve(__dirname, '../assets/promConfigFile.yaml'), yamlStr, 'utf8');
 
         return next();
     } catch (error) {
