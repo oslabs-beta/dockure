@@ -2,6 +2,7 @@ import React, { component } from 'react';
 import Header from '../components/header';
 import Nav from '../components/nav';
 import ContentContainer from './contentContainer';
+import ImageContainer from './imageContainer';
 import CreateContainer from '../components/createContainer';
 import EditContainer from '../components/editContainer';
 
@@ -21,6 +22,7 @@ const MainContainer = () => {
         <Nav />
         <Switch>
           <Route path={`${main.path}`} exact component={ContentContainer} />
+          <Route path={`${main.path}/images`} exact component={ImageContainer} />
           <Route
             path={`${main.path}/create`}
             exact
@@ -31,6 +33,7 @@ const MainContainer = () => {
             exact
             component={EditContainer}
           />
+          
         </Switch>
       </div>
     </div>

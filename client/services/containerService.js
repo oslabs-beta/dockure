@@ -8,7 +8,7 @@ class ContainerService {
       console.log('This is the data from services/containerService: ', result.data);
       return result.data;
     } catch(err) {
-        console.log('There was an error getting container information from Services/containerService: ' + err);    
+        console.log('There was an error getting container information from services/containerService: ' + err);    
     }
   }
 }
