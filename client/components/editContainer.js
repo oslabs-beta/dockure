@@ -1,6 +1,6 @@
 import React, { component } from 'react';
 import { Link } from 'react-router-dom';
-import Editor from './Editor.js'
+import Editor from './editor.js'
 //final edits page at the top
 //yaml file in the middle
 //save to local button at the bottom
