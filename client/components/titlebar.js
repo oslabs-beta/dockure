@@ -1,31 +1,148 @@
-import React,{component, useState} from 'react';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-const ipcRenderer = window.require('electron').ipcRenderer;
+import React, { component, useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import UserStatus from './userStatus';
+// uncommand ipcRenderer for testing on electron.
+// Please also command the lines before push the file. (line 6, 22-46, 67, 81, 98, 115)
+// const { ipcRenderer } = window.require('electron');
+import {
+  faBars,
+  faFish,
+  faUser,
+  faTimes,
+  faWindowMinimize,
+  faExpandAlt,
+  faCompressAlt,
+} from '@fortawesome/free-solid-svg-icons';
 
-const Titlebar = () => {
-  const [isActive, setIsActive] = useState();
+const Titlebar = ({ toggle, setToggle, isLogin, setIsLogin }) => {
+  const [isActive, setIsActive] = useState(true);
   const [isMaximized, setIsMaximized] = useState();
+  const [userStat, setUserStat] = useState(false);
 
-  ipcRenderer.on('focused', () => {
-    setIsActive(true);
-  })
+  // ipcRenderer.on('focused', () => {
+  //   setIsActive(true);
+  // });
+  // ipcRenderer.on('blurred', () => {
+  //   setIsActive(false);
+  // });
+  // ipcRenderer.on('maximized', () => {
+  //   setIsMaximized(true);
+  // });
+  // ipcRenderer.on('unmaximized', () => {
+  //   setIsMaximized(false);
+  // });
 
+  // const minimizeHandler = () => {
+  //   ipcRenderer.invoke('minimize-event');
+  // };
+  // const maximizeHandler = () => {
+  //   ipcRenderer.invoke('maximize-event');
+  // };
+  // const unmaximizeHandler = () => {
+  //   ipcRenderer.invoke('unmaximize-event');
+  // };
+  // const closeHandler = () => {
+  //   ipcRenderer.invoke('close-event');
+  // };
 
+  const toggleHandler = () => {
+    if (!toggle) return setToggle(true);
+    return setToggle(false);
+  };
+
+  const userHandler = () => {
+    if (isLogin) {
+      if (!userStat) return setUserStat(true);
+      return setUserStat(false);
+    }
+  };
 
   return (
-    <div className='titlebar'>
-      <div className='titlebar_btns'>
-        <button className='minimizeBtn'>-</button>
-        <button className='maxResBtn'>ㅁ</button>
-        <button className='closeBtn'>x</button>
-      </div>
-      <div className='titlebar_toggle'>
-        <button>I</button>
-      </div>
-        <div>Logo</div>
-        <div>Login</div>
-    </div>
-  )
-}
+    <>
+      <div className='titlebar'>
+        <div className='title_bar'>
+          <div className='titlebar_traffic'>
+            <div
+              className={`traffic ${isActive ? 'traffic_red' : 'traffic_gray'}`}
+              // onClick={closeHandler}
+            >
+              <div
+                className={
+                  isActive ? 'traffic_btns title_closeBtn' : 'traffic_inactive'
+                }
+              >
+                <FontAwesomeIcon icon={faTimes} />
+              </div>
+            </div>
+            <div
+              className={`traffic ${
+                isActive ? 'traffic_yellow' : 'traffic_gray'
+              }`}
+              // onClick={minimizeHandler}
+            >
+              <div
+                className={
+                  isActive
+                    ? 'traffic_btns title_minimizeBtn'
+                    : 'traffic_inactive'
+                }
+              >
+                <FontAwesomeIcon icon={faWindowMinimize} />
+              </div>
+            </div>
+            {isMaximized ? (
+              <div
+                className={`traffic ${
+                  isActive ? 'traffic_green' : 'traffic_gray'
+                }`}
+                // onClick={unmaximizeHandler}
+              >
+                <div
+                  className={
+                    isActive
+                      ? 'traffic_btns title_unmaximumBtn'
+                      : 'traffic_inactive'
+                  }
+                >
+                  <FontAwesomeIcon icon={faCompressAlt} />
+                </div>
+              </div>
+            ) : (
+              <div
+                className={`traffic ${
+                  isActive ? 'traffic_green' : 'traffic_gray'
+                }`}
+                // onClick={maximizeHandler}
+              >
+                <div
+                  className={
+                    isActive
+                      ? 'traffic_btns title_maximumBtn'
+                      : 'traffic_inactive'
+                  }
+                >
+                  <FontAwesomeIcon icon={faExpandAlt} />
+                </div>
+              </div>
+            )}
 
-export default Titlebar
+            <div className='titlebar_toggle' onClick={toggleHandler}>
+              <FontAwesomeIcon icon={faBars} />
+            </div>
+          </div>
+          <div className='titlebar_btns'>
+            <div className='titlebar_logo titlebar_btn'>
+              <FontAwesomeIcon icon={faFish} />
+            </div>
+            <div className='titlebar_login titlebar_btn'>
+              <FontAwesomeIcon icon={faUser} onClick={userHandler} />
+            </div>
+          </div>
+        </div>
+      </div>
+      {userStat && <UserStatus />}
+    </>
+  );
+};
+
+export default Titlebar;

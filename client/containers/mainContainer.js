@@ -1,4 +1,4 @@
-import React, { component } from 'react';
+import React, { component, useEffect } from 'react';
 import Header from '../components/header';
 import Nav from '../components/nav';
 import ContentContainer from './contentContainer';
@@ -13,16 +13,23 @@ import {
   useRouteMatch,
 } from 'react-router-dom';
 
-const MainContainer = () => {
+const MainContainer = ({ toggle, setIsLogin }) => {
+  useEffect(() => {
+    setIsLogin(true);
+  }, []);
   let main = useRouteMatch();
   return (
     <div className='main_container'>
       {/* <Header /> */}
       <div className='nav_content'>
-        <Nav />
+        {toggle && <Nav />}
         <Switch>
           <Route path={`${main.path}`} exact component={ContentContainer} />
-          <Route path={`${main.path}/images`} exact component={ImageContainer} />
+          <Route
+            path={`${main.path}/images`}
+            exact
+            component={ImageContainer}
+          />
           <Route
             path={`${main.path}/create`}
             exact
@@ -33,7 +40,6 @@ const MainContainer = () => {
             exact
             component={EditContainer}
           />
-          
         </Switch>
       </div>
     </div>
