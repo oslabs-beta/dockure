@@ -1,6 +1,6 @@
 import React, { component, useEffect, useState } from 'react';
 import ImageService from '../services/imageService';
-import ImageCommand from '../components/imageCommand';
+import ImageList from '../components/imageList';
 
 const ImageContainer = () => {
     const [imageList, setImageList] = useState([]);
@@ -14,7 +14,7 @@ const ImageContainer = () => {
     return (
         <div>
             <h1>WELCOME TO IMAGES</h1>
-            <ImageCommand imageList={imageList}/>
+            <ImageList imageList={imageList}/>
         </div>
     )
 }
