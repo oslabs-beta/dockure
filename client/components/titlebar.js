@@ -39,10 +39,11 @@ const Titlebar = () => {
   const closeHandler = () => {
     ipcRenderer.invoke('close-event');
   };
+  // className=(isActive ? 'title_bar' : )>
 
   return (
     <div className='titlebar'>
-      <div className='titlebar_draggable'>
+      <div>
         <div className='titlebar_traffic'>
           <div className='traffic traffic_red'>
             <div className='traffic_btns title_closeBtn'>

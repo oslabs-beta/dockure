@@ -1,9 +1,11 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 const url = require('url');
 
+let mainWindow;
+
 function createWindow() {
-  let mainWindow = new BrowserWindow({
+  mainWindow = new BrowserWindow({
     width: 1024,
     height: 728,
     minWidth: 800,
@@ -36,7 +38,17 @@ function createWindow() {
   mainWindow.on('closed', () => {
     mainWindow = null;
   });
+
+  mainWindow.on('maximize', () => {
+    mainWindow.webContents.send('maximized');
+  });
+
+  mainWindow.on('unmaximize', () => {
+    mainWindow.webContents.send('unmaximized');
+  });
 }
+
+ipcMain.handle('minimize-event', () => {});
 
 app.whenReady().then(() => {
   createWindow();
