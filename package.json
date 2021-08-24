@@ -22,20 +22,29 @@
     "@fortawesome/react-fontawesome": "^0.1.15",
     "axios": "^0.21.1",
     "babelify": "^10.0.0",
+    "codemirror": "^5.62.3",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "moment": "^2.29.1",
+    "js-yaml": "^4.1.0",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
+    "react-codemirror2": "^7.2.1",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.4",
     "react-router-dom": "^5.2.0",
     "redux": "^4.1.1",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "yarn": "^1.22.11"
 =======
     "redux-devtools-extension": "^2.13.9"
 >>>>>>> eb292d977841db51d37bf1de5f729974076da49b
+=======
+    "redux-devtools-extension": "^2.13.9",
+    "util": "^0.12.4"
+>>>>>>> d3db86179f7e800f59ff5861c83a684b5654b5c2
   },
   "devDependencies": {
     "@babel/core": "^7.15.0",

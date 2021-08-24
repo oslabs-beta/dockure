@@ -4,6 +4,7 @@ import Nav from '../components/nav';
 import ContentContainer from './contentContainer';
 import CreateContainer from '../components/createContainer';
 import EditContainer from '../components/editContainer';
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -15,7 +16,7 @@ const MainContainer = () => {
   let main = useRouteMatch();
   return (
     <div className='main_container'>
-      <Header />
+      {/* <Header /> */}
       <div className='nav_content'>
         <Nav />
         <Switch>
