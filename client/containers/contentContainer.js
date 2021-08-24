@@ -1,7 +1,7 @@
 import React, { component, useEffect, useState } from 'react';
 import DockerCommand from '../components/dockerCommand';
 import Stats from '../components/stats';
-import ContainerService from '../services/containerService'
+import ContainerService from '../services/containerService';
 
 const ContentContainer = () => {
   const [conList, setConList] = useState([]);
