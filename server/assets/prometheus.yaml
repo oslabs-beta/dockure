@@ -36,7 +36,7 @@ scrape_configs:
     # scheme defaults to 'http'.
 
     static_configs:
-      - targets: ["localhost:9090", "127.0.0.1:9323"]
+      - targets: ["localhost:9090", "host.docker.internal:9323"]
 
   - job_name: 'node'
 
@@ -44,7 +44,7 @@ scrape_configs:
     scrape_interval: 5s
 
     static_configs:
-      - targets: ["host.docker.internal:9100"]
+      - targets: []
         labels:
           group: 'production'
 

@@ -8,19 +8,23 @@ const yamlParserController = {};
 
 yamlParserController.yamlConfig = (req, res, next) => {
     try {
-        console.log('Entered yamlParserController');
+        console.log('Entered yamlConfig');
         //get default yml
         const fileContents = fs.readFileSync(path.resolve(__dirname, '../assets/prometheus.yaml'));
         const data = yaml.load(fileContents);
 
         //update data 
         const addressesArray = data.scrape_configs[1].static_configs[0].targets;
-        addressesArray.push("localhost:9095");
+        
+        for (let i = 0; i < res.locals.ports.length; i++) {
+            addressesArray.push('host.docker.internal:' + res.locals.ports[i]);
+        }
 
         //write data
         const yamlStr = yaml.dump(data);
         fs.writeFileSync(path.resolve(__dirname, '../assets/promConfigFile.yaml'), yamlStr, 'utf8');
 
+        console.log('finished yamlConfig');
         return next();
     } catch (error) {
         console.log('yamlParserController Error: ', error);
@@ -30,6 +34,7 @@ yamlParserController.yamlConfig = (req, res, next) => {
 
 
 yamlParserController.findPorts = (req, res, next) => {
+    console.log('Entered findPorts');
     try {
         exec("docker ps", (error, stdout, stderr) => {
             if (error) {
@@ -64,7 +69,8 @@ yamlParserController.findPorts = (req, res, next) => {
         });
             if(JSON.stringify(values[values.length - 1]) === '{}') values.pop(); 
             res.locals.unparsedContainers = values;
-            console.log('Port values: ', values);
+            // console.log('Port values: ', values);
+            console.log('finished findPorts');
             return next();
         });
     } catch (error) {
@@ -75,6 +81,7 @@ yamlParserController.findPorts = (req, res, next) => {
 
 
 yamlParserController.portParser = (req, res, next) => {
+    console.log('Entered portParser');
     const values = res.locals.unparsedContainers;
     const ports = [];
     //iterate thru the array 
@@ -104,11 +111,11 @@ yamlParserController.portParser = (req, res, next) => {
                 foundDash = true;
             }
         }
-        console.log('parsedport: ', parsedPort);
         ports[i] = parsedPort;
+        parsedPort = ''
     }
     res.locals.ports = ports;
-    console.log('This is the ports array: ', ports);
+    console.log('finished portParser ', ports);
     return next();
 }
 
