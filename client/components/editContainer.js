@@ -1,3 +1,4 @@
+import { faFileExcel } from '@fortawesome/free-solid-svg-icons';
 import React, { component } from 'react';
 import { Link } from 'react-router-dom';
 import Editor from './editor.js'
@@ -17,3 +18,4 @@ const EditContainer = () => {
   );
 };
 export default EditContainer;
+

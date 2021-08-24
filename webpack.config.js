@@ -1,6 +1,9 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+//trim the css and style-loaders
+
+
 module.exports = {
   mode: process.env.NODE_ENV,
   entry: './client/index.js',
