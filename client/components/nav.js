@@ -1,10 +1,24 @@
 import React, { component } from 'react';
-import { Link, Route, Redirect } from 'react-router-dom';
 // import App from '../App';
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  useRouteMatch,
+  Link,
+  Redirect
+} from 'react-router-dom';
+
 const Nav = () => {
+  let main = useRouteMatch();
   return (
     <ul className='nav'>
-      <li className='nav_list'>something else</li>
+      <Link to='/main/images'>
+      <button>
+        <li className='nav_list'>Images</li>
+        </button>
+      </Link>
       <li className='nav_list'>something else</li>
       <Link to='/'>
         <button className='nav_signout'>Sign out</button>
