@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import Editor from './Editor.js'
+import Editor from './editor.js'
 //Nate - delete this comment later: components inside:
 //search bar
 //drop down of cmds
