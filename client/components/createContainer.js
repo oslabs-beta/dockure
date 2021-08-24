@@ -1,22 +1,24 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Editor from './editor.js';
-//Nate - delete this comment later: components inside:
-//search bar
-//drop down of cmds
-//add button
-//from/workdir/copy/run statements for dockerFile
-//input fields next to the statements
-//search results page???
-//next button to push towards final edits page
+import CodeMirror from 'codemirror/lib/codemirror.js';
+import 'codemirror/lib/codemirror.css'
+import 'codemirror/theme/material.css'
+import { Controlled as ControlledEditor} from 'react-codemirror2'
+
 const CreateContainer = () => {
+
+  const [html, setHtml] = useState('')
+
   return (
     <>
       <div>
-        <Editor />
+        <Editor 
+          value={html}
+          onChange={setHtml}
+        />
       </div>
-      <div>
-        {/* <input></input> */}
+      {/* <div>
         <button>Commands Dropdown</button>
         <button>Add</button>
         <div id='fileConfig'>Input Fields will go here</div>
@@ -24,7 +26,7 @@ const CreateContainer = () => {
         <Link to='/main/editPage'>
           <button>Next</button>
         </Link>
-      </div>
+      </div> */}
     </>
   );
 };
