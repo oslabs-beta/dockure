@@ -9,7 +9,7 @@ const EditContainer = () => {
     <>
       <nav>Final Edits</nav>
       <div>final yaml</div>
-      <Editor />
+      {/* <Editor /> */}
       <Link to='/main'>
         <button>Save to Local</button>
       </Link>

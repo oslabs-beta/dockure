@@ -16,7 +16,7 @@ const CreateContainer = () => {
         <Editor />
       </div>
       <div>
-        <input></input>
+        {/* <input></input> */}
         <button>Commands Dropdown</button>
         <button>Add</button>
         <div id='fileConfig'>Input Fields will go here</div>
