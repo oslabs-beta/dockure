@@ -14,6 +14,8 @@ metricQueriesController.getMetrics = async (req, res, next) => {
         const query = `http://localhost:9090/api/v1/query_range?query=${metrics}&start=${start}&end=${end}&step=1`;
         console.log('query string: ', query);
 
+        //can make a loop to finish all queries here - might need multiple queries - but this might have to come from the req body in the form of a loop then instead of a req query
+
         //make fetch request
         const data = await fetch(query);
         const results = await data.json();
