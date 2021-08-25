@@ -7,4 +7,16 @@ imageRouter.get('/', imageController.getImages, (req, res) =>{
     return res.status(200).send(result);
 })
 
-module.exports = imageRouter;
+imageRouter.post('/start', imageController.startImage, (req, res) => {
+    return res.status(200);
+})
+
+imageRouter.post('/stop', imageController.startImage, (req, res) => {
+    return res.status(200);
+})
+
+// imageRouter.post('/stop', imageController.stopImage, (req, res) => {
+//     return res.status(200);
+// })
+
+module.exports = imageRouter;n
