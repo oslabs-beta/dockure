@@ -16,8 +16,6 @@ const Editor = (props) => {
       onChange(value)
   }
 
-  // codemirror.setSize('null', '100%')
-  // const [html, setHtml] = useState('')
   const save = async () => {
     const file = await new Blob([value], { type: "text/plain" } )
     saveAs(file, 'Dockerfile')

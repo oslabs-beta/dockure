@@ -23,26 +23,22 @@ COPY
 
 CMD
     `;
-  
-  const [html, setHtml] = useState(boilerPlate);
+  const defaultPath = '~/documents/codesmith_units/'
+  const [value, setValue] = useState(boilerPlate);
+  const [dockerPath, setDockerPath] = useState(defaultPath)
 
   return (
     <>
       <div>
         <Editor 
-          value={html}
-          onChange={setHtml}
+          value={value}
+          onChange={setValue}
         />
+        <form id="searchBar" action="/build">
+          <input value={dockerPath}></input>
+          <button>Docker Build</button>
+        </form>
       </div>
-      {/* <div>
-        <button>Commands Dropdown</button>
-        <button>Add</button>
-        <div id='fileConfig'>Input Fields will go here</div>
-        <div id='searchResults'>Search Results will go here</div>
-        <Link to='/main/editPage'>
-          <button>Next</button>
-        </Link>
-      </div> */}
     </>
   );
 };
