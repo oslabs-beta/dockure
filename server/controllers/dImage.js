@@ -58,6 +58,7 @@ imageController.stopImage = (req, res, next) => {
 
 imageController.pullImage = (req, res, next) => {  
     console.log('we are here')
+    return next()
     // try {
     //     exec(`docker pull ${req.body.name}`, (error, stdout, stderr) => {
     //         if (error) {
