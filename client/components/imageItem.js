@@ -1,26 +1,61 @@
 import React, { component } from 'react';
+import axios from 'axios';
+
 
 const ImageItem = ({id, image}) => {
 
 
-// console.log(image);
+    const checkRepoTag = ({image}) => {
 
-const checkRepoTag = ({image}) => {
+        //at index zero because it is an array which is the only way to compare with string value
+        if(image.RepoTags[0] === '<none>:<none>'){
+            image.RepoTags = ['Anonymous'];
+        } 
 
-    //at index zero because it is an array which is the only way to compare with string value
-    if(image.RepoTags[0] === '<none>:<none>'){
-        image.RepoTags = ['Anonymous'];
-    } 
-    return image.RepoTags;
-}
+        //should this be the first index of the repo tag array or the last?
+        return image.RepoTags[0];
+    }
 
-const startClick = (e) => {
-    console.log('start clicked')
-}
+    const startClick = async (e) => {
+        try {
+            const ID = {image}.image.Id.slice(7, 19)
+            console.log(ID)
+            const handleSubmit = await axios({
+                method: "post",
+                url: "/api/images/start",
+                data: {
+                    imageID: ID
+                },
+                params: {
+                    imageID: ID
+                }
 
-const stopClick = (e) => {
-    console.log('stop clicked')
-}
+            })
+        } catch (error) {
+            console.log("There was an error starting the image: ", error);
+        }
+    }
+
+    const stopClick = async (e) => {
+        try {
+            const ID = {image}.image.Id.slice(7, 19)
+            console.log(ID)
+            const handleSubmit = await axios({
+                method: "post",
+                url: "/api/images/stop",
+                data: {
+                    imageID: ID
+                },
+                params: {
+                    imageID: ID
+                }
+                
+            })
+        } catch (error) {
+            console.log("There was an error stopping the image: ", error);
+        }
+    }
+
     return (
     <div className="image_item">
         <div className='image_name'>Image Name: {checkRepoTag({image})}</div>
@@ -32,3 +67,6 @@ const stopClick = (e) => {
 }
 
 export default ImageItem;
+
+
+  
