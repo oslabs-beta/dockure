@@ -1,9 +1,11 @@
 const express = require('express');
 const promContainerController = require('../controllers/promMetrics');
-// const promMetricsControllers = require('../controllers/promMetrics');
 const yamlParserController = require('../controllers/ymlParser');
+const metricQueriesController = require('../controllers/metricQueries');
+const timeConversionController = require('../controllers/timeConversion');
 const promMetricsRouter = express.Router();
 
+//Nate: This actually might not be necessary now
 promMetricsRouter.get('/promStart', 
     promContainerController.checkProm,
     promContainerController.startProm,
@@ -31,5 +33,16 @@ promMetricsRouter.get('/yamlParse',
 )
 
 //Nate: For speed, can define more efficient start/stop routers for starting/stopping new containers
+promMetricsRouter.get('/metrics',
+    //time conversion
+    timeConversionController.unixTime,
+    //metrics queries
+
+    (req, res) => {
+        console.log('Finished /metrics');
+        return res.status(200).send('metrics finished');
+    }
+)
+
 
 module.exports = promMetricsRouter;
