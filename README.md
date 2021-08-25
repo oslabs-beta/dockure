@@ -1,7 +1,9 @@
 # Dockure
+
 Simplifying the containerization process
 
-## How to see the project? 
+## How to see the project?
+
 1. clone the repo
 2. `yarn` on terminal
 3. To see Electron app, `yarn build`, and `yarn start`.
@@ -9,14 +11,22 @@ Simplifying the containerization process
 
 ### App Structure
 
-````   
+```
 |-- App
+    |-- Titlebar
+    |-- Login
+    |-- SignUp
     |-- MainContainer
-      |-- Header
-      |-- Nav  
+      |-- Nav
       |-- ContentContainer
           |—- DockerCommand
               |—- ContainerList
+                  |—- ContainerItem
           |—- Stats
-````
-
+      |-- ImageContainer
+          |—- ImageList
+              |—- ImageItem
+      |-- CreateContainer
+          |—- Editor
+      |-- EditContainer
+```
