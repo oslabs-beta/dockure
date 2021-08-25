@@ -7,36 +7,22 @@ import {
   Route,
   useRouteMatch,
   Link,
-  Redirect
+  Redirect,
 } from 'react-router-dom';
 
 const Nav = () => {
   let main = useRouteMatch();
   return (
     <ul className='nav'>
+      <Link to='/main'>
+        <button className='nav_btns'>Containers</button>
+      </Link>
       <Link to='/main/images'>
-      <button>
-        <li className='nav_list'>Images</li>
-        </button>
+        <button className='nav_btns'>Images</button>
       </Link>
-      <li className='nav_list'>something else</li>
-      <Link to='/'>
-        <button className='nav_signout'>Sign out</button>
+      <Link to='/main/create'>
+        <button className='nav_btns'>Create Containers</button>
       </Link>
-      {/* <Route
-        render={() => {
-          return (
-            <button className='nav_signout'>
-              <Redirect to='/' />
-              Sign out
-            </button>
-          );
-        }}
-      /> */}
-
-      {/* <Switch>
-        <Route path='/' exact component={App} />
-      </Switch> */}
     </ul>
   );
 };
