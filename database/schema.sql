@@ -1,6 +1,9 @@
-CREATE TABLE IF NOT EXISTS user (
-   "user_id" integer PRIMARY KEY,
-   "user_name" varchar NOT NULL,
-   "password" varchar NOT NULL,
-)
+CREATE TABLE IF NOT EXISTS `user` (
+   `userID` SERIAL NOT NULL,
+   `userName` varchar(45) NOT NULL,
+   `password` varchar(45) NOT NULL,
+   PRIMARY KEY (`userID`),
+   UNIQUE KEY `userID_UNIQUE` (`userID`),
+   UNIQUE KEY `userName` (`userName`)
+);
 
