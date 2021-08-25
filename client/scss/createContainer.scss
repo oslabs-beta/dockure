@@ -1,0 +1,17 @@
+.top-pane {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: hsl(225, 6%, 25%);
+    width: 100vh;
+}
+
+.editor-con {
+    flex-grow: 1;
+    margin: 5vh;
+    align-items: center;
+    justify-content: center;
+    width: 100vh;
+    background-color: hsl(225, 6%, 25%);
+}
+

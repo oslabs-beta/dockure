@@ -1,0 +1,106 @@
+.titlebar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 5vh;
+  background-color: darken($primary-color, 40%);
+}
+
+.title_bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  -webkit-app-region: drag;
+  width: 98vw;
+  height: 3.5vh;
+  color: darken($white-color, 10%);
+}
+
+.titlebar_traffic {
+  display: flex;
+  align-items: center;
+}
+
+.traffic {
+  cursor: pointer;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin: 0 5px;
+}
+
+.traffic_gray {
+  background-color: $gray-color;
+}
+
+.traffic_red {
+  background-color: rgb(236, 62, 49);
+}
+
+.traffic_yellow {
+  background-color: rgb(247, 218, 56);
+}
+
+.traffic_green {
+  background-color: rgb(69, 218, 101);
+}
+
+.traffic_btns {
+  color: $black-color;
+}
+
+.title_closeBtn {
+  font-size: 9px;
+  padding: 1.6px 0 0 3px;
+}
+
+.title_minimizeBtn {
+  font-size: 7px;
+  padding: 0 0 0 2.8px;
+}
+
+.title_unmaximumBtn {
+  font-size: 8px;
+  padding: 2px 0 0 3px;
+}
+
+.title_maximumBtn {
+  font-size: 8px;
+  padding: 2px 0 0 3px;
+}
+
+.traffic_inactive {
+  display: none;
+}
+
+.titlebar_toggle {
+  width: 2.5vh;
+  height: 2.5vh;
+  font-size: 2.5vh;
+  cursor: pointer;
+  margin-left: 7vw;
+}
+
+.titlebar_toggle:hover {
+  color: $white-color;
+  cursor: pointer;
+}
+
+.titlebar_btns {
+  display: flex;
+  font-size: 2.5vh;
+  margin-right: 3vw;
+}
+
+.titlebar_btn {
+  width: 2.5vh;
+  height: 2.5vh;
+  margin: 0 15px;
+  cursor: pointer;
+}
+
+.titlebar_btn:hover {
+  color: $white-color;
+  cursor: pointer;
+}
