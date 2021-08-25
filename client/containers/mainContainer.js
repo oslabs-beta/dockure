@@ -1,5 +1,4 @@
 import React, { component, useEffect } from 'react';
-import Header from '../components/header';
 import Nav from '../components/nav';
 import ContentContainer from './contentContainer';
 import ImageContainer from './imageContainer';
@@ -14,13 +13,12 @@ import {
 } from 'react-router-dom';
 
 const MainContainer = ({ toggle, setIsLogin }) => {
+  let main = useRouteMatch();
   useEffect(() => {
     setIsLogin(true);
   }, []);
-  let main = useRouteMatch();
   return (
     <div className='main_container'>
-      {/* <Header /> */}
       <div className='nav_content'>
         {toggle && <Nav />}
         <Switch>
