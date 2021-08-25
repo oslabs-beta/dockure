@@ -18,16 +18,42 @@ const ImageItem = ({id, image}) => {
 
     const startClick = async (e) => {
         try {
-            const handleSubmit = await axios.post('/start', {containerId: {image}.image.Id.slice(7, 19)})
-            console.log(handleSubmit);
+            const ID = {image}.image.Id.slice(7, 19)
+            console.log(ID)
+            const handleSubmit = await axios({
+                method: "post",
+                url: "/api/images/start",
+                data: {
+                    imageID: ID
+                },
+                params: {
+                    imageID: ID
+                }
+
+            })
         } catch (error) {
             console.log("There was an error starting the image: ", error);
         }
     }
 
-    const stopClick = (e) => {
-        console.log('stop clicked')
-        console.log({image}.image.Id.slice(7, 19))
+    const stopClick = async (e) => {
+        try {
+            const ID = {image}.image.Id.slice(7, 19)
+            console.log(ID)
+            const handleSubmit = await axios({
+                method: "post",
+                url: "/api/images/stop",
+                data: {
+                    imageID: ID
+                },
+                params: {
+                    imageID: ID
+                }
+                
+            })
+        } catch (error) {
+            console.log("There was an error stopping the image: ", error);
+        }
     }
 
     return (

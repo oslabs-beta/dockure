@@ -16,12 +16,14 @@ imageController.getImages = async(req, res, next) => {
 }
 
 //need to refactor so works for startImage
+//we need to specify the port so that other containers aren't runing on the same ports. b
+//ut for now this suhould work as long as other containers don't run on the same port
+
 imageController.startImage = (req, res, next) => {  
-    console.log('Entered PromMetricsController.startProm');
-    console.log('Res.locals.running came through: ', res.locals.running );
-    if (res.locals.running) return next();
-    exec(`docker run -p 9090:9090 -v ${path.join(__dirname, '../assets/promConfigFile.yaml')}:/etc/prometheus/prometheus.yml prom/prometheus`, (error, stdout, stderr) => {
-        console.log('Entered prometheusStart');
+    
+    console.log('Entered into imageController.startImage')
+
+    exec(`docker run ${req.query.imageID}`, (error, stdout, stderr) => {
         if (error) {
             console.log(`error: ${error.message}`);
             return next(error);
@@ -30,7 +32,25 @@ imageController.startImage = (req, res, next) => {
             console.log(`stderr: ${stderr}`);
             return next(stderr);
         };
-        // console.log(stdout);
+        console.log('it worked~!!!!!');
+    });    
+    return next();
+}
+
+imageController.stopImage = (req, res, next) => {  
+    
+    console.log('Entered into imageController.startImage')
+
+    exec(`docker stop ${req.query.imageID}`, (error, stdout, stderr) => {
+        if (error) {
+            console.log(`error: ${error.message}`);
+            return next(error);
+        }
+        if (stderr) {
+            console.log(`stderr: ${stderr}`);
+            return next(stderr);
+        };
+        console.log('it worked~!!!!!');
     });    
     return next();
 }
