@@ -1,0 +1,97 @@
+.login_page {
+  display: flex;
+  height: 95vh;
+}
+
+.login_wallpaper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40vw;
+  height: 100%;
+  background-color: darken($primary-color, 32%);
+  color: $white-color;
+  // darken($white-color, 1%);
+}
+
+.login_head {
+  margin-bottom: 1rem;
+  font-size: $font-head;
+  font-weight: bold;
+}
+
+.login_intro {
+  font-size: $font-medium;
+  margin: 0.2rem 0;
+}
+
+.login_wall_btn {
+  margin-top: 4rem;
+  font-size: $font-medium;
+  width: 200px;
+  height: 50px;
+  background-color: darken($primary-color, 32%);
+  color: $white-color;
+  border-radius: 30px;
+  border: 1px solid $white-color;
+}
+
+.login_wall_btn:hover {
+  transform: scale(1.1);
+  background-color: darken($primary-color, 5%);
+  border: none;
+}
+
+.signin_page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 60vw;
+  height: 100%;
+  background-color: lighten($primary-color, 47%);
+}
+
+.signin_head {
+  font-size: $font-head;
+  font-weight: bold;
+  color: darken($primary-color, 20%);
+  margin-bottom: 4rem;
+}
+
+.signin_form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.signin_forgotPW {
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid $gray-color;
+  font-size: $font-medium;
+}
+
+.signin_input {
+  width: 340px;
+  height: 48px;
+  margin: 0.3rem;
+  border: none;
+  background-color: $gray-color;
+  border-radius: 1px;
+}
+
+.signin_btn {
+  margin-top: 2rem;
+  font-size: $font-medium;
+  width: 200px;
+  height: 50px;
+  background-color: darken($primary-color, 20%);
+  color: $white-color;
+  border-radius: 30px;
+}
+
+.signin_btn:hover {
+  transform: scale(1.1);
+  background-color: darken($primary-color, 5%);
+}

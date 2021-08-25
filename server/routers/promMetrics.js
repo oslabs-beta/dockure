@@ -5,6 +5,8 @@ const metricQueriesController = require('../controllers/metricQueries');
 const timeConversionController = require('../controllers/timeConversion');
 const promMetricsRouter = express.Router();
 
+//Nate: might need to add a starter for prom/node-exporter
+
 //Nate: This actually might not be necessary now
 promMetricsRouter.get('/promStart', 
     promContainerController.checkProm,
