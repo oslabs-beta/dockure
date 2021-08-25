@@ -8,7 +8,23 @@ import { Controlled as ControlledEditor} from 'react-codemirror2'
 
 const CreateContainer = () => {
 
-  const [html, setHtml] = useState('')
+  const boilerPlate = 
+`FROM 
+
+WORKDIR
+
+COPY
+
+COPY
+
+RUN
+
+COPY
+
+CMD
+    `;
+  
+  const [html, setHtml] = useState(boilerPlate);
 
   return (
     <>

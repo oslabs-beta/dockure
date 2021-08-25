@@ -4,6 +4,7 @@ import 'codemirror/mode/dockerfile/dockerfile'
 import 'codemirror/lib/codemirror.css'
 import 'codemirror/theme/nord.css'
 import { Controlled as ControlledEditor} from 'react-codemirror2'
+import { saveAs } from 'file-saver';
 
 
 
@@ -17,8 +18,9 @@ const Editor = (props) => {
 
   // codemirror.setSize('null', '100%')
   // const [html, setHtml] = useState('')
-  const val = () => {
-    console.log(value);
+  const save = async () => {
+    const file = await new Blob([value], { type: "text/plain" } )
+    saveAs(file, 'Dockerfile')
   }
   return (
     <>
@@ -43,7 +45,7 @@ const Editor = (props) => {
         
       </div>
       <div className="editor-buttons">
-        <button onClick={val}>save</button>
+        <button download="Dockerfile" onClick={save}>save</button>
         <button>configure</button>
       </div>
     </>
