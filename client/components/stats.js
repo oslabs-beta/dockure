@@ -1,28 +1,44 @@
 import React, { component, useEffect, useState } from 'react';
 import StatsService from '../services/statsService';
-import recharts from 'recharts';
+import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 
 const Stats = () => {
-  //add some state for the data
   const [memory, setMemory] = useState([])
-  //use effect on load to update data
 
-  //button to update data
   useEffect(async () => {
-    const result = await StatsService.getStats('process_resident_memory_bytes', 1);
-    setMemory(result.data);
+    // const result = await StatsService.getStats('process_resident_memory_bytes', 1);
+    // await setMemory(result);
+    await refresh();
+    // console.log('refresh worked?: ', memory);
   }, []);
 
-  function test() {
+  async function refresh() {
+    //could add an input for what the y-axis data should be called
+    const result = await StatsService.getCurrentMemory('process_resident_memory_bytes', 1);
+    setMemory(result);
     console.log(memory);
-    // return StatsService.getStats('process_resident_memory_bytes', 1);
+  }
+
+  function testButton() {
+    console.log('TEST BUTTON: ', memory);
   }
 
   return (
     <div className='stats'>
       {/* <div className='stats_cpu'>CPU</div> */}
-      <button onClick={test} >Refresh</button>
-      <div className='stats_memory'>Memory</div>
+      <button onClick={refresh} >Refresh</button>
+      <button onClick={testButton} >TEST</button>
+      <div className='stats_memory'>Memory
+      <ResponsiveContainer width={600} height={400}>
+        <LineChart width={600} height={400} data={memory}>
+          <Line type='monotone' dataKey='keyData'/>
+          <CartesianGrid stroke='#ccc' />
+          <XAxis datakey='time' />
+          <YAxis dataKey='keyData' domain={['auto', 'auto']}/>
+          <Tooltip />
+        </LineChart>
+      </ResponsiveContainer>
+      </div>
       {/* <div className='stats_count'>Request Count</div> */}
     </div>
   );

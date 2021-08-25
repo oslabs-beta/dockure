@@ -1,11 +1,24 @@
 import axios from 'axios';
 
+//parse time values into human readable time
+// function getTime() {
+    
+// }
+
 class StatsService {
-    static async getStats(query, start) {
+    static async getCurrentMemory(query, start) {
         try {
+            const data = [];
             let result = await axios.get(`http://localhost:3000/metrics/?start=${start}&query=${query}`);
             console.log('Stats request complete: ', result);
-            return result;
+            //parsing the result into rechart readable data
+            for (let i = 0; i < result.data.length; i++) {
+                const dataPoint = {};
+                dataPoint.time = result.data[i][0];
+                dataPoint.keyData = result.data[i][1];
+                data.push(dataPoint);
+            }
+            return data;
         } catch (error) {
             console.log('There was an error getting stats from the backend: ', error);
             if (error) return error;
