@@ -3,11 +3,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 //trim the css and style-loaders
 
-
 module.exports = {
   mode: process.env.NODE_ENV,
   entry: './client/index.js',
-  target: "electron-renderer",
+  target: 'web',
+  // "electron-renderer",
   devtool: 'inline-source-map',
   module: {
     rules: [
@@ -45,21 +45,17 @@ module.exports = {
             loader: 'css-loader',
             options: {
               importLoaders: 1,
-              modules: true
-            }
-          }
+              modules: true,
+            },
+          },
         ],
-        include: /\.module\.css$/
+        include: /\.module\.css$/,
       },
       {
         test: /\.css$/,
-        use: [
-          'style-loader',
-          'css-loader'
-        ],
-        exclude: /\.module\.css$/
+        use: ['style-loader', 'css-loader'],
+        exclude: /\.module\.css$/,
       },
-      
     ],
   },
   devServer: {
