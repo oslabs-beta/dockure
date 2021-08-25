@@ -51,10 +51,8 @@ const Titlebar = ({ toggle, setToggle, isLogin, setIsLogin }) => {
   };
 
   const userHandler = () => {
-    if (isLogin) {
-      if (!userStat) return setUserStat(true);
-      return setUserStat(false);
-    }
+    if (!userStat) return setUserStat(true);
+    return setUserStat(false);
   };
 
   return (
@@ -126,15 +124,28 @@ const Titlebar = ({ toggle, setToggle, isLogin, setIsLogin }) => {
               </div>
             )}
 
-            <div className='titlebar_toggle' onClick={toggleHandler}>
+            <div
+              className={isLogin ? 'titlebar_toggle' : 'titlebar_btn_inactive'}
+              onClick={toggleHandler}
+            >
               <FontAwesomeIcon icon={faBars} />
             </div>
           </div>
           <div className='titlebar_btns'>
-            <div className='titlebar_logo titlebar_btn'>
+            <div
+              className={
+                isLogin ? 'titlebar_logo titlebar_btn' : 'titlebar_btn_inactive'
+              }
+            >
               <FontAwesomeIcon icon={faFish} />
             </div>
-            <div className='titlebar_login titlebar_btn'>
+            <div
+              className={
+                isLogin
+                  ? 'titlebar_login titlebar_btn'
+                  : 'titlebar_btn_inactive'
+              }
+            >
               <FontAwesomeIcon icon={faUser} onClick={userHandler} />
             </div>
           </div>
