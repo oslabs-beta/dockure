@@ -17,9 +17,10 @@ metricQueriesController.getMetrics = async (req, res, next) => {
         //make fetch request
         const data = await fetch(query);
         const results = await data.json();
+        // console.log('we successfully grabbed data');
         //save the results to res.locals
         res.locals.values = results.data.result[0].values
-        // console.log('query results: ', results.data.result[0].values);
+        console.log('query results: ', results.data.result[0].values);
         
         return next();
     } catch (error) {
