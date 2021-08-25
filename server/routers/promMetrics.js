@@ -33,14 +33,12 @@ promMetricsRouter.get('/yamlParse',
 )
 
 //Nate: For speed, can define more efficient start/stop routers for starting/stopping new containers
-promMetricsRouter.get('/metrics',
-    //time conversion
+promMetricsRouter.get('/',
     timeConversionController.unixTime,
-    //metrics queries
-
+    metricQueriesController.getMetrics,
     (req, res) => {
         console.log('Finished /metrics');
-        return res.status(200).send('metrics finished');
+        return res.status(200).json(res.locals.values);
     }
 )
 

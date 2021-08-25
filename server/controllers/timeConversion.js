@@ -1,22 +1,29 @@
 
 const timeConversionController = {};
 
-//expecting to receive an unparsed simple time such as 1h, 6h, 24h in the req.body
+//expecting to receive an unparsed simple time such as 1h, 6h, 24h in the req.query
 timeConversionController.unixTime = (req, res, next) => {
     //get current Unix time in seconds
     console.log('entered unixTime');
 
-    let currentTime = new Date().valueOf();
-    currentTime = currentTime/1000;
+    try {
+        console.log('req.query.start: ', req.query);
+        let currentTime = new Date().valueOf();
+        currentTime = currentTime/1000;
 
-    //get time from req.body and convert to unix time
-    const start = currentTime - (req.body.start * 3600); 
+        //get time from req.body and convert to unix time
+        const start = currentTime - (req.query.start * 3600); 
 
-    //pass these values onto the query controller
-    res.locals.end = currentTime;
-    res.locals.start = start;
+        //pass these values onto the query controller
+        res.locals.end = currentTime;
+        res.locals.start = start;
 
-    return next();
+        return next();  
+    } catch (error) {
+        console.log('error reached: ', error);
+        if (error) return next(error);
+    }
+    
 }
 //end needs to be current unix time in seconds
 //start needs to be current unix time in seconds minus the gap (1 hour is 3600)
