@@ -1,5 +1,5 @@
 .docker_command {
-  width: 46vw;
+  width: 45vw;
   height: 95vh;
   padding: 1rem;
   background-color: lighten($gray-color, 10%);
@@ -10,5 +10,17 @@
   display: flex;
   align-items: center;
   height: 6vh;
-  margin-bottom: 1rem;
+  margin-bottom: 0.1rem;
+}
+
+.docker_btn {
+  margin: 2px;
+  padding: 0.2rem 0.5rem;
+  font-size: $font-small;
+  border-radius: 5px;
+  background-color: darken($gray-color, 10%);
+}
+
+.add_btn {
+  margin-bottom: 0.8rem;
 }
