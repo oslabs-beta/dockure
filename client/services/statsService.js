@@ -15,7 +15,7 @@ class StatsService {
             for (let i = 0; i < result.data.length; i++) {
                 const dataPoint = {};
                 dataPoint.time = result.data[i][0];
-                dataPoint.keyData = result.data[i][1];
+                dataPoint.MBs = result.data[i][1]/1000000;
                 data.push(dataPoint);
             }
             return data;

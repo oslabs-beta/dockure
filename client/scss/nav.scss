@@ -2,16 +2,30 @@
   display: flex;
   flex-direction: column;
   width: 16vw;
-  // the background color is for temp to see the div
   background-color: darken($primary-color, 32%);
   height: 95vh;
-  padding: 2rem 1rem;
+  padding: 4rem 0;
 }
 
-.nav_signout {
-  border-radius: 5px;
-  width: 7rem;
-  height: 1.5rem;
-  margin: 1rem 0;
-  align-self: center;
+.nav_btns {
+  text-align: start;
+  width: 9.2rem;
+  background-color: darken($primary-color, 32%);
+  color: darken($white-color, 5%);
+  font-size: $font-large;
+  padding: 1rem 0 1rem 36px;
+  border-radius: 0 10px 10px 0;
+}
+
+.nav_btns:hover {
+  background-color: darken($primary-color, 35%);
+  border-left: 6px solid darken($white-color, 5%);
+  padding: 1rem 0 1rem 30px;
+  color: $white-color;
+}
+
+.nav_btns:focus {
+  background-color: darken($white-color, 5%);
+  color: $font-dark-color;
+  font-weight: bold;
 }

@@ -3,6 +3,7 @@ const promContainerController = require('../controllers/promMetrics');
 const yamlParserController = require('../controllers/ymlParser');
 const metricQueriesController = require('../controllers/metricQueries');
 const timeConversionController = require('../controllers/timeConversion');
+const nodeExporter = require('../controllers/nodeExporter');
 const promMetricsRouter = express.Router();
 
 //Nate: might need to add a starter for prom/node-exporter
@@ -44,5 +45,16 @@ promMetricsRouter.get('/',
     }
 )
 
+promMetricsRouter.get('/node-exporter', 
+    //route for node-exporter
+    nodeExporter.check,
+    nodeExporter.check,
+    nodeExporter.restart,
+    nodeExporter.start,
+    (req, res) => {
+        console.log('Finished setting up node-exporter');
+        return res.status(200).send('Node-exporter worked');
+    }
+)
 
 module.exports = promMetricsRouter;

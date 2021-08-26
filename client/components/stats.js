@@ -31,10 +31,10 @@ const Stats = () => {
       <div className='stats_memory'>Memory
       <ResponsiveContainer width={600} height={400}>
         <LineChart width={600} height={400} data={memory}>
-          <Line type='monotone' dataKey='keyData'/>
+          <Line type='monotone' dataKey='MBs'/>
           <CartesianGrid stroke='#ccc' />
           <XAxis datakey='time' />
-          <YAxis dataKey='keyData' domain={['auto', 'auto']}/>
+          <YAxis dataKey='MBs' domain={['auto', 'auto']}/>
           <Tooltip />
         </LineChart>
       </ResponsiveContainer>

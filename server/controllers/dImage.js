@@ -22,7 +22,7 @@ imageController.getImages = async(req, res, next) => {
 imageController.startImage = (req, res, next) => {  
     
     console.log('Entered into imageController.startImage')
-
+    res.locals.imageID = req.query.imageID
     exec(`docker run ${req.query.imageID}`, (error, stdout, stderr) => {
         if (error) {
             console.log(`error: ${error.message}`);
@@ -39,7 +39,8 @@ imageController.startImage = (req, res, next) => {
 
 imageController.stopImage = (req, res, next) => {  
     
-    console.log('Entered into imageController.startImage')
+    console.log('Entered into imageController.stopImage')
+    res.locals.imageID = req.query.imageID
 
     exec(`docker stop ${req.query.imageID}`, (error, stdout, stderr) => {
         if (error) {
@@ -53,6 +54,27 @@ imageController.stopImage = (req, res, next) => {
         console.log('it worked~!!!!!');
     });    
     return next();
+}
+
+imageController.pullImage = (req, res, next) => {  
+    console.log('we are here')
+    // try {
+    //     exec(`docker pull ${req.body.name}`, (error, stdout, stderr) => {
+    //         if (error) {
+    //             console.log(`error: ${error.message}`);
+    //             return next(error);
+    //         }
+    //         if (stderr) {
+    //             console.log(`stderr: ${stderr}`);
+    //             return next(stderr);
+    //         };
+    //         console.log('it worked~!!!!!');
+    //     });
+    //     return next();
+    //   } catch(err) {
+    //     return next(err)
+    //     // console.log('There was an error getting containers in the controller conController.getContainers: ' + err);
+    //   }
 }
 
 module.exports = imageController;

@@ -3,6 +3,10 @@ const app = express();
 const path = require('path');
 const PORT = 3000;
 const cors = require('cors');
+const bodyParser = require('body-parser');
+
+app.use(bodyParser.urlencoded({ extended : false }));
+app.use(bodyParser.json());
 
 //import routers
 const containerRouter = require('./routers/dContainer.js');

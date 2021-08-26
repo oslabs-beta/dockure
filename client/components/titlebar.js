@@ -151,7 +151,9 @@ const Titlebar = ({ toggle, setToggle, isLogin, setIsLogin }) => {
           </div>
         </div>
       </div>
-      {userStat && <UserStatus />}
+      {userStat && (
+        <UserStatus setIsLogin={setIsLogin} userHandler={userHandler} />
+      )}
     </>
   );
 };
