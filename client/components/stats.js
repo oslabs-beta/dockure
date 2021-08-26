@@ -5,12 +5,12 @@ import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContai
 const Stats = () => {
   const [memory, setMemory] = useState([])
 
-  useEffect(async () => {
+  // useEffect(async () => {
     // const result = await StatsService.getStats('process_resident_memory_bytes', 1);
     // await setMemory(result);
-    await refresh();
+    // await refresh();
     // console.log('refresh worked?: ', memory);
-  }, []);
+  // }, []);
 
   async function refresh() {
     //could add an input for what the y-axis data should be called
@@ -25,7 +25,8 @@ const Stats = () => {
 
   return (
     <div className='stats'>
-      {/* <div className='stats_cpu'>CPU</div> */}
+      <div className='stats_cpu'>CPU</div> */
+
       <button onClick={refresh} >Refresh</button>
       <button onClick={testButton} >TEST</button>
       <div className='stats_memory'>Memory
@@ -47,9 +48,9 @@ const Stats = () => {
           <YAxis dataKey='MBs' domain={['auto', 'auto']}/>
           <Tooltip />
         </LineChart>
-      </ResponsiveContainer>
+      </ResponsiveContainer> 
       </div>
-      {/* <div className='stats_count'>Request Count</div> */}
+      <div className='stats_count'>Request Count</div>
     </div>
   );
 };

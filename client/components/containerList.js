@@ -34,14 +34,17 @@ const ContainerList = ({conList}) => {
 
   
   // console.log(conName, 'conname');
-  
-  // console.log(conName, 'con')
+    // console.log(conName, 'con')
   return (
     // <ul className='container_list'>
     //   {conName}
     // </ul>
     <ul className='container_list'>
-      <div><span className="item-name">Name</span> <span className="item-createdat">Created</span> <span className="item-state">State</span></div>
+      {/* <div className='container_head'>
+        <div className="item-name">Name</div> 
+        <div className="item-createdat">Created</div> 
+        <div className="item-state">State</div>
+      </div> */}
       {con}
     </ul>
 
