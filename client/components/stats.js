@@ -1,16 +1,16 @@
 import React, { component, useEffect, useState } from 'react';
 import StatsService from '../services/statsService';
-import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
+import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContainer, BarChart, Bar } from 'recharts';
 
 const Stats = () => {
   const [memory, setMemory] = useState([])
 
-  useEffect(async () => {
+  // useEffect(async () => {
     // const result = await StatsService.getStats('process_resident_memory_bytes', 1);
     // await setMemory(result);
-    await refresh();
+    // await refresh();
     // console.log('refresh worked?: ', memory);
-  }, []);
+  // }, []);
 
   async function refresh() {
     //could add an input for what the y-axis data should be called
@@ -25,10 +25,21 @@ const Stats = () => {
 
   return (
     <div className='stats'>
-      {/* <div className='stats_cpu'>CPU</div> */}
+      <div className='stats_cpu'>CPU</div> */
+
       <button onClick={refresh} >Refresh</button>
       <button onClick={testButton} >TEST</button>
       <div className='stats_memory'>Memory
+      {/* <BarChart width={300}} height={250} data={data}>
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="name" />
+        <YAxis />
+        <Tooltip />
+        <Legend />
+        <Bar dataKey="pv" fill="#8884d8" />
+        <Bar dataKey="uv" fill="#82ca9d" />
+      </BarChart> */}
+
       <ResponsiveContainer width={600} height={400}>
         <LineChart width={600} height={400} data={memory}>
           <Line type='monotone' dataKey='MBs'/>
@@ -37,9 +48,9 @@ const Stats = () => {
           <YAxis dataKey='MBs' domain={['auto', 'auto']}/>
           <Tooltip />
         </LineChart>
-      </ResponsiveContainer>
+      </ResponsiveContainer> 
       </div>
-      {/* <div className='stats_count'>Request Count</div> */}
+      <div className='stats_count'>Request Count</div>
     </div>
   );
 };

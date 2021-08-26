@@ -23,7 +23,7 @@ app.get('/', (req, res) =>{
 
 
 //routing routers
-app.use('/api', containerRouter);
+app.use('/api/containers', containerRouter);
 app.use('/api/images', imageRouter);
 
 
