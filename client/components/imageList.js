@@ -1,11 +1,27 @@
-import React, { component } from 'react';
+import React, { component, useState } from 'react';
 import ImageItem from './imageItem';
+import axios from 'axios'
 
 const ImageList = ({imageList}) => {
-    const handleSubmit = (e) => {
+
+    const [ imageName, setImageName] = useState('')
+
+
+    const handlePull = async (e) => {
         e.preventDefault();
-        console.log('hi')
+        console.log(imageName, 'before')
+        try {
+            const image = await axios.post("/api/images/pull", { imageName: imageName })
+
+            // imageName: imageName
+
+            console.log(imageName, 'imageName after')
+            
+        } catch(e) {
+            console.log(e);
+        }
     }
+
     const image = imageList.map((image, inx) => {
         return(
             <ImageItem key={inx} id={image.Id} image = {image}/>
@@ -15,11 +31,16 @@ const ImageList = ({imageList}) => {
     return (
         <div>
             <div>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handlePull}>
                     <input 
                         type="text"
                         value={imageName}
-                        onChange={(e) => pull(e.target.value)}
+                        onChange={(e) => setImageName(e.target.value)}
+                    />
+
+                    <input 
+                        type="submit" 
+                        value="pull"
                     />
                 </form>
             </div> 

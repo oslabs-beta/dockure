@@ -13,7 +13,10 @@ const containerRouter = require('./routers/dContainer.js');
 const promMetricsRouter = require('./routers/promMetrics.js');
 const imageRouter = require('./routers/dImage.js')
 
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }));
 app.use(cors());
+
 app.get('/', (req, res) =>{
     return res.sendStatus(200);
 });
@@ -22,6 +25,7 @@ app.get('/', (req, res) =>{
 //routing routers
 app.use('/api', containerRouter);
 app.use('/api/images', imageRouter);
+
 
 //routing for prometheus metrics
 app.use('/metrics', promMetricsRouter);
