@@ -28,7 +28,7 @@ app.use('/api/images', imageRouter);
 
 
 //routing for prometheus metrics
-app.use('/metrics', promMetricsRouter);
+// app.use('/metrics', promMetricsRouter);
 
 //unknown path handler
 app.use('*', (req, res) => {
