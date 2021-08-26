@@ -12,9 +12,9 @@ const App = () => {
 
   //for now putting this here - can talk about it later
   //This NEEDS to run once on startup and this is the only place I can finde to force this
-  useEffect(() => {
-    StartUp.prometheus();
-  }, [])
+  // useEffect(() => {
+  //   StartUp.prometheus();
+  // }, [])
 
   return (
     <Router>
