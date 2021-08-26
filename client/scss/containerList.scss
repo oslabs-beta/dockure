@@ -1,26 +1,83 @@
 .container_list {
   background-color: $white_color;
   text-align: center;
-  min-height: 50vh;
-  padding: 1rem;
 }
 
-.container_list li {
+// .container_list li {
+//   display: flex;
+//   align-items: center;
+//   text-align: left;
+//   height: 5vh;
+//   border-bottom: 1px solid lighten($gray_color, 5%);
+// }
+
+.container_head {
   display: flex;
-  align-items: center;
-  text-align: left;
-  height: 5vh;
-  border-bottom: 1px solid lighten($gray_color, 5%);
+  justify-content: space-around;
+  width: 100%;
 }
 
-// .item-name {
+.container_item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 40vw;
+  height: 4.5rem;
+  border: 1px solid darken($gray-color, 20%);
+  background-color: lighten($gray-color, 1%);
+  border-radius: 10px;
+  margin: 0.8rem 0;
+  padding: 0.5rem 1.5rem;
+}
 
-// }
+.item_name_time{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
 
-// .item-createdat {
+.item_name {
+  font-weight: bold;
+}
 
-// }
+.item_createdat {
+}
 
-// .item-state {
+.item_state_dateBtn {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 0.5rem 0.5rem 0 0.5rem;
+}
 
-// }
+.item_state {
+  padding: 0.1rem 0.5rem;
+  border-radius: 10px;
+  font-size: $font-small;
+}
+
+.is_running {
+background-color: darken($gray-color, 1%);
+  border: 1px solid darken($green-color, 5%);
+  color: darken($green-color, 5%);
+}
+
+.is_existed {
+  background-color: darken($gray-color, 1%);
+  border: 1px solid $orange-color;
+  color: $orange-color
+}
+
+.is_else {
+  background-color: darken($gray-color, 1%);
+  border: 1px solid darken($primary-color, 5%);
+  color: darken($primary-color, 5%);
+}
+
+.item_dataBtn {
+  padding: 0.3rem 0.7rem;
+  background-color: darken($primary-color, 20%);
+  border-radius: 10px;
+  color: $white-color;
+  font-size: $font-small;
+}
