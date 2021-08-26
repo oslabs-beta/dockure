@@ -12,8 +12,12 @@ const ContainerList = ({conList}) => {
     console.log('data in conatinerlist')
     id = id.slice(0, 12)
     let stats = await axios.post('api/containers/stats', { id: id })
-    // let stats = await axios.get('http://localhost:2375/containers/3b160b3cf74b/json')
-    console.log(stats)
+    let data = {};
+    data.cpu = stats.data.cpu_stats.cpu_usage.total_usage / 1000000;
+    data.memory = stats.data.memory_stats.usage / 1000000;
+    console.log('data memory : ', data.memory)
+;    // let stats = await axios.get('http://localhost:2375/containers/3b160b3cf74b/json')
+    console.log('stats: ', stats)
 
   }
     //repotags, id, created, size
