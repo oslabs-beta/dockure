@@ -11,8 +11,8 @@ const ContainerList = ({conList}) => {
 
     console.log('data in conatinerlist')
     id = id.slice(0, 12)
-    let stats = await axios.post('api/containers/stats', { id: id })
-    // let stats = await axios.get('http://localhost:2375/containers/3b160b3cf74b/json')
+    // let stats = await axios.post('api/containers/stats', { id: id })
+    let stats = await axios.get('http://localhost:2375/containers/3b160b3cf74b/json')
     console.log(stats)
 
   }
