@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import UserStatus from './userStatus';
 // uncommand ipcRenderer for testing on electron.
 // Please also command the lines before push the file. (line 6, 22-46, 67, 81, 98, 115)
-// const { ipcRenderer } = window.require('electron');
+const { ipcRenderer } = window.require('electron');
 import {
   faBars,
   faFish,
@@ -19,31 +19,31 @@ const Titlebar = ({ toggle, setToggle, isLogin, setIsLogin }) => {
   const [isMaximized, setIsMaximized] = useState();
   const [userStat, setUserStat] = useState(false);
 
-  // ipcRenderer.on('focused', () => {
-  //   setIsActive(true);
-  // });
-  // ipcRenderer.on('blurred', () => {
-  //   setIsActive(false);
-  // });
-  // ipcRenderer.on('maximized', () => {
-  //   setIsMaximized(true);
-  // });
-  // ipcRenderer.on('unmaximized', () => {
-  //   setIsMaximized(false);
-  // });
+  ipcRenderer.on('focused', () => {
+    setIsActive(true);
+  });
+  ipcRenderer.on('blurred', () => {
+    setIsActive(false);
+  });
+  ipcRenderer.on('maximized', () => {
+    setIsMaximized(true);
+  });
+  ipcRenderer.on('unmaximized', () => {
+    setIsMaximized(false);
+  });
 
-  // const minimizeHandler = () => {
-  //   ipcRenderer.invoke('minimize-event');
-  // };
-  // const maximizeHandler = () => {
-  //   ipcRenderer.invoke('maximize-event');
-  // };
-  // const unmaximizeHandler = () => {
-  //   ipcRenderer.invoke('unmaximize-event');
-  // };
-  // const closeHandler = () => {
-  //   ipcRenderer.invoke('close-event');
-  // };
+  const minimizeHandler = () => {
+    ipcRenderer.invoke('minimize-event');
+  };
+  const maximizeHandler = () => {
+    ipcRenderer.invoke('maximize-event');
+  };
+  const unmaximizeHandler = () => {
+    ipcRenderer.invoke('unmaximize-event');
+  };
+  const closeHandler = () => {
+    ipcRenderer.invoke('close-event');
+  };
 
   const toggleHandler = () => {
     if (!toggle) return setToggle(true);
@@ -62,7 +62,7 @@ const Titlebar = ({ toggle, setToggle, isLogin, setIsLogin }) => {
           <div className='titlebar_traffic'>
             <div
               className={`traffic ${isActive ? 'traffic_red' : 'traffic_gray'}`}
-              // onClick={closeHandler}
+              onClick={closeHandler}
             >
               <div
                 className={
@@ -76,7 +76,7 @@ const Titlebar = ({ toggle, setToggle, isLogin, setIsLogin }) => {
               className={`traffic ${
                 isActive ? 'traffic_yellow' : 'traffic_gray'
               }`}
-              // onClick={minimizeHandler}
+              onClick={minimizeHandler}
             >
               <div
                 className={
@@ -93,7 +93,7 @@ const Titlebar = ({ toggle, setToggle, isLogin, setIsLogin }) => {
                 className={`traffic ${
                   isActive ? 'traffic_green' : 'traffic_gray'
                 }`}
-                // onClick={unmaximizeHandler}
+                onClick={unmaximizeHandler}
               >
                 <div
                   className={
@@ -110,7 +110,7 @@ const Titlebar = ({ toggle, setToggle, isLogin, setIsLogin }) => {
                 className={`traffic ${
                   isActive ? 'traffic_green' : 'traffic_gray'
                 }`}
-                // onClick={maximizeHandler}
+                onClick={maximizeHandler}
               >
                 <div
                   className={
