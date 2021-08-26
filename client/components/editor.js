@@ -43,8 +43,7 @@ const Editor = (props) => {
         
       </div>
       <div className="editor-buttons">
-        <button download="Dockerfile" onClick={save}>save</button>
-        <button>configure</button>
+        <button download="Dockerfile" onClick={save}>Save your Dockerfile</button>
       </div>
     </>
   );

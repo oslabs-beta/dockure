@@ -7,7 +7,7 @@ const ContentContainer = () => {
   const [conList, setConList] = useState([]);
 
   useEffect(async () => {
-    const result = await ContainerService.getConInfo('http://localhost:3000/api')
+    const result = await ContainerService.getConInfo('http://localhost:3000/api/containers')
     setConList(result);
   }, []);
 

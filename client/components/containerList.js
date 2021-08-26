@@ -1,14 +1,21 @@
 import React, { component } from 'react';
 import ContainerItem from './containerItem';
+import axios from 'axios';
+
 
 
 const ContainerList = ({conList}) => {
 
-  
-  // for(let con of conList) {
-  //   console.log(con, 'connnn')
-  // }
 
+  const getData = async (id) => {
+
+    console.log('data in conatinerlist')
+    id = id.slice(0, 12)
+    let stats = await axios.post('api/containers/stats', { id: id })
+    // let stats = await axios.get('http://localhost:2375/containers/3b160b3cf74b/json')
+    console.log(stats)
+
+  }
     //repotags, id, created, size
   //id has to be actual container id
   const con = conList.map((container, inx) => {
@@ -17,7 +24,7 @@ const ContainerList = ({conList}) => {
     
 
     return(
-      <ContainerItem key={inx} id={container.Id} container={container}/>
+      <ContainerItem key={inx} id={container.Id} getData={() => getData(container.Id)} container={container}/>
     )
   });
 
