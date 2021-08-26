@@ -3,6 +3,7 @@
   height: 95vh;
   padding: 1rem;
   background-color: lighten($gray-color, 10%);
+  overflow-y: auto;
 }
 
 .docker_buttons {
