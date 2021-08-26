@@ -19,4 +19,8 @@ imageRouter.post('/pull', imageController.pullImage, (req, res) => {
     return res.status(200);
 })
 
+imageRouter.post('/build', imageController.buildImage, (req, res) => {
+    return res.status(200);
+})
+
 module.exports = imageRouter;
