@@ -1,7 +1,7 @@
 import React, { component } from 'react';
 import moment from 'moment';
 
-const ContainerItem = ({id, container}) => {
+const ContainerItem = ({id, container, getData}) => {
 
     //current unix time stamp(the time since 1970 in secs)
     // const ts = Math.round((new Date()).getTime()/1000);
@@ -25,6 +25,7 @@ const ContainerItem = ({id, container}) => {
       {/* <div >Container Id: {container.Id}</div> */}
       <div className="item-createdat"> {moment(date).fromNow()} </div>
       <div className="item-state"> {container.State} </div>
+      <button onClick={getData}>Get Data</button>
     </li>
   )
 }

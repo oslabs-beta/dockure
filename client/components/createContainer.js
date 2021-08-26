@@ -43,9 +43,11 @@ CMD
           value={value}
           onChange={setValue}
         />
+        <br/>
         <form onSubmit={handleBuild}>
         <input 
           type="text"
+          placeholder="Image Tag Name"
           value={imageName}
           onChange={(e) => setImageName(e.target.value)}
         />
