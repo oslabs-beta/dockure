@@ -9,6 +9,11 @@ containerRouter.get('/', conController.getContainers, (req, res) => {
     return res.status(200).send(result);
 })
 
+containerRouter.post('/stats', conController.getStats, (req, res) => {
+    // const result = res.locals.stats;
+    // return res.status(200).send(stats)
+})
+
 module.exports = containerRouter;
 
 
