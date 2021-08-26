@@ -1,6 +1,6 @@
 import React, { component, useEffect, useState } from 'react';
 import StatsService from '../services/statsService';
-import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
+import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContainer, BarChart, Bar } from 'recharts';
 
 const Stats = () => {
   const [memory, setMemory] = useState([])
@@ -30,6 +30,16 @@ const Stats = () => {
       <button onClick={refresh} >Refresh</button>
       <button onClick={testButton} >TEST</button>
       <div className='stats_memory'>Memory
+      {/* <BarChart width={300}} height={250} data={data}>
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="name" />
+        <YAxis />
+        <Tooltip />
+        <Legend />
+        <Bar dataKey="pv" fill="#8884d8" />
+        <Bar dataKey="uv" fill="#82ca9d" />
+      </BarChart> */}
+
       <ResponsiveContainer width={600} height={400}>
         <LineChart width={600} height={400} data={memory}>
           <Line type='monotone' dataKey='MBs'/>

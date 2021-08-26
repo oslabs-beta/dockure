@@ -3,7 +3,6 @@ import Nav from '../components/nav';
 import ContentContainer from './contentContainer';
 import ImageContainer from './imageContainer';
 import CreateContainer from '../components/createContainer';
-import EditContainer from '../components/editContainer';
 
 import {
   BrowserRouter as Router,
@@ -32,11 +31,6 @@ const MainContainer = ({ toggle, setIsLogin }) => {
             path={`${main.path}/create`}
             exact
             component={CreateContainer}
-          />
-          <Route
-            path={`${main.path}/editPage`}
-            exact
-            component={EditContainer}
           />
         </Switch>
       </div>

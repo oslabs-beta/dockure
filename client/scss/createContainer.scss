@@ -1,17 +1,83 @@
+.createContainer-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 10vh;
+}
+
 .top-pane {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: hsl(225, 6%, 25%);
+    background-color: $darker-color;
+    color: gray;
     width: 100vh;
+    height: 5vh;
+    border-top-right-radius: .5rem;
+    border-top-left-radius: .5rem;
+}
+
+.bottom-pane {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $darker-color;
+    color: gray;
+    width: 100vh;
+    height: 5vh;
+    border-bottom-right-radius: .5rem;
+    border-bottom-left-radius: .5rem;
 }
 
 .editor-con {
     flex-grow: 1;
-    margin: 5vh;
+    // margin: 5vh;
     align-items: center;
     justify-content: center;
     width: 100vh;
-    background-color: hsl(225, 6%, 25%);
 }
 
+.right-grid {
+    background-color: $gray-color;
+    padding: 2rem;
+    margin-left: 2rem;
+    border: solid 1px;
+    border-radius: .5rem
+}
+
+.list-div {
+    padding: 2rem;
+    border: solid 1px;
+    border-radius: .5rem
+}
+
+ol {
+    margin-bottom: 2rem;
+}
+h3 {
+    margin-bottom: 1rem;
+}
+
+ol li {
+    margin: 1rem;
+}
+
+.whale {
+    display: inline;
+    // align-items: center;
+    // justify-content: center;
+}
+
+// .docker-build-btn {
+//     text-decoration: none;
+//     font-size: 16px;
+//     font-weight: bold;
+//     background-color: transparent;
+//     padding: 12px 16px;
+//     border: solid 1px;
+//     border-radius: 5px;
+    
+// }
+
+// .build-form {
+//     margin-top: 50vh;
+// }
