@@ -25,6 +25,7 @@ conController.getStats = async (req, res, next) => {
   try {
     const result = await axios.get(`http://localhost:2375/containers/${id}/stats?stream=false`)
     res.locals.data = result.data
+    
     console.log(result.data, 'resultiltje4iotioajweiojewioj')
     return next();
   } catch(err) {

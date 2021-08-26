@@ -37,8 +37,17 @@
 }
 
 .right-grid {
+    background-color: $gray-color;
+    padding: 2rem;
     margin-left: 2rem;
     border: solid 1px;
+    border-radius: .5rem
+}
+
+.list-div {
+    padding: 2rem;
+    border: solid 1px;
+    border-radius: .5rem
 }
 
 ol {
@@ -50,6 +59,12 @@ h3 {
 
 ol li {
     margin: 1rem;
+}
+
+.whale {
+    display: inline;
+    // align-items: center;
+    // justify-content: center;
 }
 
 // .docker-build-btn {

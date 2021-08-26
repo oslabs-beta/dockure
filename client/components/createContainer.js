@@ -47,15 +47,22 @@ CMD
             onChange={setValue}
           />
           <br/>
+          <div className="list-div">
+            <img className="whale" width="25%" height="auto"  src="https://miro.medium.com/max/662/1*qWWZeEbuKMzouD1llLNj8w.png" />   
+            <img className="whale" width="25%" height="auto"  src="https://miro.medium.com/max/662/1*qWWZeEbuKMzouD1llLNj8w.png" />    
+            <img className="whale" width="25%" height="auto"  src="https://miro.medium.com/max/662/1*qWWZeEbuKMzouD1llLNj8w.png" />
+            <img className="whale" width="25%" height="auto"  src="https://miro.medium.com/max/662/1*qWWZeEbuKMzouD1llLNj8w.png" />         
+          </div>
+        
           
         </div>
         <div className="right-grid">
-          <h3>To build a Docker Image:</h3>
-          <ol>
-            <li>1. Create your Dockerfile and save it into the directory you are working on</li>
-            <li>2. specify the tag (what do you want to call your image?)</li>
-            <li>3. specify the directory path (where is your directory located?)</li>
-          </ol>
+        <h3>To build a Docker Image:</h3>
+            <ol>
+              <li>1. Create your Dockerfile and save it into the directory you are working on</li>
+              <li>2. specify the tag (what do you want to call your image?)</li>
+              <li>3. specify the directory path (where is your directory located?)</li>
+            </ol>
           <form className="build-form" onSubmit={handleBuild}>
           <input 
             type="text"
