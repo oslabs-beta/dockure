@@ -9,11 +9,13 @@ const ImageList = ({imageList}) => {
 
     const handlePull = async (e) => {
         e.preventDefault();
-        
+        console.log(imageName, 'before')
         try {
             const image = await axios.post("/api/images/pull", { imageName: imageName })
 
-            console.log(imageName)
+            // imageName: imageName
+
+            console.log(imageName, 'imageName after')
             
         } catch(e) {
             console.log(e);

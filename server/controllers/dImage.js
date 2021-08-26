@@ -57,25 +57,51 @@ imageController.stopImage = (req, res, next) => {
 }
 
 imageController.pullImage = (req, res, next) => {  
-    console.log('we are here')
-    return next()
-    // try {
-    //     exec(`docker pull ${req.body.name}`, (error, stdout, stderr) => {
-    //         if (error) {
-    //             console.log(`error: ${error.message}`);
-    //             return next(error);
-    //         }
-    //         if (stderr) {
-    //             console.log(`stderr: ${stderr}`);
-    //             return next(stderr);
-    //         };
-    //         console.log('it worked~!!!!!');
-    //     });
-    //     return next();
-    //   } catch(err) {
-    //     return next(err)
-    //     // console.log('There was an error getting containers in the controller conController.getContainers: ' + err);
-    //   }
+    console.log('we are in pullImage')
+
+    const { imageName } = req.body
+    
+    try {
+        exec(`docker pull ${imageName}`, (error, stdout, stderr) => {
+            if (error) {
+                console.log(`error: ${error.message}`);
+                return next(error);
+            }
+            if (stderr) {
+                console.log(`stderr: ${stderr}`);
+                return next(stderr);
+            };
+            console.log('it worked~!!!!!');
+        });
+        return next();
+      } catch(err) {
+        return next(err)
+        // console.log('There was an error getting containers in the controller conController.getContainers: ' + err);
+      }
 }
+
+imageController.buildImage = (req, res, next) => {  
+    console.log('we are in buildImage')
+
+    try {
+        exec(`docker build -t ${req.body.imageName} ${req.body.path}`, (error, stdout, stderr) => {
+            if (error) {
+                console.log(`error: ${error.message}`);
+                return next(error);
+            }
+            if (stderr) {
+                console.log(`stderr: ${stderr}`);
+                return next(stderr);
+            };
+            console.log('it worked~!!!!!');
+        });
+
+        return next();
+      } catch(err) {
+        return next(err)
+        // console.log('There was an error getting containers in the controller conController.getContainers: ' + err);
+      }
+}
+
 
 module.exports = imageController;
