@@ -1,57 +1,53 @@
 import React, { component, useState } from 'react';
 import ImageItem from './imageItem';
-import axios from 'axios'
+import axios from 'axios';
 
-const ImageList = ({imageList}) => {
+const ImageList = ({ imageList }) => {
+  const [imageName, setImageName] = useState('');
 
-    const [ imageName, setImageName] = useState('')
-
-
-    const handlePull = async (e) => {
-        e.preventDefault();
-        console.log(imageName, 'before')
-        try {
-            const image = await axios.post("/api/images/pull", { imageName: imageName })
-
-            // imageName: imageName
-
-            console.log(imageName, 'imageName after')
-            
-        } catch(e) {
-            console.log(e);
-        }
+  const handlePull = async (e) => {
+    e.preventDefault();
+    console.log(imageName, 'before');
+    try {
+      const image = await axios.post('/api/images/pull', {
+        imageName: imageName,
+      });
+      console.log(imageName, 'imageName after');
+    } catch (e) {
+      console.log(e);
     }
+  };
 
-    const image = imageList.map((image, inx) => {
-        return(
-            <ImageItem key={inx} id={image.Id} image = {image}/>
-        )
-    });
+  const onSubmit = () => {
+    const input = document.querySelector('.image_input');
+    handlePull();
+    input.value = '';
+    input.focus();
+  };
 
-    return (
-        <div>
-            <div>
-                <form onSubmit={handlePull}>
-                    <input 
-                        type="text"
-                        value={imageName}
-                        onChange={(e) => setImageName(e.target.value)}
-                    />
+  const image = imageList.map((image, inx) => {
+    return <ImageItem key={inx} id={image.Id} image={image} />;
+  });
 
-                    <input 
-                        type="submit" 
-                        value="pull"
-                    />
-                </form>
-            </div> 
-            <ul className='image_list'>
-                {image}
-            </ul>
-        </div>
-       
-    )
-}
+  return (
+    <div className='image_main'>
+      <div className='image_pull'>
+        <input
+          type='text'
+          value={imageName}
+          className='image_input'
+          placeholder='Type Image Name'
+          onChange={(e) => setImageName(e.target.value)}
+        />
+        <button className='image_submit' onClick={onSubmit}>
+          Pull
+        </button>
+      </div>
+      <ul className='image_list'>{image}</ul>
+    </div>
+  );
+};
 
-export default ImageList
+export default ImageList;
 
 // `https://hub.docker.com/search?q=${input.value}&type=image`

@@ -64,16 +64,17 @@ const ImageItem = ({ id, image }) => {
 
   return (
     <div className='image_item'>
-      <div className='image_name'>Image Name: {checkRepoTag({ image })}</div>
+      <div className='image_tag'>Image Name </div>
+      <div className='image_name'>{checkRepoTag({ image })}</div>
       <div className='imagebtns'>
         {isRunning ? (
+          <div className='image_running'>In Use</div>
+        ) : (
           <div>
-            <button className='image_button' onClick={startClick}>
+            <button className='image_button image_start' onClick={startClick}>
               Start
             </button>
           </div>
-        ) : (
-          <div className='image_running'>Running</div>
         )}
         <div>
           <button className='image_button image_stop' onClick={stopClick}>
