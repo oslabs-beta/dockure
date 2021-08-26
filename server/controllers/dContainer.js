@@ -19,10 +19,11 @@ conController.getContainers = async(req, res, next) => {
 conController.getStats = async (req, res, next) => {
   //pass through res.locals.containers
   const { id } = req.body
-  console.log(id)
+  const idd = '3b160b3cf74b'
+  // console.log(id)
 
   try {
-    const result = await axios.get(`http://localhost:2375/containers/?id=${id}/stats`)
+    const result = await axios.get(`http://localhost:2375/containers/${id}/stats?stream=false`)
     // res.locals.containers = result
     console.log(result.data, 'resultiltje4iotioajweiojewioj')
     return next();

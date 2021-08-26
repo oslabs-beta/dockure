@@ -38,26 +38,43 @@ CMD
   }
 
   return (
-      <div>
-        <Editor 
-          value={value}
-          onChange={setValue}
-        />
-        <br/>
-        <form onSubmit={handleBuild}>
-        <input 
-          type="text"
-          placeholder="Image Tag Name"
-          value={imageName}
-          onChange={(e) => setImageName(e.target.value)}
-        />
-        <input 
-          type="text"
-          value={dockerPath}
-          onChange={(e) => setDockerPath(e.target.value)}
-        />
-          <input type="submit" value="Docker Build" />
+      <div className="createContainer-container">
+        
+        <div>
+          
+          <Editor 
+            value={value}
+            onChange={setValue}
+          />
+          <br/>
+          
+        </div>
+        <div className="right-grid">
+          <h3>To build a Docker Image:</h3>
+          <ol>
+            <li>1. Create your Dockerfile and save it into the directory you are working on</li>
+            <li>2. specify the tag (what do you want to call your image?)</li>
+            <li>3. specify the directory path (where is your directory located?)</li>
+          </ol>
+          <form className="build-form" onSubmit={handleBuild}>
+          <input 
+            type="text"
+            placeholder="Image Tag Name"
+            value={imageName}
+            onChange={(e) => setImageName(e.target.value)}
+          />
+          <input 
+            type="text"
+            value={dockerPath}
+            onChange={(e) => setDockerPath(e.target.value)}
+          />
+
+          <input className="docker-build-btn"type="submit" value="Docker Build" />
+
         </form>
+        </div>
+        
+        
       </div>
   );
 };
