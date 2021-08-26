@@ -21,7 +21,7 @@ const Nav = () => {
         <button className='nav_btns'>Images</button>
       </Link>
       <Link to='/main/create'>
-        <button className='nav_btns'>Create Containers</button>
+        <button className='nav_btns'>Create Image</button>
       </Link>
     </ul>
   );

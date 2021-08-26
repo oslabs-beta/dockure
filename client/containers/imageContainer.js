@@ -3,20 +3,21 @@ import ImageService from '../services/imageService';
 import ImageList from '../components/imageList';
 
 const ImageContainer = () => {
-    const [imageList, setImageList] = useState([]);
+  const [imageList, setImageList] = useState([]);
 
-    useEffect(async () => {
-        //right now the backend is not set up and is returning a 404 as a result
-        const result = await ImageService.getImageInfo('http://localhost:3000/api/images');
-        setImageList(result)
-    }, []);
+  useEffect(async () => {
+    const result = await ImageService.getImageInfo(
+      'http://localhost:3000/api/images'
+    );
+    setImageList(result);
+  }, []);
 
-    return (
-        <div>
-            <h1>WELCOME TO IMAGES</h1>
-            <ImageList imageList={imageList}/>
-        </div>
-    )
-}
+  return (
+    <div className='image_container'>
+      <p className='image_head'>WELCOME TO IMAGES</p>
+      <ImageList imageList={imageList} />
+    </div>
+  );
+};
 
-export default ImageContainer
+export default ImageContainer;
