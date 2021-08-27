@@ -1,4 +1,7 @@
 const db = require('../models/dockureModel');
+const { response } = require ('express');
+const fetch = require('node.fetch');
+
 
 const dbController = {};
 
@@ -50,7 +53,7 @@ dbController.createUser = async (req, res, next) => {
                 status: 401,
                 message: "Invalid username and password"
               });
-              user = rows[0];
+              //user = rows[0];
             }
           } catch(err){
             return next({
