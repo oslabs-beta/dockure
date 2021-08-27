@@ -39,13 +39,15 @@ const Editor = (props) => {
             lineNumbers:true,
           }}
         />
-        
-        
+
+        <div className="bottom-pane" 
+          download="Dockerfile" 
+          onClick={save}> 
+          Save your Dockerfile 
+        </div>
+
       </div>
-      <div className="editor-buttons">
-        <button download="Dockerfile" onClick={save}>save</button>
-        <button>configure</button>
-      </div>
+      
     </>
   );
 }

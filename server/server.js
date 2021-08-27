@@ -3,24 +3,31 @@ const app = express();
 const path = require('path');
 const PORT = 3000;
 const cors = require('cors');
+const bodyParser = require('body-parser');
+
+app.use(bodyParser.urlencoded({ extended : false }));
+app.use(bodyParser.json());
 
 //import routers
 const containerRouter = require('./routers/dContainer.js');
 const promMetricsRouter = require('./routers/promMetrics.js');
 const imageRouter = require('./routers/dImage.js');
-const router = require('./routers/dbRouter');
+const userRouter = require('./routers/dbRouter');
 
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }));
 app.use(cors());
+
 app.get('/', (req, res) =>{
     return res.sendStatus(200);
 });
 
 
 //routing routers
-app.use('/user', router);
-
-app.use('/api', containerRouter);
+app.use('/user', userRouter);
+app.use('/api/containers', containerRouter);
 app.use('/api/images', imageRouter);
+
 
 //routing for prometheus metrics
 app.use('/metrics', promMetricsRouter);
