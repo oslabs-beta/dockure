@@ -11,7 +11,8 @@ app.use(bodyParser.json());
 //import routers
 const containerRouter = require('./routers/dContainer.js');
 const promMetricsRouter = require('./routers/promMetrics.js');
-const imageRouter = require('./routers/dImage.js')
+const imageRouter = require('./routers/dImage.js');
+const userRouter = require('./routers/dbRouter');
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
@@ -23,6 +24,7 @@ app.get('/', (req, res) =>{
 
 
 //routing routers
+app.use('/user', userRouter);
 app.use('/api/containers', containerRouter);
 app.use('/api/images', imageRouter);
 

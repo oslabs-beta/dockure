@@ -2,14 +2,23 @@ const express = require('express');
 const dbController = require('../controllers/dbController.js');
 //confirm that db controller file path is correct on line above 
 
-const router = express.Router();
+const dbRouter = express.Router();
 
 //route handler
 
-router.post('/user',
-dbController.,
-(req, res) => {
-    return res.status(200).json('Database initialized')
+dbRouter.post('/signup',dbController.createUser,(req, res) => {
+    return res.sendStatus(200).send({userid: res.locals.userid});
 });
 
-module.exports = router;
+dbRouter.post('/login', dbController.userLogin, (req,res) => {
+    return res.status(200).send({userid: res.locals.userid});
+});
+
+// router.post('/logout',
+// dbController.logout,
+// (req, res) => {
+//     return res.status(200).redirect('/')
+// });
+
+module.exports = dbRouter;
+
