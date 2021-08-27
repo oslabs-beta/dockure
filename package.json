@@ -30,6 +30,7 @@
     "js-yaml": "^4.1.0",
     "moment": "^2.29.1",
     "node-fetch": "^2.6.1",
+    "pg": "^8.7.1",
     "prop-types": "^15.7.2",
     "raw-loader": "^4.0.2",
     "react": "^17.0.2",

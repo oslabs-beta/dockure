@@ -9,7 +9,7 @@ const router = express.Router();
 router.post('/signup',
 dbController.createUser,
 (req, res) => {
-    return res.status(200).send({userid: res.locals.userid});
+    return res.sendStatus(200)//.send({userid: res.locals.userid});
 });
 
 router.post('/login',
@@ -25,5 +25,4 @@ dbController.userLogin,
 // });
 
 module.exports = router;
-
 

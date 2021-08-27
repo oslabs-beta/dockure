@@ -7,7 +7,8 @@ const cors = require('cors');
 //import routers
 const containerRouter = require('./routers/dContainer.js');
 const promMetricsRouter = require('./routers/promMetrics.js');
-const imageRouter = require('./routers/dImage.js')
+const imageRouter = require('./routers/dImage.js');
+const router = require('./routers/dbRouter');
 
 app.use(cors());
 app.get('/', (req, res) =>{
@@ -16,6 +17,8 @@ app.get('/', (req, res) =>{
 
 
 //routing routers
+app.use('/user', router);
+
 app.use('/api', containerRouter);
 app.use('/api/images', imageRouter);
 
