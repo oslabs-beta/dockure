@@ -1,49 +1,140 @@
+.image_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $white_color;
+  width: 84vw;
+  height: 95vh;
+  padding: 2.5rem;
+  overflow-y: auto;
+}
+
+.image_head {
+  font-size: $font-head;
+  font-weight: bold;
+  color: darken($primary-color, 26%);
+  margin-bottom: 1rem;
+}
+
+.image_main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image_pull {
+  display: flex;
+  align-items: center;
+}
+
+.image_input {
+  height: 2rem;
+  width: 14rem;
+  margin-right: 1px;
+  border: 1px solid $font-dark-color;
+  border-radius: 5px;
+}
+
+.image_submit {
+  height: 2.1rem;
+  width: 2.7rem;
+  background-color: darken($primary-color, 20%);
+  color: $white-color;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.image_submit:focus {
+  background-color: darken($primary-color, 20%);
+  color: $white-color;
+}
+
 .image_list {
-    background-color: $white_color;
-    text-align: center;
-    min-height: 50vh;
-    padding: 1rem;
-    display: grid;
-    align-items: center;
-    // text-align: center;
-    height: 5vh;
-    border-bottom: 1px solid lighten($gray_color, 5%);
-  }
-  
+  display: flex;
+  width: 35rem;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 1rem;
+}
+
 .image_item {
-    padding: 5px;
-    margin: 1em;
-    border-style: solid;
-    border-color: lighten($primary-color, 40%);;
-    
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 7rem;
+  width: 17rem;
+  padding: 10px;
+  margin: 0.5rem 0;
+  border: 1px solid darken($gray-color, 20%);
+  background-color: lighten($gray-color, 1%);
+  border-radius: 5px;
+}
+
+.image_tag {
+  margin-bottom: 1px;
+  font-weight: 500;
+  color: darken($primary-color, 30%);
+  font-size: $font-small;
+  font-weight: bold;
 }
 
 .image_name {
-    padding: 5px;
-    margin-bottom: 5px;
-    font-family:'Roboto',sans-serif;
-    font-weight:500;
+  margin-bottom: 5px;
+  font-weight: 500;
 }
 
 .image_button {
-    display: inline-block;
-    padding:0.3em 1.2em;
-    margin:0 0.3em 0.3em 0;
-    border-radius:2em;
-    box-sizing: border-box;
-    text-decoration:none;
-    font-family:'Roboto',sans-serif;
-    font-weight:300;
-    color:#FFFFFF;
-    background-color: lighten($primary-color, 20%);
-    text-align:center;
-    transition: all 0.2s;
+  width: 80px;
+  height: 26px;
+  margin: 0.2rem 0.3rem;
+  padding-bottom: 2px;
+  border-radius: 40px;
+  font-size: $font-small;
 }
 
-.image_button:hover{
-    background-color:#4eb5f1;
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+.image_start {
+  color: $white-color;
+  background-color: darken($primary-color, 20%);
 }
-.image_button:focus{
-    background-color: red;
+
+.image_start:hover {
+  background-color: darken($primary-color, 5%);
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.24);
+  transform: scale(1.03);
+}
+
+.image_stop {
+  color: darken($primary-color, 20%);
+  background-color: lighten($gray-color, 1%);
+  border: 2px solid darken($primary-color, 20%);
+}
+
+.image_stop:hover {
+  background-color: lighten($orange-color, 6%);
+  color: $white-color;
+  border: none;
+}
+
+.image_stop:focus {
+  color: darken($primary-color, 20%);
+  background-color: lighten($gray-color, 1%);
+  border: 2px solid darken($primary-color, 20%);
+}
+
+.image_running {
+  width: 80px;
+  height: 26px;
+  margin: 0.2rem 0.3rem;
+  padding-top: 2px;
+  border-radius: 2rem;
+  color: darken($green-color, 10%);
+  background-color: lighten($green-color, 42%);
+  border: 2px solid darken($green-color, 10%);
+  text-align: center;
+  font-size: $font-small;
+}
+
+.imagebtns {
+  display: flex;
 }

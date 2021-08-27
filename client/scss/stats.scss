@@ -1,8 +1,9 @@
 .stats {
-  width: 40vw;
+  width: 37vw;
   height: 95vh;
   margin: auto;
   padding: 2rem;
+  overflow-y: auto;
 }
 
 // .stats_box {
@@ -14,7 +15,7 @@
 
 .stats div {
   background-color: lighten($primary-color, 30%);
-  width: 10rem;
-  height: 10rem;
+  width: 9rem;
+  height: 9rem;
   margin: 2rem 0;
 }
