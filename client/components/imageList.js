@@ -1,21 +1,13 @@
 import React, { component, useState } from 'react';
 import ImageItem from './imageItem';
-import axios from 'axios';
+import ImageService from '../services/imageService';
 
 const ImageList = ({ imageList }) => {
   const [imageName, setImageName] = useState('');
 
   const handlePull = async (e) => {
-    // e.preventDefault();
-    console.log(imageName, 'before');
-    try {
-      const image = await axios.post('/api/images/pull', {
-        imageName: imageName,
-      });
-      console.log(imageName, 'imageName after');
-    } catch (e) {
-      console.log(e);
-    }
+    const pulledImage = await ImageService.pullImageInfo('/api/images/pull', imageName)
+    console.log(pulledImage);
   };
 
   const onSubmit = () => {

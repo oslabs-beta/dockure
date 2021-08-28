@@ -14,10 +14,10 @@ const ContentContainer = () => {
 
   //getting stats about a particular container
   //how do we pass this infoirmation from conList to Stats
-  useEffect(async () => {
-    const stats = await ContainerService.getConStats('api/containers/stats', { id: id })
-    setConStats(stats)
-  });
+  // useEffect(async () => {
+  //   const stats = await ContainerService.getConStats('api/containers/stats', { id: id })
+  //   setConStats(stats)
+  // });
 
   return (
     <div className='content_container'>
