@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Editor from './editor.js';
 import axios from 'axios';
 
-const CreateContainer = () => {
+const CreateImage = () => {
 
   const boilerPlate = 
 `FROM 
@@ -86,4 +86,4 @@ CMD
   );
 };
 
-export default CreateContainer;
+export default CreateImage;

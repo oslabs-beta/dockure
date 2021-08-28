@@ -6,13 +6,30 @@ class ContainerService {
     try {
       console.log('check');
       let result = await axios.get(url);
-      console.log('This is the data from services/containerService: ', result.data);
+      console.log('This is container information: ', result.data);
       console.log(result.data, 'datataatatata')
       return result.data;
     } catch(err) {
         console.log('There was an error getting container information from services/containerService: ' + err);    
     }
   }
+
+  static async getConStats(url) {
+    try {
+      console.log('check');
+      let stats = await axios.post(url, id);
+      let data = {};
+      data.cpu = stats.data.cpu_stats.cpu_usage.total_usage / 1000000;
+      data.memory = stats.data.memory_stats.usage / 1000000;
+
+      console.log('This is container health data: ', stats.data);
+      return stats.data;
+    } catch(err) {
+        console.log('There was an error getting container information from services/containerService: ' + err);    
+    }
+  }
+
+
 }
 
 

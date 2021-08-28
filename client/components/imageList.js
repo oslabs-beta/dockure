@@ -6,7 +6,7 @@ const ImageList = ({ imageList }) => {
   const [imageName, setImageName] = useState('');
 
   const handlePull = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     console.log(imageName, 'before');
     try {
       const image = await axios.post('/api/images/pull', {
