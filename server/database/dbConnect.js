@@ -12,9 +12,9 @@ const pool = new Pool({
  const createUserTable = `
  CREATE TABLE IF NOT EXISTS users (
    id SERIAL PRIMARY KEY , 
-   userName VARCHAR (50) UNIQUE NOT NULL, 
-   password VARCHAR (50) NOT NULL, 
-   email VARCHAR (100) UNIQUE NOT NULL
+   username VARCHAR (50) UNIQUE NOT NULL, 
+   password VARCHAR (150) NOT NULL, 
+   email VARCHAR (50) UNIQUE NOT NULL
    )`;
 
  // //do i have to make the userId and UserName unique in thid query string above?

@@ -1,33 +1,24 @@
+const bcrypt = require('bcryptjs');
 const pool = require('../database/dbConnect');
 const userController = {};
 
 userController.createUser = async (req, res, next) => {
   const { username, password, email } = req.body;
-  // const queryString = 'INSERT INTO user '
 
-    //test
-  // try {
-  //   res.locals.username = email;
-  //   console.log('hello')
-  //   next();
-  // } catch (err) {
-  //   console.log('create is error');
-  // }
-
-  //let hashedPassword;
-  // try {
-  //   const salt = bcrypt.genSaltSync(10);
-  //   hashedPassword = bcrypt.hashSync(password, salt);
-  // } catch (err) {
-  //   return next({
-  //     status: 500,
-  //     message: err.message,
-  //     message2: 'password error',
-  //   });
-  // }
+  let hashedPassword;
+  try {
+    const salt = bcrypt.genSaltSync(10);
+    hashedPassword = bcrypt.hashSync(password, salt);
+  } catch (err) {
+    return next({
+      status: 500,
+      message: err.message,
+      message2: 'password error',
+    });
+  }
 
   try {
-    const params = [username, password, email];
+    const params = [username, hashedPassword, email];
     console.log(params);
     const query = `INSERT INTO users (username, password, email) VALUES ($1,$2,$3) RETURNING id`;
     const { rows } = await pool.query(query, params);
@@ -41,9 +32,6 @@ userController.createUser = async (req, res, next) => {
     });
   }
 }; 
-
-
-
 
 userController.userLogin = async (req, res, next) => {
   //   const { username, password } = req.body;
@@ -76,6 +64,6 @@ userController.userLogin = async (req, res, next) => {
   //     });
   //   res.locals.userid = user.userid;
   return next();
-}; //
+}; 
 
 module.exports = userController;
