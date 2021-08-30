@@ -1,6 +1,6 @@
 import React, { component, useState, useEffect } from 'react';
 import ContainerItem from './containerItem';
-import ContainerService from '../services/ContainerService';
+import ContainerService from '../services/containerService';
 import { useDispatch } from 'react-redux';
 import { setStateMetrics } from '../redux/action/action.js'
 
