@@ -3,6 +3,14 @@ import { Link } from 'react-router-dom';
 
 //Nate: OAuth?
 const Login = () => {
+
+    // if (!username || !password)
+  //   return next({
+  //     status: 401,
+  //     errMessage: 'invalid username or password',
+  //   });
+
+
   return (
     <div className='login_page'>
       <div className='login_wallpaper'>

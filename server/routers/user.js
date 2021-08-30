@@ -8,7 +8,7 @@ const userRouter = Router();
 
 userRouter.post('/signup', userController.createUser, (req, res) => {
   // { userid: res.locals.userid }
-  res.status(200).send({ username: res.locals.username });
+  res.status(200).send({ id: res.locals.id });
 });
 
 userRouter.post('/login', userController.userLogin, (req, res) => {
@@ -21,5 +21,11 @@ userRouter.post('/login', userController.userLogin, (req, res) => {
 // (req, res) => {
 //     return res.status(200).redirect('/')
 // });
+
+// get info of user 
+
+// update user information
+
+
 
 module.exports = userRouter;

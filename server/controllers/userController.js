@@ -1,50 +1,37 @@
-const pool = require('../models/dbConnect');
-const { response } = require('express');
-
+const bcrypt = require('bcryptjs');
+const pool = require('../database/dbConnect');
 const userController = {};
 
 userController.createUser = async (req, res, next) => {
-  const { username, password } = req.body;
-
-  //test
-  try {
-    res.locals.username = username;
-    next();
-  } catch (err) {
-    console.log('create is error');
-  }
-
-  // if (!username || !password)
-  //   return next({
-  //     status: 401,
-  //     errMessage: 'invalid username or password',
-  //   });
+  const { username, password, email } = req.body;
 
   let hashedPassword;
-  // try {
-  //   const salt = bcrypt.genSaltSync(10);
-  //   hashedPassword = bcrypt.hashSync(password, salt);
-  // } catch (err) {
-  //   return next({
-  //     status: 500,
-  //     message: err.message,
-  //     message2: 'password error',
-  //   });
-  // }
+  try {
+    const salt = bcrypt.genSaltSync(10);
+    hashedPassword = bcrypt.hashSync(password, salt);
+  } catch (err) {
+    return next({
+      status: 500,
+      message: err.message,
+      message2: 'password error',
+    });
+  }
 
-  // try {
-  //   const params = [username, hashedPassword];
-  //   const query = `INSERT INTO user (userid ,username, password) VALUES ($1, $2) RETURNING userid`;
-  //   const { rows } = await pool.query(query, params);
-  //   res.locals.userid = rows[0].userid;
-  // } catch (err) {
-  //   return next({
-  //     status: 500,
-  //     message: 'Username already exists',
-  //   });
-  // }
-  return next();
-}; //
+  try {
+    const params = [username, hashedPassword, email];
+    console.log(params);
+    const query = `INSERT INTO users (username, password, email) VALUES ($1,$2,$3) RETURNING id`;
+    const { rows } = await pool.query(query, params);
+    res.locals.id = rows[0].id;
+    return next();
+  } catch (err) {
+    console.log(err);
+    return next({
+      status: 500,
+      message: 'Username already exists',
+    });
+  }
+}; 
 
 userController.userLogin = async (req, res, next) => {
   //   const { username, password } = req.body;
@@ -77,6 +64,6 @@ userController.userLogin = async (req, res, next) => {
   //     });
   //   res.locals.userid = user.userid;
   return next();
-}; //
+}; 
 
 module.exports = userController;
