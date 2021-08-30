@@ -48,3 +48,11 @@ scrape_configs:
         labels:
           group: 'production'
 
+  - job_name: 'cadvisor'
+
+    scrape_interval: 10s
+
+    static_configs:
+      - targets: ['cadvisor:8081']
+        labels:
+          alias: 'cadvisor'
