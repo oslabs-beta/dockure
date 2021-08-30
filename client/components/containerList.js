@@ -1,11 +1,20 @@
-import React, { component } from 'react';
+import React, { component, useState, useEffect } from 'react';
 import ContainerItem from './containerItem';
-
+import ContainerService from '../services/ContainerService';
+import { useDispatch } from 'react-redux';
+import { setStateMetrics } from '../redux/action/action.js'
 
 const ContainerList = ({conList}) => {
 
     //repotags, id, created, size
   //id has to be actual container id
+  const dispatch = useDispatch();
+
+  const getData = async (id) => {
+    const stats = await ContainerService.getMetrics('api/containers/stats', { id: id })
+    dispatch(setStateMetrics(stats))
+  }
+
   const con = conList.map((container, inx) => {
     //do we really need to delete sha?
     // const id = container.Id.slice(7);
@@ -14,7 +23,6 @@ const ContainerList = ({conList}) => {
     )
   });
 
-  
   // console.log(conName, 'conname');
     // console.log(conName, 'con')
   return (
