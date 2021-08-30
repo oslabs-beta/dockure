@@ -22,4 +22,10 @@ userRouter.post('/login', userController.userLogin, (req, res) => {
 //     return res.status(200).redirect('/')
 // });
 
+// get info of user 
+
+// update user information
+
+
+
 module.exports = userRouter;

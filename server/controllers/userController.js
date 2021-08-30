@@ -1,24 +1,20 @@
-const pool = require('../models/dbConnect');
+const pool = require('../../database/dbConnect');
 const { response } = require('express');
 
 const userController = {};
 
 userController.createUser = async (req, res, next) => {
-  const { username, password } = req.body;
+  const { username, password, email } = req.body;
+  const queryString = 'INSERT INTO user '
 
-  //test
+
+    //test
   try {
     res.locals.username = username;
     next();
   } catch (err) {
     console.log('create is error');
   }
-
-  // if (!username || !password)
-  //   return next({
-  //     status: 401,
-  //     errMessage: 'invalid username or password',
-  //   });
 
   let hashedPassword;
   // try {
@@ -33,10 +29,11 @@ userController.createUser = async (req, res, next) => {
   // }
 
   // try {
-  //   const params = [username, hashedPassword];
-  //   const query = `INSERT INTO user (userid ,username, password) VALUES ($1, $2) RETURNING userid`;
+  //   // const params = [username, hashedPassword];
+  //   const params = [username, password, email];
+  //   const query = `INSERT INTO user (id ,userName, password, email) VALUES ($1, $2, $3) RETURNING id`;
   //   const { rows } = await pool.query(query, params);
-  //   res.locals.userid = rows[0].userid;
+  //   res.locals.id = rows[0].id;
   // } catch (err) {
   //   return next({
   //     status: 500,
@@ -44,7 +41,10 @@ userController.createUser = async (req, res, next) => {
   //   });
   // }
   return next();
-}; //
+}; 
+
+
+
 
 userController.userLogin = async (req, res, next) => {
   //   const { username, password } = req.body;
