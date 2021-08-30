@@ -79,7 +79,7 @@ const Stats = () => {
     <div className='stats'>
       <div className='stats_cpu'>CPU</div> */
       <h1>testing if this works</h1>
-      {metricsParser(metrics)}
+      {/* {metricsParser(metrics)} */}
       <button onClick={refresh} >Refresh</button>
       <button onClick={testButton} >TEST</button>
       <div className='stats_memory'>Memory
