@@ -10,11 +10,12 @@ const ContentContainer = () => {
 
   useEffect(async () => {
     const result = await ContainerService.getConInfo('http://localhost:3000/api/containers')
+    console.log(result, 'resultttt')
     setConList(result);
   }, []);
 
   //getting stats about a particular container
-  
+
   //how do we pass this infoirmation from conList to Stats
 
   return (

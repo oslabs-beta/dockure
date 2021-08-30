@@ -1,12 +1,12 @@
 import React, { component, useEffect, useState } from 'react';
-import ImageService from '../services/imageService';
+import imageService from '../services/imageService';
 import ImageList from '../components/imageList';
 
 const ImageContainer = () => {
   const [imageList, setImageList] = useState([]);
 
   useEffect(async () => {
-    const result = await ImageService.getImageInfo(
+    const result = await imageService.getImageInfo(
       'http://localhost:3000/api/images'
     );
     setImageList(result);
