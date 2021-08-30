@@ -17,16 +17,11 @@ const ImageItem = ({ id, image }) => {
   };
 
   const startClick = async (e) => {
-    try {
         const ID = { image }.image.Id.slice(7, 19);
-        const handleSubmit = await ImageService.startImage('/api/images/start', ID);
-        if (handleSubmit.data === 'running') {
-          setIsRunning(true);
-        }
-      } catch (error) {
-        console.log('There was an error starting the image: ', error);
-      }
+        const handleSubmit = await ImageService.startImage('http://localhost:3000/api/images/start', ID);
+        if (handleSubmit.data === 'running') setIsRunning(true);
   };
+
 
   return (
     <div className='image_item'>

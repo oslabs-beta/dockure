@@ -2,7 +2,7 @@ import React, { component, useEffect } from 'react';
 import Nav from '../components/nav';
 import ContentContainer from './contentContainer';
 import ImageContainer from './imageContainer';
-import CreateContainer from '../components/createContainer';
+import CreateImage from '../components/createImage';
 
 import {
   BrowserRouter as Router,
@@ -30,7 +30,7 @@ const MainContainer = ({ toggle, setIsLogin }) => {
           <Route
             path={`${main.path}/create`}
             exact
-            component={CreateContainer}
+            component={CreateImage}
           />
         </Switch>
       </div>
