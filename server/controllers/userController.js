@@ -1,22 +1,20 @@
-const pool = require('../../database/dbConnect');
-const { response } = require('express');
-
+const pool = require('../database/dbConnect');
 const userController = {};
 
 userController.createUser = async (req, res, next) => {
   const { username, password, email } = req.body;
-  const queryString = 'INSERT INTO user '
-
+  // const queryString = 'INSERT INTO user '
 
     //test
-  try {
-    res.locals.username = username;
-    next();
-  } catch (err) {
-    console.log('create is error');
-  }
+  // try {
+  //   res.locals.username = email;
+  //   console.log('hello')
+  //   next();
+  // } catch (err) {
+  //   console.log('create is error');
+  // }
 
-  let hashedPassword;
+  //let hashedPassword;
   // try {
   //   const salt = bcrypt.genSaltSync(10);
   //   hashedPassword = bcrypt.hashSync(password, salt);
@@ -28,19 +26,20 @@ userController.createUser = async (req, res, next) => {
   //   });
   // }
 
-  // try {
-  //   // const params = [username, hashedPassword];
-  //   const params = [username, password, email];
-  //   const query = `INSERT INTO user (id ,userName, password, email) VALUES ($1, $2, $3) RETURNING id`;
-  //   const { rows } = await pool.query(query, params);
-  //   res.locals.id = rows[0].id;
-  // } catch (err) {
-  //   return next({
-  //     status: 500,
-  //     message: 'Username already exists',
-  //   });
-  // }
-  return next();
+  try {
+    const params = [username, password, email];
+    console.log(params);
+    const query = `INSERT INTO users (username, password, email) VALUES ($1,$2,$3) RETURNING id`;
+    const { rows } = await pool.query(query, params);
+    res.locals.id = rows[0].id;
+    return next();
+  } catch (err) {
+    console.log(err);
+    return next({
+      status: 500,
+      message: 'Username already exists',
+    });
+  }
 }; 
 
 
