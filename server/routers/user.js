@@ -7,13 +7,11 @@ const userRouter = Router();
 //route handler
 
 userRouter.post('/signup', userController.createUser, (req, res) => {
-  // { userid: res.locals.userid }
   res.status(200).send({ id: res.locals.id });
 });
 
 userRouter.post('/login', userController.userLogin, (req, res) => {
-  // { userid: res.locals.userid }
-  res.status(200).send();
+  res.status(200).send({ id: res.locals.id });
 });
 
 // router.post('/logout',

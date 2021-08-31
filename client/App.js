@@ -5,6 +5,7 @@ import SignUP from './components/signUp';
 import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 import Titlebar from './components/titlebar';
 import StartUp from './services/prometheusService';
+import ProtectedRoute from './containers/protectedRoute';
 
 const App = () => {
   const [toggle, setToggle] = useState(true);
@@ -28,11 +29,11 @@ const App = () => {
         <Switch>
           <Route path='/' exact component={Login} />
           <Route path='/signup' component={SignUP} />
-          <Route
+          <ProtectedRoute
             path='/main'
-            render={() => (
-              <MainContainer toggle={toggle} setIsLogin={setIsLogin} />
-            )}
+            component={MainContainer}
+            toggle={toggle}
+            setIsLogin={setIsLogin}
           />
         </Switch>
       </div>

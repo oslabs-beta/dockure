@@ -34,36 +34,38 @@ userController.createUser = async (req, res, next) => {
 }; 
 
 userController.userLogin = async (req, res, next) => {
-  //   const { username, password } = req.body;
-  //   if (!username || !password)
-  //     return next(new Error('Please enter username and password'));
+    const { username, password } = req.body;
+    let user;
+    
+    try {
+      const params = [username];
+      const query = `SELECT * FROM users WHERE username=$1`;
 
-  //   let user;
-  //   try {
-  //     const query = `SELECT * FROM user WHERE username=$1`;
-  //     const params = [username];
-  //     const { rows } = await pool.query(query, params);
-  //     if (rows.length < 1) {
-  //       return next({
-  //         status: 401,
-  //         message: 'Invalid username and password',
-  //       });
-  //       //user = rows[0];
-  //     }
-  //   } catch (err) {
-  //     return next({
-  //       status: 500,
-  //       message: err.message,
-  //     });
-  //   }
-  //   const compared = await bcrypt.compare(password, user.password);
-  //   if (!compared)
-  //     return next({
-  //       status: 401,
-  //       message: 'That username and password is not valid.',
-  //     });
-  //   res.locals.userid = user.userid;
-  return next();
+      const { rows } = await pool.query(query, params);
+      if (rows.length < 1) {
+        return next({
+          status: 401,
+          message: 'Invalid username or password',
+        });
+      }
+        user = rows[0];
+      const compared = await bcrypt.compare(password, user.password);
+    if (!compared)
+      return next({
+        status: 401,
+        message: 'The username or password is not valid.',
+      });
+    res.locals.id = user.id;
+    return next();
+    } catch (err) {
+      console.log('user:', err)
+      return next({
+        status: 500,
+        message: err.message,
+      });
+    }
+
+    
 }; 
 
 module.exports = userController;
