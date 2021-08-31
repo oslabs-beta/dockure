@@ -1,19 +1,59 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component, useState } from 'react';
+import { Link, Redirect } from 'react-router-dom';
+import UserDbService from '../services/userDbService';
 
 //Nate: OAuth?
 const Login = () => {
 
-    // if (!username || !password)
-  //   return next({
-  //     status: 401,
-  //     errMessage: 'invalid username or password',
-  //   });
+  const [userData, setUserData] = useState({username: '', password: ''});
+  const [showError, setShowError] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
+  const userNameHandler = (e) => {
+    setUserData(userData => ({
+      ...userData,
+      username: e.target.value
+    }));
+    console.log(userData.username);
+  };
+
+  const passwordHandler = (e) => {
+    setUserData(userData => ({
+      ...userData,
+      password: e.target.value
+    }));
+  };
+
+  const postSignIn = async () => {
+    const result = await UserDbService.postUserData('http://localhost:3000/api/user/login', userData);
+    if(result.error) {
+      debugger;
+      setShowError(true)
+      return
+    }
+    debugger;
+    setIsAuthenticated(true);
+    console.log(result);
+  }
+  
+  const userSignIn = () => {
+    if (!userData.username || !userData.password) {
+      alert('Username and Password can not be empty')
+      return;
+    }
+    postSignIn()
+  }
+
+  if(isAuthenticated) {
+    return <Redirect to="/main" />
+  }
 
   return (
     <div className='login_page'>
       <div className='login_wallpaper'>
+        {
+          showError && <div>Error!!</div>
+        }
         <p className='login_head'>Welcome back!</p>
         <p className='login_intro'>You are almost in the promise land</p>
         <Link to='/signup'>
@@ -27,17 +67,19 @@ const Login = () => {
             className='signin_input'
             placeholder='Username'
             type='text'
+            value={userData.username}
+            onChange={userNameHandler}
           ></input>
           <input
             className='signin_input'
             placeholder='Password'
-            type='text'
+            type='password'
+            value={userData.password}
+            onChange={passwordHandler}
           ></input>
         </form>
         <a className='signin_forgotPW'>Forgot your password?</a>
-        <Link to='/main'>
-          <button className='signin_btn'>SIGN IN</button>
-        </Link>
+        <button className='signin_btn' onClick={(e) => userSignIn()}>SIGN IN</button>
       </div>
     </div>
   );
