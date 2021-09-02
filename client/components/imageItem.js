@@ -1,5 +1,5 @@
 import React, { component, useState, useEffect } from 'react';
-import ImageService from '../services/imageService';
+import imageService from '../services/imageService';
 import axios from 'axios';
 
 const ImageItem = ({ id, image }) => {
@@ -18,7 +18,7 @@ const ImageItem = ({ id, image }) => {
 
   const startClick = async (e) => {
         const ID = { image }.image.Id.slice(7, 19);
-        const handleSubmit = await ImageService.startImage('http://localhost:3000/api/images/start', ID);
+        const handleSubmit = await imageService.startImage('http://localhost:3000/api/images/start', ID);
         if (handleSubmit.data === 'running') setIsRunning(true);
   };
 

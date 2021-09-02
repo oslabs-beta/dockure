@@ -1,12 +1,12 @@
 import React, { component, useState } from 'react';
 import ImageItem from './imageItem';
-import ImageService from '../services/imageService';
+import imageService from '../services/imageService';
 
 const ImageList = ({ imageList }) => {
   const [imageName, setImageName] = useState('');
 
   const handlePull = async (e) => {
-    const pulledImage = await ImageService.pullImageInfo('/api/images/pull', imageName)
+    const pulledImage = await imageService.pullImageInfo('/api/images/pull', imageName)
     console.log(pulledImage);
   };
 
