@@ -10,30 +10,41 @@ const promMetricsRouter = express.Router();
 
 //Nate: This actually might not be necessary now
 promMetricsRouter.get('/promStart', 
-    promContainerController.checkProm,
+    //can create a controller to run docker start prometheus -> run start prom if this fails
+
+    promContainerController.restartProm,
     promContainerController.startProm,
+
+    // promContainerController.checkProm,
+    // promContainerController.killProm,
+    // promContainerController.checkProm,
+    // promContainerController.deleteProm,
+    // 
     (req, res) => {
         console.log('Finished PromMetricsController');
         return res.status(200).send('it worked!');
     }
 );
 
-promMetricsRouter.get('/yamlParse',
-    yamlParserController.findPorts,
-    yamlParserController.portParser,
-    yamlParserController.yamlConfig,
-    promContainerController.checkProm,
-    promContainerController.killProm,
+
+//no longer need /yamlparser
+// promMetricsRouter.get('/yamlParse',
+//find the ports that are live and put them in the yaml file - not needed anymore
+    // yamlParserController.findPorts,
+    // yamlParserController.portParser,
+    // yamlParserController.yamlConfig,
+    // promContainerController.checkProm,
+    // promContainerController.killProm,
     //Note 1:  using check prom twice is lazy and could be consolidated in future - no time right now
     //Note 2:  there is a bug in checkprom -> need to configure it to search for a container named prometheus instead of what it is currently doing
-    promContainerController.checkProm,
-    promContainerController.deleteProm,
-    promContainerController.startProm,
-    (req, res) => {
-        console.log('Finished /yamlParse');
-        return res.status(200).send('yml finished');
-    }
-)
+    // promContainerController.checkProm,
+    // promContainerController.deleteProm,
+    // promContainerController.startProm,
+//     (req, res) => {
+//         console.log('Finished /yamlParse');
+//         return res.status(200).send('yml finished');
+//     }
+// )
 
 //Nate: For speed, can define more efficient start/stop routers for starting/stopping new containers
 promMetricsRouter.get('/',
