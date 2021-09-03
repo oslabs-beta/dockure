@@ -47,9 +47,8 @@ scrape_configs:
 
     static_configs:
       - targets: 
-        - 'cadvisor:8081'
-        - 'localhost:8081'
-        - 'localhost:9101'
-        - 'cadvisor:9101'
+        # - 'localhost:9101'
+        # - 'cadvisor:9101'
+        - 'host.docker.internal:9101'
         labels:
           alias: 'cadvisor'
