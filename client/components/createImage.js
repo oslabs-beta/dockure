@@ -2,7 +2,7 @@ import React, { Component, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Editor from './editor.js';
 import axios from 'axios';
-import ImageService from '../services/imageService';
+import imageService from '../services/imageService';
 
 const CreateImage = () => {
   const boilerPlate = 
@@ -27,7 +27,7 @@ const CreateImage = () => {
 
   const handleBuild = async (e) => {
     e.preventDefault();
-    let result = await ImageService.buildImage("/api/images/build", { imageName: imageName, path: dockerPath })
+    let result = await imageService.buildImage("/api/images/build", { imageName: imageName, path: dockerPath })
   }
 
   return (
