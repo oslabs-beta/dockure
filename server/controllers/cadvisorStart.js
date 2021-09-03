@@ -5,6 +5,7 @@ const cadvisorStartController = {};
 
 cadvisorStartController.restartCadvisor = async (req, res, next) => {
     console.log('Entered cadvisorStartController.restartProm');
+    console.log(process.platform);
     try {
         await exec('docker start cadvisor', (error, stdout, stderr) => {
             if (error) {
