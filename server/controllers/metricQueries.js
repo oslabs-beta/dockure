@@ -7,9 +7,10 @@ const metricQueriesController = {};
 metricQueriesController.getMetrics = async (req, res, next) => {
     console.log('Entered getMetrics');
     try {
+        console.log('Body came through: ', req.body);
         const start = res.locals.start;
         const end = res.locals.end;
-        const metrics = req.query.query;
+        const metrics = req.body.query;
         //may need to modify step
         const query = `http://localhost:9090/api/v1/query_range?query=${metrics}&start=${start}&end=${end}&step=15`;
         console.log('query string: ', query);
