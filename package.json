@@ -31,6 +31,7 @@
     "express": "^4.17.1",
     "file-saver": "^2.0.5",
     "js-yaml": "^4.1.0",
+    "jsonwebtoken": "^8.5.1",
     "moment": "^2.29.1",
     "node-fetch": "^2.6.1",
     "pg": "^8.7.1",
