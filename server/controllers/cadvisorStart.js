@@ -35,7 +35,7 @@ cadvisorStartController.startCadvisor = (req, res, next) => {
     console.log('Entered start Cadvisor');
     console.log('Res.locals.running came through: ', res.locals.running );
     if (res.locals.running) return next(); ////
-    exec(`docker run --volume=/sys:/sys:ro --volume=/cgroup:/cgroup:ro --publish=9101:9101 --detach=true --name=cadvisor gcr.io/cadvisor/cadvisor:latest`, (error, stdout, stderr) => {
+    exec(`docker run --volume=/sys:/sys:ro --volume=/cgroup:/cgroup:ro --publish=9101:8080 --detach=true --name=cadvisor gcr.io/cadvisor/cadvisor:latest`, (error, stdout, stderr) => {
         if (error) {
             console.log(`error: ${error.message}`);
             return next(error);

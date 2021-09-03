@@ -11,7 +11,8 @@ const ContainerList = ({conList}) => {
   const dispatch = useDispatch();
   
   const getData = async (id) => {
-    const stats = await containerService.getMetrics('api/containers/stats', { id: id })
+    // const stats = await containerService.getMetrics('api/containers/stats', { id: id })
+    const stats = await containerService.getMetrics('api/metrics', id)
     dispatch(setStateMetrics(stats))
   }
 

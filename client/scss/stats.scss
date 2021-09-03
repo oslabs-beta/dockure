@@ -13,9 +13,19 @@
 //   overflow-y: scroll;
 // }
 
-.stats div {
-  background-color: lighten($primary-color, 30%);
-  width: 9rem;
-  height: 9rem;
-  margin: 2rem 0;
+// .stats div {
+//   background-color: lighten($primary-color, 30%);
+//   width: 9rem;
+//   height: 9rem;
+//   margin: 2rem 0;
+// }
+
+.stats_cpu {
+  width: 625px;
+  height: 410px;
+}
+
+.stats_memory {
+  width: 625px;
+  height: 410px;
 }

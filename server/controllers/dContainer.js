@@ -8,7 +8,7 @@ conController.getContainers = async(req, res, next) => {
   //pass through res.locals.containers
   try {
     const result = await axios.get('http://localhost:2375/containers/json?all=true')
-    console.log(result, 'resulttttt in get containers')
+    // console.log(result, 'resulttttt in get containers')
     res.locals.containers = result.data;
     return next();
   } catch(err) {
