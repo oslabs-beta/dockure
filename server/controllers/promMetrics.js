@@ -5,32 +5,6 @@ const path = require('path');
 
 const promContainerController = {};
 
-//start prom/check if it's started
-    //check if prom is running
-    //if it is - set bool to true
-    
-    // docker run -p 9090:9090 -v .yml:etc/prometheus/prometheus.yml prom/prometheus
-//
-promContainerController.startProm = (req, res, next) => {  
-    console.log('Entered startProm');
-    console.log('Res.locals.running came through: ', res.locals.running );
-    if (res.locals.running) return next();
-    exec(`docker run --name prometheus -p 9090:9090 -v ${path.join(__dirname, '../assets/prometheus.yaml')}:/etc/prometheus/prometheus.yml prom/prometheus`, (error, stdout, stderr) => {
-        console.log('Entered prometheusStart');
-        if (error) {
-            console.log(`error: ${error.message}`);
-            return next(error);
-        }
-        if (stderr) {
-            console.log(`stderr: ${stderr}`);
-            return next(stderr);
-        };
-        // console.log(stdout);
-    });
-    console.log('finished startProm');    
-    return next();
-}
-
 promContainerController.restartProm = async (req, res, next) => {
     console.log('Entered promContainerController.restartProm');
     try {
@@ -58,100 +32,24 @@ promContainerController.restartProm = async (req, res, next) => {
     }
 }
 
-
-//Probably won't need anything below here
-
-// promContainerController.checkProm = async (req, res, next) => {
-//     console.log('entered CheckProm');
-//     let running = false;
-    
-//     //for checking if it needs to be deleted even if it wasn't running
-//     let toDelete = '';
-//     if (res.locals.running !== undefined) toDelete = '-a';
-
-//     exec(`docker ps ${toDelete}`, (error, stdout, stderr) => {
-        
-//         if (error) {
-//             console.log(`error: ${error.message}`);
-//             return;
-//         }
-//         if (stderr) {
-//             console.log(`stderr: ${stderr}`);
-//             return;
-//         };
-//         // console.log(stdout);
-        
-//         const target = 'prom/prometheus';
-//         for (let i = 0; i < stdout.length && running === false; i++) {
-//             if (stdout[i] === 'p') {
-//                 for (let j = 0; j < target.length; j++) {
-//                     const targetLetter = target[j];
-//                     const containersLetter = stdout[i];
-//                     if (targetLetter === containersLetter && target.length - 1 === j) {
-//                         running = true;
-//                         res.locals.promExists = true;
-//                     }
-//                     else if (targetLetter !== containersLetter) {
-//                         break;
-//                     }
-//                     i++;
-//                 }
-//             }
-//         }
-//         res.locals.running = running;
-//         console.log('finished checkProm: ', res.locals.running, res.locals.promExists);
-//         return next();
-//     })
-// }
-
-// promContainerController.killProm = async (req, res, next) => {
-//     console.log('Entered killProm: ', res.locals.running);
-//     if (!res.locals.running) return next();
-//     else try {
-//         exec('docker kill prometheus',  (error, stdout, stderr) => {
-//             console.log('Killing prometheus');
-//             if (error) {
-//                 console.log(`error: ${error.message}`);
-//                 return next(error);
-//             }
-//             if (stderr) {
-//                 console.log(`stderr: ${stderr}`);
-//                 return next(stderr);
-//             };
-//             res.locals.running = false;
-//             console.log('finished killProm');
-//             return next();
-//             // console.log(stdout);
-//         })
-//     } catch (error) {
-//         if (error) return next(error);
-//     }
-// }
-
-// promContainerController.deleteProm = async (req, res, next) => {
-//     console.log('entered delete Prom');
-//     console.log('prom exists: ', res.locals.promExists);
-//     if (!res.locals.promExists) return next();
-//     try {
-//         exec('docker rm prometheus',  (error, stdout, stderr) => {
-//             console.log('Deleting prometheus');
-//             if (error) {
-//                 console.log(`error: ${error.message}`);
-//                 return next(error);
-//             }
-//             if (stderr) {
-//                 console.log(`stderr: ${stderr}`);
-//                 return next(stderr);
-//             };
-//             res.locals.running = false;
-//             console.log('finished deleteProm');
-//             return next();
-//             // console.log(stdout);
-//         })
-//     } catch (error) {
-//         if (error) return next(error);
-//     }
-// }
+promContainerController.startProm = (req, res, next) => {  
+    console.log('Entered startProm');
+    console.log('Res.locals.running came through: ', res.locals.running );
+    if (res.locals.running) return next();
+    exec(`docker run --name prometheus -p 9090:9090 -v ${path.join(__dirname, '../assets/prometheus.yaml')}:/etc/prometheus/prometheus.yml prom/prometheus`, (error, stdout, stderr) => {
+        console.log('Entered prometheusStart');
+        if (error) {
+            console.log(`error: ${error.message}`);
+            return next(error);
+        }
+        if (stderr) {
+            console.log(`stderr: ${stderr}`);
+            return next(stderr);
+        };
+    });
+    console.log('finished startProm');    
+    return next();
+}
 
 /*
 possible queries:
