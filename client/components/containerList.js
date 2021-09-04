@@ -17,7 +17,7 @@ const ContainerList = ({conList}) => {
       cpu: [],
       memory: []
     }
-    if (containerState === 'running') stats = await containerService.getMetrics('api/metrics', id)
+    if (containerState === 'running') stats = await containerService.getMetrics('http://localhost:3000/api/metrics', id)
     dispatch(setStateMetrics(stats))
   }
 
