@@ -1,6 +1,6 @@
 import React, { component, useEffect, useState } from 'react';
 import DockerCommand from '../components/dockerCommand';
-import Stats from '../components/stats';
+import StatsContainer from '../components/statsContainer';
 import ContainerService from '../services/containerService';
 
 const ContentContainer = () => {
@@ -21,7 +21,7 @@ const ContentContainer = () => {
   return (
     <div className='content_container'>
       <DockerCommand conList={conList}/>
-      <Stats />
+      <StatsContainer />
     </div>
   );
 };
