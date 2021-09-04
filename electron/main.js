@@ -3,6 +3,8 @@ const path = require('path');
 const url = require('url');
 const server = require('../server/server.js')
 
+require('../server/server');
+
 let mainWindow;
 
 function createWindow() {
