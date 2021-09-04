@@ -61,30 +61,32 @@ const Stats = () => {
 
   return (
     <div className='stats'>
-      <div className='stats_cpu'>CPU
+      <div className='stats_cpu'>
+        <h3>CPU</h3>
       <ResponsiveContainer width={600} height={400}>
         <LineChart width={600} height={400} data={metrics.cpu}>
           <Line type='monotone' dataKey='percentTotalCpuUsed' dot={false}/>
-          <CartesianGrid stroke='#ccc' />
-          <XAxis datakey='time' />
-          <YAxis dataKey='percentTotalCpuUsed' domain={['auto', 'auto']}/>
+          {/* <CartesianGrid stroke='#ccc' /> */}
+          <XAxis dataKey='time' />
+          <YAxis dataKey='percentTotalCpuUsed' domain={['auto', 'auto']} label={{ value: 'Percent of Total CPU Used', angle: -90, position: 'insideLeft', dy: 100, dx: -5 }}/>
           <Tooltip />
         </LineChart>
       </ResponsiveContainer> 
       </div>
-      <div className='stats_memory'>Memory
+      <div className='stats_memory'>
+        <h3>Memory </h3>
 
       <ResponsiveContainer width={600} height={400}>
         <LineChart width={600} height={400} data={metrics.memory}>
           <Line type='monotone' dataKey='percentTotalMemoryUsed' dot={false}/>
-          <CartesianGrid stroke='#ccc' />
-          <XAxis datakey='time' />
-          <YAxis dataKey='percentTotalMemoryUsed' domain={['auto', 'auto']}/>
+          {/* <CartesianGrid stroke='#ccc' /> */}
+          <XAxis dataKey='time' />
+          <YAxis dataKey='percentTotalMemoryUsed' domain={['auto', 'auto']} label={{ value: 'Percent of Total Memory Used', angle: -90, position: 'insideLeft', dy: 100, dx: -5}}/>
           <Tooltip />
         </LineChart>
       </ResponsiveContainer> 
       </div>
-      <div className='stats_count'>Request Count</div>
+      {/* <div className='stats_count'>Request Count</div> */}
     </div>
   );
 };

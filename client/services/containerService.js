@@ -50,20 +50,20 @@ class ContainerService {
         }
       })
       const coreCount = cores.data[0][1];
-
       const data = {};
       data.memory = [];
       data.cpu = [];
       //parse the memory data into something more readable: --> COULD MAKE THIS MORE MODULAR 
       memoryStats.data.forEach((dataPoint, i) => {
         const machineMemory = machineMem.data[i][1];
-        data.memory.push({time: dataPoint[0], percentTotalMemoryUsed: dataPoint[1]/machineMemory * 100});
+        const time = new Date(dataPoint[0] * 1000);
+        data.memory.push({time: time.toTimeString().slice(0, 5), percentTotalMemoryUsed: dataPoint[1]/machineMemory * 100});
       })
 
       //parse cpu data into percentages --> AGAIN CAN MAKE THIS MORE MODULAR
       cpuStats.data.forEach(dataPoint => {
-        
-        data.cpu.push({time: dataPoint[0], percentTotalCpuUsed: dataPoint[1]/coreCount * 100});
+        const time = new Date(dataPoint[0] * 1000);
+        data.cpu.push({time: time.toTimeString().slice(0, 5), percentTotalCpuUsed: dataPoint[1]/coreCount * 100});
       })
 
       return data;

@@ -10,9 +10,14 @@ const ContainerList = ({conList}) => {
   //id has to be actual container id
   const dispatch = useDispatch();
   
-  const getData = async (id) => {
+  const getData = async (id, containerState) => {
     // const stats = await containerService.getMetrics('api/containers/stats', { id: id })
-    const stats = await containerService.getMetrics('api/metrics', id)
+    console.log('CONTAINER INFO: ', containerState);
+    let stats = {
+      cpu: [],
+      memory: []
+    }
+    if (containerState === 'running') stats = await containerService.getMetrics('api/metrics', id)
     dispatch(setStateMetrics(stats))
   }
 
@@ -21,7 +26,7 @@ const ContainerList = ({conList}) => {
   
     const con = conList.map((container, inx) => {
       return(
-        <ContainerItem key={inx} id={container.Id} getData={() => getData(container.Id)} container={container}/>
+        <ContainerItem key={inx} id={container.Id} getData={() => getData(container.Id, container.State)} container={container}/>
       )
     });
   

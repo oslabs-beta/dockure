@@ -4,28 +4,20 @@
   margin: auto;
   padding: 2rem;
   overflow-y: auto;
+  
+  h3 {
+    text-align: center;
+  }
 }
-
-// .stats_box {
-//   margin: auto;
-//   min-width: 38vw;
-//   min-height: 80vh;
-//   overflow-y: scroll;
-// }
-
-// .stats div {
-//   background-color: lighten($primary-color, 30%);
-//   width: 9rem;
-//   height: 9rem;
-//   margin: 2rem 0;
-// }
 
 .stats_cpu {
   width: 625px;
   height: 410px;
+  margin: 25px;
 }
 
 .stats_memory {
   width: 625px;
   height: 410px;
+  margin: 25px;
 }
