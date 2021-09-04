@@ -9,7 +9,7 @@ const ContainerItem = ({id, container, getData}) => {
     if(container.State === 'running') return setIsRunning(true);
     if(container.State === 'exited') return setIsExited(true);
     return setIsExited(false);
-  }, [])
+  }, [container.State])
   
     const utc = new Date(0)
 

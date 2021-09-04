@@ -14,6 +14,34 @@ containerRouter.post('/stats', conController.getStats, (req, res) => {
     return res.status(200).json(result)
 })
 
+containerRouter.post('/start', conController.startContainer, (req, res) => {
+    return res.status(res.locals.status).send(res.locals.status)
+})
+
+containerRouter.post('/stop', conController.stopContainer, (req, res) => {
+    return res.status(res.locals.status).send(res.locals.status)
+})
+
+containerRouter.post('/kill', conController.killContainer, (req, res) => {
+    return res.status(res.locals.status).send(res.locals.status)
+})
+
+containerRouter.post('/restart', conController.restartContainer, (req, res) => {
+    return res.status(res.locals.status).send(res.locals.status)
+})
+
+containerRouter.post('/pause', conController.pauseContainer, (req, res) => {
+    return res.status(res.locals.status).send(res.locals.status)
+})
+
+containerRouter.post('/resume', conController.resumeContainer, (req, res) => {
+    return res.status(res.locals.status).send(res.locals.status)
+})
+
+containerRouter.delete('/remove', conController.removeContainer, (req, res) => {
+    return res.status(res.locals.status).send(res.locals.status)
+})
+
 module.exports = containerRouter;
 
 

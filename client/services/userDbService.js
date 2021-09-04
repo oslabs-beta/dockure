@@ -26,7 +26,7 @@ class UserDbService {
     }
   }
 
-  static async logout() {
+  static logout() {
     tokenStorageService.clearToken();
   }
 }

@@ -1,8 +1,10 @@
 import React, { component, useStatus } from 'react';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
+import UserDbService from '../services/userDbService';
 
 const UserStatus = ({ setIsLogin, userHandler }) => {
   const signOutHandler = () => {
+    UserDbService.logout();
     setIsLogin(false);
     userHandler();
   };

@@ -71,8 +71,16 @@ class ContainerService {
         console.log('There was an error getting container information from services/containerService: ' + err);    
     }
   }
-
-
+  
+  static postClickBtn(url, id) {
+    try {
+      const result = axios.post(url, {containerID: id})
+      // console.log('result from post click button in container service is :', result)
+      return result;
+    } catch(err) {
+      console.log('There is error on button functions in container service')
+    }
+  }
 }
 
 
