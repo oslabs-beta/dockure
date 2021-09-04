@@ -14,15 +14,59 @@ class ContainerService {
   }
 
   static async getMetrics(url, id) {
+    console.log('entered get metrics: ', id, url);
     try {
-      // console.log('check');
-      let stats = await axios.post(url, id);
-      let data = {};
-      data.cpu = stats.data.cpu_stats.cpu_usage.total_usage / 1000000;
-      data.memory = stats.data.memory_stats.usage / 1000000;
+      //get current memory used by container
+      const memoryStats = await axios.get(url, {
+        params: {
+          id,
+          start: 1,
+          query: `container_memory_usage_bytes{id=~'/docker/${id}'}`
+        }
+      });
+      //get total machine memory:
+      const machineMem = await axios.get(url, {
+        params: {
+          id,
+          start: 1,
+          query: `machine_memory_bytes`
+        }
+      });
 
-      console.log('This is container health data: ', stats.data);
-      return stats.data;
+      //get total cpu seconds used per container
+      const cpuStats = await axios.get(url, {
+        params: {
+          id,
+          start: 1,
+          query: `sum(rate(container_cpu_usage_seconds_total {id=~'/docker/${id}'} [5m]))`
+        }
+      });
+      //get total cores of machine
+      const cores = await axios.get(url, {
+        params: {
+          id,
+          start: 1,
+          query: 'machine_cpu_cores'
+        }
+      })
+      const coreCount = cores.data[0][1];
+
+      const data = {};
+      data.memory = [];
+      data.cpu = [];
+      //parse the memory data into something more readable: --> COULD MAKE THIS MORE MODULAR 
+      memoryStats.data.forEach((dataPoint, i) => {
+        const machineMemory = machineMem.data[i][1];
+        data.memory.push({time: dataPoint[0], percentTotalMemoryUsed: dataPoint[1]/machineMemory * 100});
+      })
+
+      //parse cpu data into percentages --> AGAIN CAN MAKE THIS MORE MODULAR
+      cpuStats.data.forEach(dataPoint => {
+        
+        data.cpu.push({time: dataPoint[0], percentTotalCpuUsed: dataPoint[1]/coreCount * 100});
+      })
+
+      return data;
     } catch(err) {
         console.log('There was an error getting container information from services/containerService: ' + err);    
     }

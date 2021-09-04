@@ -5,7 +5,6 @@ const timeConversionController = {};
 timeConversionController.unixTime = (req, res, next) => {
     //get current Unix time in seconds
     console.log('entered unixTime');
-
     try {
         console.log('req.query.start: ', req.query);
         let currentTime = new Date().valueOf();
