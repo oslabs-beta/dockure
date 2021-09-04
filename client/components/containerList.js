@@ -25,9 +25,6 @@ const ContainerList = ({conList}) => {
       )
     });
   
-    
-  
-
   // console.log(conName, 'conname');
     // console.log(conName, 'con')
   return (
