@@ -5,7 +5,7 @@ import UserDbService from '../services/userDbService';
 const UserStatus = ({ userHandler, userName, setIsLogin }) => {
   const signOutHandler = () => {
     UserDbService.logout();
-    setIsLogin();
+    setIsLogin(false);
     userHandler();
   };
 

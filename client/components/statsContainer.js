@@ -15,7 +15,6 @@ const Stats = () => {
         dataKey={'percentTotalCpuUsed'}
         dataType={'CPU'}
       />
-
       <div>Memory Usage</div>
       <Graph
         data={metrics.memory}

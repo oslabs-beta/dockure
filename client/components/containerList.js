@@ -8,7 +8,6 @@ const ContainerList = ({ conList, onCheckboxClickCallback, conStatus }) => {
   //repotags, id, created, size
   //id has to be actual container id
   const dispatch = useDispatch();
-
   const getData = async (id, containerState) => {
     // const stats = await containerService.getMetrics('api/containers/stats', { id: id })
     console.log('CONTAINER INFO: ', containerState);
