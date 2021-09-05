@@ -10,12 +10,11 @@ const Stats = () => {
   return (
     <div className='stats'>
       <div>CPU Usage</div>
-      <Graph 
+      <Graph
         data={metrics.cpu}
         dataKey={'percentTotalCpuUsed'}
         dataType={'CPU'}
       />
-      
       <div>Memory Usage</div>
       <Graph
         data={metrics.memory}
