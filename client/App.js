@@ -10,12 +10,7 @@ import UnProtectedRoute from './containers/unProtectedRoute';
 const App = () => {
   const [toggle, setToggle] = useState(true);
   const [isLogin, setIsLogin] = useState(false);
-
-  //for now putting this here - can talk about it later
-  //This NEEDS to run once on startup and this is the only place I can finde to force this
-  // useEffect(() => {
-  //   StartUp.prometheus();
-  // }, [])
+  const [userName, setUserName] = useState('');
 
   return (
     <Router>
@@ -25,6 +20,7 @@ const App = () => {
           setToggle={setToggle}
           isLogin={isLogin}
           setIsLogin={setIsLogin}
+          userName={userName}
         />
         <Switch>
           <UnProtectedRoute path='/' exact component={Login} />
@@ -34,6 +30,7 @@ const App = () => {
             component={MainContainer}
             toggle={toggle}
             setIsLogin={setIsLogin}
+            setUserName={setUserName}
           />
         </Switch>
       </div>

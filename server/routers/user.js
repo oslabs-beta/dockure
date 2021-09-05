@@ -12,11 +12,20 @@ userRouter.post('/signup', userController.createUser, (req, res) => {
 });
 
 userRouter.post('/login', userController.userLogin, (req, res) => {
-  res.status(200).send({ id: res.locals.id, token: res.locals.token });
+  res.status(200).send({
+    id: res.locals.id,
+    token: res.locals.token,
+  });
 });
 
 userRouter.get('/me', isAuth, userController.me, (req, res) => {
-  res.status(200).send({ id: res.locals.id, token: res.locals.token });
+  res
+    .status(200)
+    .send({
+      id: res.locals.id,
+      token: res.locals.token,
+      username: res.locals.username,
+    });
 });
 
 // router.post('/logout',

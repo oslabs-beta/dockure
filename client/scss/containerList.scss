@@ -21,23 +21,34 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 40vw;
+  width: 35vw;
   height: 4.5rem;
   border: 1px solid darken($gray-color, 20%);
   background-color: lighten($gray-color, 1%);
   border-radius: 10px;
   margin: 0.8rem 0;
-  padding: 0.5rem 1.5rem;
+  padding: 0.5rem 1.7rem 0.5rem 0.8rem;
 }
 
-.item_name_time{
+.item_name_time {
   display: flex;
   width: 100%;
   justify-content: space-between;
 }
 
+.item_check {
+  display: flex;
+  align-items: center;
+}
+
+.item_checkbox {
+  width: 1rem;
+  height: 1rem;
+}
+
 .item_name {
   font-weight: bold;
+  margin-left: 0.8rem;
 }
 
 .item_createdat {
@@ -47,17 +58,18 @@
   display: flex;
   width: 100%;
   justify-content: space-between;
-  padding: 0.5rem 0.5rem 0 0.5rem;
+  padding: 0.5rem 0 0 0.5rem;
 }
 
 .item_state {
-  padding: 0.1rem 0.5rem;
+  padding: 0.2rem 0.5rem;
   border-radius: 10px;
   font-size: $font-small;
+  margin-left: 1.2rem;
 }
 
 .is_running {
-background-color: darken($gray-color, 1%);
+  background-color: darken($gray-color, 1%);
   border: 1px solid darken($green-color, 5%);
   color: darken($green-color, 5%);
 }
@@ -65,7 +77,7 @@ background-color: darken($gray-color, 1%);
 .is_existed {
   background-color: darken($gray-color, 1%);
   border: 1px solid $orange-color;
-  color: $orange-color
+  color: $orange-color;
 }
 
 .is_else {

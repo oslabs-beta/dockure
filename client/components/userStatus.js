@@ -1,24 +1,24 @@
 import React, { component, useStatus } from 'react';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
+import UserDbService from '../services/userDbService';
 
-const UserStatus = ({ setIsLogin, userHandler }) => {
+const UserStatus = ({ userHandler, userName, setIsLogin }) => {
   const signOutHandler = () => {
-    setIsLogin(false);
+    UserDbService.logout();
+    setIsLogin();
     userHandler();
   };
 
   return (
     <div className='user_status'>
       <div className='status_block block_line'>
-        <div className='starus_user_name'>
-          Hello, <b>dock</b>
-        </div>
-        <Link to='/'>
+        <div className='starus_user_name'>Hello, {userName}</div>
+        {/* <Link to='/'>
           <button className='user_btn'> Edit Profile </button>
         </Link>
         <Link to='/'>
           <button className='user_btn'> View Profile </button>
-        </Link>
+        </Link> */}
       </div>
       <div className='status_block'>
         <Link to='/'>
