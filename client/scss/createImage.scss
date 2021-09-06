@@ -1,0 +1,128 @@
+.createContainer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 84vw;
+  height: 95vh;
+  // padding: 4rem 2rem;
+  overflow-y: auto;
+}
+
+.left_grid {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 74vh;
+}
+
+.top-pane {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $darker-color;
+  color: gray;
+  width: 50vw;
+  height: 2rem;
+  border-top-right-radius: 0.5rem;
+  border-top-left-radius: 0.5rem;
+}
+
+.code-mirror-wrapper {
+  width: 50vw;
+}
+
+.bottom-pane {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $darker-color;
+  color: gray;
+  width: 50vw;
+  height: 2rem;
+  border-bottom-right-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+
+.editor-con {
+  align-items: center;
+  justify-content: center;
+  margin-right: 2rem;
+}
+
+.list-div {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 50vw;
+  height: 20vh;
+  padding: 1rem;
+  border: solid 1px;
+  border-radius: 0.5rem;
+}
+
+.whale {
+  display: inline;
+  height: 6rem;
+  width: 6rem;
+  // align-items: center;
+  // justify-content: center;
+}
+
+.right_grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $gray-color;
+  width: 24vw;
+  height: 74vh;
+  padding: 2rem 0.6rem;
+  border: solid 1px;
+  border-radius: 0.5rem;
+  font-size: $font-medium;
+}
+
+.crate_instruction {
+  margin-bottom: 2rem;
+}
+.create_header {
+  margin-bottom: 1rem;
+}
+
+.create_order {
+  text-align: left;
+  margin: 1rem 0.7rem 0;
+}
+
+// .docker-build-btn {
+//     text-decoration: none;
+//     font-size: 16px;
+//     font-weight: bold;
+//     background-color: transparent;
+//     padding: 12px 16px;
+//     border: solid 1px;
+//     border-radius: 5px;
+
+// }
+
+.build-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 13rem;
+}
+
+.build_textbox {
+  border: 1px solid darken($gray-color, 40%);
+  margin-bottom: 0.5rem;
+  width: 13rem;
+  height: 2rem;
+  border-radius: 3px;
+}
+
+.docker-build-btn {
+  margin: 0.5rem 0;
+  border-radius: 3px;
+  border: 1px solid darken($gray-color, 40%);
+  font-size: $font-medium;
+  padding: 0.4rem 1.5rem;
+}

@@ -10,7 +10,7 @@ import styles from './scss/application.scss';
 // Once we make files with redux, we can change the code to below.
 render(
   <Provider store={store}>
-    <App />,
+    <App />
   </Provider>,
   document.getElementById('root')
 );

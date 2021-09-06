@@ -8,7 +8,7 @@ class UserDbService {
       let result = await axios.post(url, userData);
       return result.data;
     } catch (error) {
-      console.log('this error is from user signup: ', error);
+      console.log('this error is from User Service: ', error);
       return { error: true };
     }
   }

@@ -30,8 +30,10 @@ const Login = () => {
       'http://localhost:3000/api/user/login',
       userData
     );
-    tokenStorage.saveToken(result.token);
-    setIsAuthenticated(true);
+    if (result.id) {
+      tokenStorage.saveToken(result.token);
+      setIsAuthenticated(true);
+    }
   };
 
   const userSignIn = () => {

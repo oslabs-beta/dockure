@@ -1,6 +1,7 @@
 import React, { component, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import UserStatus from './userStatus';
+
 // uncommand ipcRenderer for testing on electron.
 // Please also command the lines before push the file. (line 6, 22-46, 67, 81, 98, 115)
 // const { ipcRenderer } = window.require('electron');
@@ -14,7 +15,7 @@ import {
   faCompressAlt,
 } from '@fortawesome/free-solid-svg-icons';
 
-const Titlebar = ({ toggle, setToggle, isLogin, setIsLogin }) => {
+const Titlebar = ({ toggle, setToggle, isLogin, setIsLogin, userName }) => {
   const [isActive, setIsActive] = useState(true);
   const [isMaximized, setIsMaximized] = useState();
   const [userStat, setUserStat] = useState(false);
@@ -152,7 +153,11 @@ const Titlebar = ({ toggle, setToggle, isLogin, setIsLogin }) => {
         </div>
       </div>
       {userStat && (
-        <UserStatus setIsLogin={setIsLogin} userHandler={userHandler} />
+        <UserStatus
+          userHandler={userHandler}
+          userName={userName}
+          setIsLogin={setIsLogin}
+        />
       )}
     </>
   );
