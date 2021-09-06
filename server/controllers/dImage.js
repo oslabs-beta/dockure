@@ -23,11 +23,9 @@ imageController.getImages = async(req, res, next) => {
 imageController.startImage = (req, res, next) => {  
     
     console.log('Entered into imageController.startImage')
-    console.log(req.query.imageID);
-    console.log(req.body.imageID);
-    console.log(req.params.imageID);
-    res.locals.imageID = req.query.imageID
-    exec(`docker run ${req.query.imageID}`, (error, stdout, stderr) => {
+    console.log(req.body.imageID, 'body');
+    res.locals.imageID = req.body.imageID
+    exec(`docker run ${req.body.imageID}`, (error, stdout, stderr) => {
         if (error) {
             console.log(`error: ${error.message}`);
             return next(error);
