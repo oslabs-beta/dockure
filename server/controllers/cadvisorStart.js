@@ -5,7 +5,6 @@ const cadvisorStartController = {};
 
 cadvisorStartController.restartCadvisor = async (req, res, next) => {
     console.log('Entered cadvisorStartController.restartProm');
-    console.log(process.platform);
 
     try {
        await exec('docker start cadvisor', (error, stdout, stderr) => {
@@ -24,7 +23,7 @@ cadvisorStartController.restartCadvisor = async (req, res, next) => {
                 return next(stderr);
             };
             console.log('cadvisorStartController.restartCadvisor: successfully restarted Cadvisor container');
-            res.locals.running = true;
+            res.locals.cadvRunning = true;
             return next();
         })
     } catch (error) {
@@ -35,8 +34,8 @@ cadvisorStartController.restartCadvisor = async (req, res, next) => {
 //this needs to be configured based on operating system
 cadvisorStartController.startCadvisor = (req, res, next) => {
     console.log('Entered start Cadvisor');
-    console.log('Res.locals.running came through: ', res.locals.running );
-    if (res.locals.running) return next(); ////
+    console.log('Res.locals.running came through: ', res.locals.cadvRunning);
+    if (res.locals.cadvRunning) return next(); ////
     if (process.platform === 'linux' || process.platform === 'win32') {
         exec(`docker run --volume=/sys:/sys:ro --volume=/cgroup:/cgroup:ro --publish=9101:8080 --detach=true --name=cadvisor gcr.io/cadvisor/cadvisor:latest`, (error, stdout, stderr) => {
             if (error) {
