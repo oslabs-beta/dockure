@@ -93,6 +93,3 @@ const Stats = () => {
 
 export default Stats;
 
-
-//process_virtual_memory_bytes -> how much memory it has allocated?
-//process_resident_memory_bytes  -> how much memory it currently utilizes
