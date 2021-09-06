@@ -93,3 +93,11 @@
   color: $white-color;
   font-size: $font-small;
 }
+
+.item_dataBtn:hover {
+  background-color: darken($primary-color, 30%);
+}
+
+.item_dataBtn:focus {
+  background-color: darken($primary-color, 30%);
+}

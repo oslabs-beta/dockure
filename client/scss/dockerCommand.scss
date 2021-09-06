@@ -21,6 +21,14 @@
   background-color: darken($gray-color, 10%);
 }
 
+.docker_btn:hover {
+  background-color: darken($gray-color, 20%);
+}
+
+.docker_btn:focus {
+  background-color: darken($gray-color, 10%);
+}
+
 .add_btn {
   margin-bottom: 0.8rem;
 }

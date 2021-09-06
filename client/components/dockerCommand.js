@@ -17,7 +17,9 @@ const DockerCommand = ({ conList, conStatus, setConStatus }) => {
     newSelectedIds[id] = true;
     setSelectedIds(newSelectedIds);
   };
+
   const onClickButton = (url) => {
+    // const check = document.querySelector('.item_checkbox');
     // console.log(selectedIds);
     const promiseArr = [];
     for (let id in selectedIds) {
@@ -28,6 +30,8 @@ const DockerCommand = ({ conList, conStatus, setConStatus }) => {
     Promise.all(promiseArr).then((values) => {
       console.log(values[0].status);
       // need to use redux to update status
+      // check.checked = false;
+      setSelectedIds({});
       if (conStatus) return setConStatus(false);
       return setConStatus(true);
     });
@@ -126,6 +130,7 @@ const DockerCommand = ({ conList, conStatus, setConStatus }) => {
         conList={conList}
         onCheckboxClickCallback={onCheckboxClickCallback}
         conStatus={conStatus}
+        selectedIds={selectedIds}
       />
     </div>
   );

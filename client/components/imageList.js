@@ -6,14 +6,17 @@ const ImageList = ({ imageList }) => {
   const [imageName, setImageName] = useState('');
 
   const handlePull = async (e) => {
-    const pulledImage = await imageService.pullImageInfo('/api/images/pull', imageName)
+    const pulledImage = await imageService.pullImageInfo(
+      '/api/images/pull',
+      imageName
+    );
     console.log(pulledImage);
   };
 
   const onSubmit = () => {
     const input = document.querySelector('.image_input');
+    setImageName('');
     handlePull();
-    input.value = '';
     input.focus();
   };
 

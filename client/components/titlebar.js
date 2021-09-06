@@ -133,12 +133,10 @@ const Titlebar = ({ toggle, setToggle, isLogin, setIsLogin, userName }) => {
             </div>
           </div>
           <div className='titlebar_btns'>
-            <div
-              className={
-                isLogin ? 'titlebar_logo titlebar_btn' : 'titlebar_btn_inactive'
-              }
-            >
-              <FontAwesomeIcon icon={faFish} />
+            <div className={isLogin ? 'titlebar_btn' : 'titlebar_btn_inactive'}>
+              <a href='/'>
+                <FontAwesomeIcon icon={faFish} />
+              </a>
             </div>
             <div
               className={
