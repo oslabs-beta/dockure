@@ -92,15 +92,6 @@ class ContainerService {
     }
   }
 
-  static deleteClickBtn(url, id) {
-    try {
-      const result = axios.delete(url, { containerID: id });
-      // console.log('result from post click button in container service is :', result)
-      return result;
-    } catch (err) {
-      console.log('There is error on button functions in container service');
-    }
-  }
 }
 
 // ContainerService.getConInfo('http://localhost:3000/api')
