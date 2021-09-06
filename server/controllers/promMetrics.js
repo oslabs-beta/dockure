@@ -24,7 +24,7 @@ promContainerController.restartProm = async (req, res, next) => {
                 return next(stderr);
             };
             console.log('promContainerController.restartProm: successfully restarted prometheus container');
-            res.locals.running = true;
+            res.locals.promRunning = true;
             return next();
         })
     } catch (error) {
@@ -34,8 +34,8 @@ promContainerController.restartProm = async (req, res, next) => {
 
 promContainerController.startProm = (req, res, next) => {  
     console.log('Entered startProm');
-    console.log('Res.locals.running came through: ', res.locals.running );
-    if (res.locals.running) return next();
+    console.log('Res.locals.running came through: ', res.locals.promRunning );
+    if (res.locals.promRunning) return next();
     exec(`docker run --name prometheus -p 9090:9090 -v ${path.join(__dirname, '../assets/prometheus.yaml')}:/etc/prometheus/prometheus.yml prom/prometheus`, (error, stdout, stderr) => {
         console.log('Entered prometheusStart');
         if (error) {
