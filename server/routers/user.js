@@ -1,5 +1,7 @@
 const { Router } = require('express');
 const userController = require('../controllers/userController.js');
+const promContainerController = require('../controllers/promMetrics');
+const cadvisorStartController = require('../controllers/cadvisorStart');
 const isAuth = require('../controllers/isAuth');
 //confirm that db controller file path is correct on line above
 
@@ -11,7 +13,13 @@ userRouter.post('/signup', userController.createUser, (req, res) => {
   res.status(200).send({ id: res.locals.id, token: res.locals.token });
 });
 
-userRouter.post('/login', userController.userLogin, (req, res) => {
+userRouter.post('/login', 
+  userController.userLogin, 
+  promContainerController.restartProm,
+  promContainerController.startProm,
+  cadvisorStartController.restartCadvisor,
+  cadvisorStartController.startCadvisor,
+(req, res) => {
   res.status(200).send({
     id: res.locals.id,
     token: res.locals.token,
