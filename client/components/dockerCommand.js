@@ -37,18 +37,6 @@ const DockerCommand = ({ conList, conStatus, setConStatus }) => {
     });
   };
 
-  const onClickRemoveButton = (url) => {
-    const promiseArr = [];
-    for (let id in selectedIds) {
-      let result = ContainerService.deleteClickBtn(url, id);
-      promiseArr.push(result);
-    }
-    Promise.all(promiseArr).then((values) => {
-      if (conStatus) return setConStatus(false);
-      return setConStatus(true);
-    });
-  };
-
   return (
     <div className='docker_command'>
       <ul className='docker_buttons'>
@@ -109,7 +97,7 @@ const DockerCommand = ({ conList, conStatus, setConStatus }) => {
         <button
           className='docker_btn'
           onClick={(e) =>
-            onClickRemoveButton(
+            onClickButton(
               'http://localhost:3000/api/containers/remove',
               selectedIds
             )
