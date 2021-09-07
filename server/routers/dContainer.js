@@ -6,7 +6,8 @@ const cadvisorStartController = require('../controllers/cadvisorStart');
 
 
 //get request to the api and invoke a controller that exec() and we're going to pass that as res.locals, rendeer res.locals onto /api
-containerRouter.get('/', promContainerController.restartProm,
+containerRouter.get('/', 
+    promContainerController.restartProm,
     promContainerController.startProm,
     cadvisorStartController.restartCadvisor,
     cadvisorStartController.startCadvisor,
@@ -16,7 +17,8 @@ containerRouter.get('/', promContainerController.restartProm,
     (req, res) => {
         const result = res.locals.containers;
         return res.status(200).send(result);
-})
+    }
+)
 
 containerRouter.post('/stats', conController.getStats, (req, res) => {
     const result = res.locals.data;
