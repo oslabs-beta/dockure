@@ -12,11 +12,20 @@ containerRouter.get('/', promContainerController.restartProm,
     cadvisorStartController.startCadvisor,
     conController.restartSocat,
     conController.startSocat, 
+    (req, res) => {
+        return res.redirect('/api/containers/containers')
+    }
+)
+
+containerRouter.get('/containers', 
     conController.getContainers, 
     (req, res) => {
+        console.log('HEEEEERRRE: redirect worked');
         const result = res.locals.containers;
         return res.status(200).send(result);
-})
+    }
+)
+
 
 containerRouter.post('/stats', conController.getStats, (req, res) => {
     const result = res.locals.data;
