@@ -4,17 +4,13 @@ import Login from './components/login';
 import SignUP from './components/signUp';
 import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 import Titlebar from './components/titlebar';
-import StartUp from './services/prometheusService';
+import ProtectedRoute from './containers/protectedRoute';
+import UnProtectedRoute from './containers/unProtectedRoute';
 
 const App = () => {
   const [toggle, setToggle] = useState(true);
   const [isLogin, setIsLogin] = useState(false);
-
-  //for now putting this here - can talk about it later
-  //This NEEDS to run once on startup and this is the only place I can finde to force this
-  // useEffect(() => {
-  //   StartUp.prometheus();
-  // }, [])
+  const [userName, setUserName] = useState('');
 
   return (
     <Router>
@@ -24,15 +20,17 @@ const App = () => {
           setToggle={setToggle}
           isLogin={isLogin}
           setIsLogin={setIsLogin}
+          userName={userName}
         />
         <Switch>
-          <Route path='/' exact component={Login} />
-          <Route path='/signup' component={SignUP} />
-          <Route
+          <UnProtectedRoute path='/' exact component={Login} />
+          <UnProtectedRoute path='/signup' component={SignUP} />
+          <ProtectedRoute
             path='/main'
-            render={() => (
-              <MainContainer toggle={toggle} setIsLogin={setIsLogin} />
-            )}
+            component={MainContainer}
+            toggle={toggle}
+            setIsLogin={setIsLogin}
+            setUserName={setUserName}
           />
         </Switch>
       </div>

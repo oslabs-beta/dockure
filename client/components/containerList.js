@@ -1,62 +1,54 @@
-import React, { component } from 'react';
+import React, { component, useState, useEffect } from 'react';
 import ContainerItem from './containerItem';
-import axios from 'axios';
+import containerService from '../services/containerService';
+import { useDispatch } from 'react-redux';
+import { setStateMetrics } from '../redux/action/action.js';
+import Loader from './loader';
 
-
-
-const ContainerList = ({conList}) => {
-
-
-  const getData = async (id) => {
-
-    console.log('data in conatinerlist')
-    id = id.slice(0, 12)
-    let stats = await axios.post('api/containers/stats', { id: id })
-    let data = {};
-    data.cpu = stats.data.cpu_stats.cpu_usage.total_usage / 1000000;
-    data.memory = stats.data.memory_stats.usage / 1000000;
-    console.log('data memory : ', data.memory)
-;    // let stats = await axios.get('http://localhost:2375/containers/3b160b3cf74b/json')
-    console.log('stats: ', stats)
-
-  }
-    //repotags, id, created, size
+const ContainerList = ({ conList, onCheckboxClickCallback, conStatus }) => {
+  //repotags, id, created, size
   //id has to be actual container id
-  const con = conList.map((container, inx) => {
-    //do we really need to delete sha?
-    // const id = container.Id.slice(7);
-    
+  const dispatch = useDispatch();
+  const getData = async (id, containerState) => {
+    // const stats = await containerService.getMetrics('api/containers/stats', { id: id })
+    console.log('CONTAINER INFO: ', containerState);
+    let stats = {
+      cpu: [],
+      memory: [],
+    };
+    if (containerState === 'running')
+      stats = await containerService.getMetrics(
+        'http://localhost:3000/api/metrics',
+        id
+      );
+    dispatch(setStateMetrics(stats));
+  };
+  
+  if(!conList) return null;
 
-    return(
-      <ContainerItem key={inx} id={container.Id} getData={() => getData(container.Id)} container={container}/>
-    )
+  if(!conList.length) return (
+    <Loader />
+  )
+
+  const con = conList.map((container, inx) => {
+    return (
+      <ContainerItem
+        key={inx}
+        id={container.Id}
+        onCheckboxClickCallback={onCheckboxClickCallback}
+        getData={() => getData(container.Id, container.State)}
+        container={container}
+        conStatus={conStatus}
+      />
+    );
   });
 
-  
-  // console.log(conName, 'conname');
-    // console.log(conName, 'con')
   return (
-    // <ul className='container_list'>
-    //   {conName}
-    // </ul>
     <ul className='container_list'>
-      {/* <div className='container_head'>
-        <div className="item-name">Name</div> 
-        <div className="item-createdat">Created</div> 
-        <div className="item-state">State</div>
-      </div> */}
       {con}
     </ul>
-
   );
 };
 
 export default ContainerList;
 
-
-{/* <ul className='container_list'> */}
-      
-{/* <div>
-  {conList.map((container, id) => <h2 key={id}>{container.Id}</h2>)}
-</div>
-</ul> */}

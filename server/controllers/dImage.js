@@ -5,6 +5,7 @@ const path = require('path');
 const imageController = {};
 
 imageController.getImages = async(req, res, next) => {
+    console.log('getting images!!!')
     try {
         const result = await axios.get('http://localhost:2375/images/json?all=true');
         res.locals.images = result.data;
@@ -22,8 +23,9 @@ imageController.getImages = async(req, res, next) => {
 imageController.startImage = (req, res, next) => {  
     
     console.log('Entered into imageController.startImage')
-    res.locals.imageID = req.query.imageID
-    exec(`docker run ${req.query.imageID}`, (error, stdout, stderr) => {
+    console.log(req.body.imageID, 'body');
+    res.locals.imageID = req.body.imageID
+    exec(`docker run ${req.body.imageID}`, (error, stdout, stderr) => {
         if (error) {
             console.log(`error: ${error.message}`);
             return next(error);

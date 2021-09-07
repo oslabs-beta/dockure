@@ -1,21 +1,14 @@
 .stats {
-  width: 37vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 43vw;
   height: 95vh;
   margin: auto;
-  padding: 2rem;
+  padding: 5rem 2rem 3rem;
   overflow-y: auto;
-}
 
-// .stats_box {
-//   margin: auto;
-//   min-width: 38vw;
-//   min-height: 80vh;
-//   overflow-y: scroll;
-// }
-
-.stats div {
-  background-color: lighten($primary-color, 30%);
-  width: 9rem;
-  height: 9rem;
-  margin: 2rem 0;
+  h3 {
+    text-align: center;
+  }
 }

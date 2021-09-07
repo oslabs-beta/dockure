@@ -1,6 +1,9 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 const url = require('url');
+const server = require('../server/server.js')
+
+require('../server/server');
 
 let mainWindow;
 
@@ -34,42 +37,42 @@ function createWindow() {
     );
   }
 
-  mainWindow.on('closed', () => {
-    mainWindow = null;
-  });
+  // mainWindow.on('closed', () => {
+  //   mainWindow = null;
+  // });
 
-  mainWindow.on('maximize', () => {
-    mainWindow.webContents.send('maximized');
-  });
+  // mainWindow.on('maximize', () => {
+  //   mainWindow.webContents.send('maximized');
+  // });
 
-  mainWindow.on('unmaximize', () => {
-    mainWindow.webContents.send('unmaximized');
-  });
+  // mainWindow.on('unmaximize', () => {
+  //   mainWindow.webContents.send('unmaximized');
+  // });
 }
 
-ipcMain.handle('minimize-event', () => {
-  mainWindow.minimize();
-});
+// ipcMain.handle('minimize-event', () => {
+//   mainWindow.minimize();
+// });
 
-ipcMain.handle('maximize-event', () => {
-  mainWindow.maximize();
-});
+// ipcMain.handle('maximize-event', () => {
+//   mainWindow.maximize();
+// });
 
-ipcMain.handle('unmaximize-event', () => {
-  mainWindow.unmaximize();
-});
+// ipcMain.handle('unmaximize-event', () => {
+//   mainWindow.unmaximize();
+// });
 
-ipcMain.handle('close-event', () => {
-  app.quit();
-});
+// ipcMain.handle('close-event', () => {
+//   app.quit();
+// });
 
-app.on('browser-window-focus', () => {
-  mainWindow.webContents.send('focused');
-});
+// app.on('browser-window-focus', () => {
+//   mainWindow.webContents.send('focused');
+// });
 
-app.on('browser-window-blur', () => {
-  mainWindow.webContents.send('blurred');
-});
+// app.on('browser-window-blur', () => {
+//   mainWindow.webContents.send('blurred');
+// });
 
 app.whenReady().then(() => {
   createWindow();
