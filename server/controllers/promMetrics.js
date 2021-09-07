@@ -5,47 +5,27 @@ const path = require('path');
 
 const promContainerController = {};
 
+//Standard middleware error handling won't work here
 promContainerController.restartProm = async (req, res, next) => {
     console.log('Entered promContainerController.restartProm');
-    try {
-        await exec('docker start prometheus', (error, stdout, stderr) => {
-            if (error) {
-                console.log(`error: ${error.message}`);
-                if (error.message.includes('No such container: prometheus')) {
-                    console.log('promContainerController.restartProm: There is no prometheus container');
-                    return next();
-                }
-                else {
-                    return next(error);
-                }
-            }
-            if (stderr) {
-                console.log(`stderr: ${stderr}`);
-                return next(stderr);
-            };
-            console.log('promContainerController.restartProm: successfully restarted prometheus container');
-            res.locals.promRunning = true;
-            return next();
-        })
-    } catch (error) {
-        return next(error);
-    }
+    exec('docker start prometheus');
+    return next();
 }
 
-promContainerController.startProm = (req, res, next) => {  
-    console.log('Entered startProm');
-    console.log('Res.locals.running came through: ', res.locals.promRunning );
+promContainerController.startProm = async (req, res, next) => {  
+    // console.log('Entered startProm');
+    // console.log('Res.locals.running came through: ', res.locals.promRunning );
     if (res.locals.promRunning) return next();
-    exec(`docker run --name prometheus -p 9090:9090 -v ${path.join(__dirname, '../assets/prometheus.yaml')}:/etc/prometheus/prometheus.yml prom/prometheus`, (error, stdout, stderr) => {
-        console.log('Entered prometheusStart');
-        if (error) {
-            console.log(`error: ${error.message}`);
-            return next(error);
-        }
-        if (stderr) {
-            console.log(`stderr: ${stderr}`);
-            return next(stderr);
-        };
+    await exec(`docker run --name prometheus -p 9090:9090 -d -v ${path.join(__dirname, '../assets/prometheus.yaml')}:/etc/prometheus/prometheus.yml prom/prometheus`, (error, stdout, stderr) => {
+        // console.log('Entered prometheusStart');
+        // if (error) {
+        //     console.log(`error: ${error.message}`);
+        //     return next(error);
+        // }
+        // if (stderr) {
+        //     console.log(`stderr: ${stderr}`);
+        //     return next(stderr);
+        // };
     });
     console.log('finished startProm');    
     return next();
