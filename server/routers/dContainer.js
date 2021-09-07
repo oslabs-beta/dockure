@@ -49,7 +49,7 @@ containerRouter.post('/resume', conController.resumeContainer, (req, res) => {
     return res.status(res.locals.status).send(res.locals.status)
 })
 
-containerRouter.delete('/remove', conController.removeContainer, (req, res) => {
+containerRouter.post('/remove', conController.removeContainer, (req, res) => {
     return res.status(res.locals.status).send(res.locals.status)
 })
 

@@ -81,11 +81,11 @@ conController.killContainer = async (req, res, next) => {
   // console.log(id)
 
   try {
-    const result = await axios.post(`http://localhost:2375/containers/${containerID}/kill`)
+    const { status } = await axios.post(`http://localhost:2375/containers/${containerID}/kill`)
     
     // res.locals.data = result.data
-    res.locals.status = result;
-    console.log(result, 'Result in kill container')
+    res.locals.status = status;
+    console.log(status, 'Result in kill container')
     return next();
   } catch(err) {
     console.log('There was an error killing the container: ', err);
@@ -100,11 +100,11 @@ conController.restartContainer = async (req, res, next) => {
   // console.log(id)
 
   try {
-    const result = await axios.post(`http://localhost:2375/containers/${containerID}/restart?t=5`)
+    const { status } = await axios.post(`http://localhost:2375/containers/${containerID}/restart?t=5`)
     
     // res.locals.data = result.data
-    res.locals.status = result;
-    console.log(result, 'Result in kill container')
+    res.locals.status = status;
+    console.log(status, 'Result in kill container')
     return next();
   } catch(err) {
     console.log('There was an error restarting the container: ', err);
@@ -119,11 +119,11 @@ conController.pauseContainer = async (req, res, next) => {
   // console.log(id)
 
   try {
-    const result = await axios.post(`http://localhost:2375/containers/${containerID}/pause`)
+    const { status } = await axios.post(`http://localhost:2375/containers/${containerID}/pause`)
     
     // res.locals.data = result.data
-    res.locals.status = result;
-    console.log(result, 'Container Paused')
+    res.locals.status = status;
+    console.log(status, 'Container Paused')
     return next();
   } catch(err) {
     console.log('There was an error pausing the container: ', err);
@@ -139,11 +139,11 @@ conController.resumeContainer = async (req, res, next) => {
   // console.log(id)
 
   try {
-    const result = await axios.post(`http://localhost:2375/containers/${containerID}/unpause`)
+    const { status } = await axios.post(`http://localhost:2375/containers/${containerID}/unpause`)
     
     // res.locals.data = result.data
-    res.locals.status = result;
-    console.log(result, 'Result in resume container')
+    res.locals.status = status;
+    console.log(status, 'Result in resume container')
     return next();
   } catch(err) {
     console.log(err)
@@ -158,11 +158,11 @@ conController.removeContainer = async (req, res, next) => {
   // console.log(id)
 
   try {
-    const result = await axios.delete(`http://localhost:2375/containers/${containerID}`)
+    const { status } = await axios.delete(`http://localhost:2375/containers/${containerID}`)
     
     // res.locals.data = result.data
-    res.locals.status = result;
-    console.log(result, 'Result in resume container')
+    res.locals.status = status;
+    console.log(status, 'Result in resume container')
     return next();
   } catch(err) {
     console.log(err)
