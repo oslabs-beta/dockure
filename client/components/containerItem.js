@@ -7,6 +7,7 @@ const ContainerItem = ({
   getData,
   onCheckboxClickCallback,
   conStatus,
+  isChecked,
 }) => {
   const [isRunning, setIsRunning] = useState(false);
   const [isExited, setIsExited] = useState(false);
@@ -35,6 +36,7 @@ const ContainerItem = ({
           <input
             type='checkbox'
             value={container.Id}
+            checked={isChecked}
             className='item_checkbox'
             onClick={(e) => onCheckboxClickCallback(e.target.value)}
           />

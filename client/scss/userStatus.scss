@@ -1,18 +1,19 @@
 .user_status {
   width: 200px;
-  // height: 260px;
   position: absolute;
   margin-left: 79vw;
   z-index: 1;
   padding: 0.5rem 0;
-  background-color: $gray-color;
+  background-color: darken($background-color, 4%);
   border-radius: 5px;
-  border: 1px solid darken($gray-color, 8%);
+  border: 1px solid darken($background-color, 10%);
   box-shadow: 0 0 10px rgba(26, 25, 25, 0.2);
+  color: $font-color;
 }
 
 .starus_user_name {
   margin: 1rem 1.5rem;
+  font-weight: bolder;
 }
 
 .status_block {
@@ -21,7 +22,7 @@
 }
 
 .block_line {
-  border-bottom: 1.5px solid darken($gray-color, 8%);
+  border-bottom: 1.5px solid lighten($background-color, 10%);
 }
 
 .user_btn {
@@ -30,11 +31,12 @@
   height: 30px;
   cursor: pointer;
   padding: 0 1.5rem;
-  color: $font-dark-color;
-  background-color: $gray-color;
+  margin: 1rem 0 0;
+  color: $font-color;
+  background-color: darken($background-color, 5%);
 }
 
 .user_btn:hover {
-  background-color: darken($primary-color, 14%);
+  background-color: transparentize($primary-color, 0.3%);
   color: $white-color;
 }

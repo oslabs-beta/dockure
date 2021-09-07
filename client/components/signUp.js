@@ -1,20 +1,27 @@
 import React, { Component, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import UserDbService from '../services/userDbService';
 
 const SignUP = () => {
-  const [userData, setUserData] = useState({username: '', email: '', password: ''});
+  const [userData, setUserData] = useState({
+    username: '',
+    email: '',
+    password: '',
+  });
+  const [showUserError, setShowUserError] = useState(false);
+  const [showPWError, setShowPWError] = useState(false);
+  const [isSignUp, setIsSignUp] = useState(false);
 
   const userNameHandler = (e) => {
-    setUserData(userData => ({
-      ...userData, 
-      username: e.target.value, 
+    setUserData((userData) => ({
+      ...userData,
+      username: e.target.value,
     }));
     console.log(userData.username);
   };
 
   const userEmailHandler = (e) => {
-    setUserData(userData => ({
+    setUserData((userData) => ({
       ...userData,
       email: e.target.value,
     }));
@@ -22,34 +29,43 @@ const SignUP = () => {
   };
 
   const passwordHandler = (e) => {
-    setUserData(userData => ({
+    setUserData((userData) => ({
       ...userData,
       password: e.target.value,
-      }));
+    }));
     console.log(userData.password);
   };
 
   const sendUserData = async () => {
-    const result = await UserDbService.postUserData('http://localhost:3000/api/user/signup', userData);
-    console.log(result);
-  }
-
+    const result = await UserDbService.postUserData(
+      'http://localhost:3000/api/user/signup',
+      userData
+    );
+  };
 
   const signUpHandler = (e) => {
     if (!userData.username || !userData.email) {
-      alert("Username and Email cannot be empty");
+      setShowUserError(true);
+      setShowPWError(false);
+      // alert("Username and Email cannot be empty");
       return;
     }
     if (userData.password.length < 5) {
-      alert("Password must be 5 characters or more")
+      setShowUserError(false);
+      setShowPWError(true);
+      // alert("Password must be 5 characters or more")
       return;
     }
     sendUserData();
-  }  
+    setIsSignUp(true);
+  };
+
+  if (isSignUp) {
+    return <Redirect to='/' />;
+  }
 
   //*******only when the sign up is successful, we are going to sign in link.******
 
-    
   return (
     <div className='login_page'>
       <div className='signin_page'>
@@ -76,10 +92,22 @@ const SignUP = () => {
             value={userData.password}
             onChange={passwordHandler}
           ></input>
+          {showUserError && (
+            <div className='login_error'>
+              "Username and Email cannot be empty"
+            </div>
+          )}
+          {showPWError && (
+            <div className='login_error'>
+              Password must be 5 characters or more
+            </div>
+          )}
         </form>
-        <Link to='/'>
-          <button className='signin_btn' onClick={(e) => signUpHandler()}>SIGN UP</button>
-        </Link>
+        {/* <Link to='/'> */}
+        <button className='signin_btn' onClick={(e) => signUpHandler()}>
+          SIGN UP
+        </button>
+        {/* </Link> */}
       </div>
       <div className='login_wallpaper'>
         <p className='login_head'>Hello, Friend!</p>

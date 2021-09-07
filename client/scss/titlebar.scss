@@ -4,7 +4,9 @@
   align-items: center;
   width: 100%;
   height: 5vh;
-  background-color: darken($primary-color, 38%);
+  // background-color: $accent-background-color;
+  background-color: darken($accent-background-color, 3%);
+  border-bottom: 1px solid lighten($background-color, 10%);
 }
 
 .title_bar {
@@ -14,7 +16,7 @@
   -webkit-app-region: drag;
   width: 98vw;
   height: 3.5vh;
-  color: darken($white-color, 10%);
+  color: $font-color;
 }
 
 .titlebar_traffic {
@@ -31,23 +33,23 @@
 }
 
 .traffic_gray {
-  background-color: $gray-color;
+  background-color: $font-color;
 }
 
 .traffic_red {
-  background-color: rgb(248, 90, 51);
+  background-color: $orange-color;
 }
 
 .traffic_yellow {
-  background-color: rgb(253, 239, 47);
+  background-color: $yellow-color;
 }
 
 .traffic_green {
-  background-color: rgb(77, 240, 113);
+  background-color: $green-color;
 }
 
 .traffic_btns {
-  color: $black-color;
+  color: $font-dark-color;
 }
 
 .title_closeBtn {
@@ -98,6 +100,14 @@
   height: 2.5vh;
   margin: 0 15px;
   cursor: pointer;
+}
+
+.titlebar_btn a {
+  color: $font-color;
+}
+
+.titlebar_btn a:hover {
+  color: $white-color;
 }
 
 .titlebar_btn:hover {
