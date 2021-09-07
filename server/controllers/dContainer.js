@@ -184,19 +184,42 @@ conController.startSocat = async (req, res, next) => {
   console.log('Res.locals.running came through: ', res.locals.running );
   if (res.locals.running) return next();
   await exec(`docker run -d -v /var/run/docker.sock:/var/run/docker.sock --name socat -p 127.0.0.1:2375:2375 bobrik/socat TCP-LISTEN:2375,fork UNIX-CONNECT:/var/run/docker.sock`, (error, stdout, stderr) => {
-      console.log('Entered socatStart');
-      if (error) {
-          console.log(`error: ${error.message}`);
-          return next(error);
-      }
-      if (stderr) {
-          console.log(`stderr: ${stderr}`);
-          return next(stderr);
-      };
+      // console.log('Entered socatStart');
+      // if (error) {
+      //     console.log(`error: ${error.message}`);
+      //     return next(error);
+      // }
+      // if (stderr) {
+      //     console.log(`stderr: ${stderr}`);
+      //     return next(stderr);
+      // };
   });
   console.log('finished startSocat');    
   return next();
 }
+
+//throttler for getting containers
+conController.throttle = async (req, res, next) => {
+  console.log('Entered throttler');
+  let finished = false;
+  const throttle = () => {
+    setTimeout(async () => {
+      await exec('docker ps', (error, stdout, stderr) => {
+        console.log('THROTTLED!');
+        if (finished) return next();
+        if (stdout.includes('prometheus') && stdout.includes('cadvisor') && stdout.includes('socat')) {
+          finished = true;
+          throttle()
+        }
+        else {
+          throttle();
+        }
+      })
+    }, 200);
+  }
+  throttle();
+}
+
 
 module.exports = conController;
 

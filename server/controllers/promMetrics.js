@@ -17,15 +17,15 @@ promContainerController.startProm = async (req, res, next) => {
     // console.log('Res.locals.running came through: ', res.locals.promRunning );
     if (res.locals.promRunning) return next();
     await exec(`docker run --name prometheus -p 9090:9090 -d -v ${path.join(__dirname, '../assets/prometheus.yaml')}:/etc/prometheus/prometheus.yml prom/prometheus`, (error, stdout, stderr) => {
-        console.log('Entered prometheusStart');
-        if (error) {
-            console.log(`error: ${error.message}`);
-            return next(error);
-        }
-        if (stderr) {
-            console.log(`stderr: ${stderr}`);
-            return next(stderr);
-        };
+        // console.log('Entered prometheusStart');
+        // if (error) {
+        //     console.log(`error: ${error.message}`);
+        //     return next(error);
+        // }
+        // if (stderr) {
+        //     console.log(`stderr: ${stderr}`);
+        //     return next(stderr);
+        // };
     });
     console.log('finished startProm');    
     return next();

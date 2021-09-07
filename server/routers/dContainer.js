@@ -6,21 +6,26 @@ const cadvisorStartController = require('../controllers/cadvisorStart');
 
 
 //get request to the api and invoke a controller that exec() and we're going to pass that as res.locals, rendeer res.locals onto /api
-containerRouter.get('/', promContainerController.restartProm,
+containerRouter.get('/', 
+    promContainerController.restartProm,
     promContainerController.startProm,
     cadvisorStartController.restartCadvisor,
     cadvisorStartController.startCadvisor,
     conController.restartSocat,
     conController.startSocat, 
+    //check if docker ps has these containers
+        // if not, throttle and check again
+    conController.throttle,
     (req, res) => {
-        return res.redirect('/api/containers/containers')
+        console.log('We exited Throttle');
+        return res.status(200).send('It worked');
     }
 )
 
 containerRouter.get('/containers', 
     conController.getContainers, 
     (req, res) => {
-        console.log('HEEEEERRRE: redirect worked');
+        console.log('HEEEEERRRE: redirect worked PLEASE');
         const result = res.locals.containers;
         return res.status(200).send(result);
     }
