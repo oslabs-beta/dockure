@@ -31,7 +31,6 @@ containerRouter.get('/containers',
     }
 )
 
-
 containerRouter.post('/stats', conController.getStats, (req, res) => {
     const result = res.locals.data;
     return res.status(200).json(result)

@@ -49,6 +49,44 @@ class ImageService {
         }
     }
 
+    static dockerBoiler() {
+const dockerBoiler = `FROM 
+  
+WORKDIR
+  
+COPY
+  
+COPY
+  
+RUN
+  
+COPY
+  
+CMD
+      `;
+    
+    return dockerBoiler;
+    
+}
+
+    static yamlBoiler() {
+const yamlBoiler = `version: 
+services:
+web:
+    build: .
+    ports:
+    - "5000:5000"
+    volumes:
+    - .:/code
+    - logvolume01:/var/log
+volumes:
+logvolume01: {}
+    `;
+            
+    return yamlBoiler;
+            
+}
+
 }
 
 export default ImageService;
