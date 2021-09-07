@@ -1,5 +1,5 @@
 .container_list {
-  background-color: $white_color;
+  background-color: $background-color;
   text-align: center;
 }
 
@@ -23,8 +23,8 @@
   justify-content: center;
   width: 35vw;
   height: 4.5rem;
-  border: 1px solid darken($gray-color, 20%);
-  background-color: lighten($gray-color, 1%);
+  border: 1px solid darken($background-color, 20%);
+  background-color: darken($background-color, 5%);
   border-radius: 10px;
   margin: 0.8rem 0;
   padding: 0.5rem 1.7rem 0.5rem 0.8rem;
@@ -69,19 +69,19 @@
 }
 
 .is_running {
-  background-color: darken($gray-color, 1%);
+  background-color: darken($background-color, 7%);
   border: 1px solid darken($green-color, 5%);
   color: darken($green-color, 5%);
 }
 
 .is_existed {
-  background-color: darken($gray-color, 1%);
+  background-color: darken($background-color, 7%);
   border: 1px solid $orange-color;
   color: $orange-color;
 }
 
 .is_else {
-  background-color: darken($gray-color, 1%);
+  background-color: darken($background-color, 7%);
   border: 1px solid darken($primary-color, 5%);
   color: darken($primary-color, 5%);
 }

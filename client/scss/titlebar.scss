@@ -35,15 +35,15 @@
 }
 
 .traffic_red {
-  background-color: rgb(248, 90, 51);
+  background-color: $orange-color;
 }
 
 .traffic_yellow {
-  background-color: rgb(253, 239, 47);
+  background-color: $yellow-color;
 }
 
 .traffic_green {
-  background-color: rgb(77, 240, 113);
+  background-color: $green-color;
 }
 
 .traffic_btns {

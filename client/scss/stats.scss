@@ -1,4 +1,6 @@
 .stats {
+  background-color: $background-color;
+  color: $gray-color;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -7,6 +9,13 @@
   margin: auto;
   padding: 5rem 2rem 3rem;
   overflow-y: auto;
+
+  .highcharts-axis-labels {
+    color: $gray-color;
+  }
+  .stats_graph_dataKey {
+    color: $gray-color;
+  }
 
   h3 {
     text-align: center;

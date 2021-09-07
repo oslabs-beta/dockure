@@ -1,8 +1,11 @@
+.content_container {
+  display: flex;
+}
 .docker_command {
   width: 41vw;
   height: 95vh;
   padding: 1rem 1.5rem;
-  background-color: lighten($gray-color, 10%);
+  background-color: $background-color;
   overflow-y: auto;
 }
 
