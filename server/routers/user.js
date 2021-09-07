@@ -1,4 +1,5 @@
 const { Router } = require('express');
+const conController = require('../controllers/dContainer.js');
 const userController = require('../controllers/userController.js');
 const promContainerController = require('../controllers/promMetrics');
 const cadvisorStartController = require('../controllers/cadvisorStart');
@@ -15,10 +16,7 @@ userRouter.post('/signup', userController.createUser, (req, res) => {
 
 userRouter.post('/login', 
   userController.userLogin, 
-  promContainerController.restartProm,
-  promContainerController.startProm,
-  cadvisorStartController.restartCadvisor,
-  cadvisorStartController.startCadvisor,
+ 
 (req, res) => {
   res.status(200).send({
     id: res.locals.id,
@@ -26,7 +24,25 @@ userRouter.post('/login',
   });
 });
 
-userRouter.get('/me', isAuth, userController.me, (req, res) => {
+userRouter.get('/me', isAuth, userController.me,   
+  promContainerController.restartProm,
+  promContainerController.startProm,
+  cadvisorStartController.restartCadvisor,
+  cadvisorStartController.startCadvisor,
+  conController.restartSocat,
+  conController.startSocat,
+  (req, res) => {
+    res
+      .status(200)
+      .send({
+        id: res.locals.id,
+        token: res.locals.token,
+        username: res.locals.username,
+
+      });
+});
+
+userRouter.get('/checkme', isAuth, userController.me, (req, res) => {
   res
     .status(200)
     .send({
@@ -34,7 +50,7 @@ userRouter.get('/me', isAuth, userController.me, (req, res) => {
       token: res.locals.token,
       username: res.locals.username,
     });
-});
+  });
 
 // router.post('/logout',
 // dbController.logout,

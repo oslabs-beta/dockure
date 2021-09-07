@@ -170,6 +170,55 @@ conController.removeContainer = async (req, res, next) => {
     // console.log('There was an error getting containers in the controller conController.getContainers: ' + err);
   }
 }
+
+conController.restartSocat = async (req, res, next) => {
+  console.log('Entered conContainerController.restartSocat');
+  try {
+      await exec('docker start socat', (error, stdout, stderr) => {
+          if (error) {
+              console.log(`error: ${error.message}`);
+              if (error.message.includes('No such container: socat')) {
+                  console.log('conContainer.restartSocat: There is no socat container');
+                  return next();
+              }
+              else {
+                  return next(error);
+              }
+          }
+          if (stderr) {
+              console.log(`stderr: ${stderr}`);
+              return next(stderr);
+          };
+          console.log('conContainerController.restartSocat: successfully restarted socat container');
+          res.locals.running = true;
+          return next();
+      })
+  } catch (error) {
+      return next(error);
+  }
+}
+
+//docker run -d -v /var/run/docker.sock:/var/run/docker.sock --name socat -p 127.0.0.1:2375:2375 bobrik/socat TCP-LISTEN:2375,fork UNIX-CONNECT:/var/run/docker.sock
+
+
+conController.startSocat = (req, res, next) => {  
+  console.log('Entered startSocat');
+  console.log('Res.locals.running came through: ', res.locals.running );
+  if (res.locals.running) return next();
+  exec(`docker run -d -v /var/run/docker.sock:/var/run/docker.sock --name socat -p 127.0.0.1:2375:2375 bobrik/socat TCP-LISTEN:2375,fork UNIX-CONNECT:/var/run/docker.sock`, (error, stdout, stderr) => {
+      console.log('Entered socatStart');
+      if (error) {
+          console.log(`error: ${error.message}`);
+          return next(error);
+      }
+      if (stderr) {
+          console.log(`stderr: ${stderr}`);
+          return next(stderr);
+      };
+  });
+  console.log('finished startSocat');    
+  return next();
+}
   
   
 module.exports = conController;
