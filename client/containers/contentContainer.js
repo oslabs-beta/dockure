@@ -20,14 +20,14 @@ const ContentContainer = () => {
     console.log(result);
   }, []);
 
-  useEffect(async () => {
+  let conInfo = useEffect(async () => {
     const result = await ContainerService.getConInfo(
       'http://localhost:3000/api/containers'
     );
     
     // setIsDataLoading(false);
     // console.log(result, 'resultttt');
-    setTimeout(() => setConList(result), 1000);
+    setConList(result)
   }, [conStatus]);
 
   //getting stats about a particular container
