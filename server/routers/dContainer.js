@@ -1,13 +1,36 @@
 const express = require('express');
 const conController = require('../controllers/dContainer.js');
 const containerRouter = express.Router();
+const promContainerController = require('../controllers/promMetrics');
+const cadvisorStartController = require('../controllers/cadvisorStart');
 
 
 //get request to the api and invoke a controller that exec() and we're going to pass that as res.locals, rendeer res.locals onto /api
-containerRouter.get('/', conController.getContainers, (req, res) => {
-    const result = res.locals.containers;
-    return res.status(200).send(result);
-})
+containerRouter.get('/', 
+    promContainerController.restartProm,
+    promContainerController.startProm,
+    cadvisorStartController.restartCadvisor,
+    cadvisorStartController.startCadvisor,
+    conController.restartSocat,
+    conController.startSocat, 
+    //check if docker ps has these containers
+        // if not, throttle and check again
+    conController.throttle,
+    (req, res) => {
+        console.log('We exited Throttle');
+        return res.status(200).send('It worked');
+    }
+)
+
+containerRouter.get('/containers', 
+    conController.getContainers, 
+    (req, res) => {
+        console.log('HEEEEERRRE: redirect worked PLEASE');
+        const result = res.locals.containers;
+        return res.status(200).send(result);
+    }
+)
+
 
 containerRouter.post('/stats', conController.getStats, (req, res) => {
     const result = res.locals.data;

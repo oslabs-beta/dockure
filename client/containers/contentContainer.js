@@ -3,9 +3,12 @@ import DockerCommand from '../components/dockerCommand';
 import StatsContainer from '../components/statsContainer';
 import ContainerService from '../services/containerService';
 import UserDbService from '../services/userDbService';
+import axios from 'axios';
+import Loader from '../components/loader';
 
 const ContentContainer = () => {
   const [conList, setConList] = useState([]);
+  const [isDataLoading, setIsDataLoading] = useState(true);
   const [conStatus, setConStatus] = useState(true);
 
   useEffect(async () => {
@@ -15,15 +18,20 @@ const ContentContainer = () => {
     if (!result.token) {
       return UserDbService.logout();
     }
+    
     console.log(result);
   }, []);
 
-  useEffect(async () => {
-    const result = await ContainerService.getConInfo(
-      'http://localhost:3000/api/containers'
-    );
-    // console.log(result, 'resultttt');
-    setConList(result);
+  let conInfo = useEffect(async () => {
+    await axios.get('http://localhost:3000/api/containers');
+    
+    setTimeout(async () => {
+      const result = await ContainerService.getConInfo(
+            'http://localhost:3000/api/containers/containers'
+          );
+          setConList(result)
+    }, 1000)
+    
   }, [conStatus]);
 
   //getting stats about a particular container
@@ -50,6 +58,8 @@ const ContentContainer = () => {
           <Route path={`${main.path}/create`} exact component={CreateImage} />
         </Switch> */
   }
+
+  // if (isDataLoading) return <Loader />
 
   return (
     <div className='content_container'>
