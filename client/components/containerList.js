@@ -3,6 +3,7 @@ import ContainerItem from './containerItem';
 import containerService from '../services/containerService';
 import { useDispatch } from 'react-redux';
 import { setStateMetrics } from '../redux/action/action.js';
+import Loader from './loader';
 
 const ContainerList = ({
   conList,
@@ -27,8 +28,12 @@ const ContainerList = ({
       );
     dispatch(setStateMetrics(stats));
   };
+  
+  if(!conList) return null;
 
-  // const con = (<h1>Content loading...</h1>)
+  if(!conList.length) return (
+    <Loader />
+  )
 
   const con = conList.map((container, inx) => {
     const isChecked = !!selectedIds[container.Id];
@@ -46,15 +51,7 @@ const ContainerList = ({
   });
 
   return (
-    // <ul className='container_list'>
-    //   {conName}
-    // </ul>
     <ul className='container_list'>
-      {/* <div className='container_head'>
-        <div className="item-name">Name</div> 
-        <div className="item-createdat">Created</div> 
-        <div className="item-state">State</div>
-      </div> */}
       {con}
     </ul>
   );
@@ -62,13 +59,3 @@ const ContainerList = ({
 
 export default ContainerList;
 
-{
-  /* <ul className='container_list'> */
-}
-
-{
-  /* <div>
-  {conList.map((container, id) => <h2 key={id}>{container.Id}</h2>)}
-</div>
-</ul> */
-}

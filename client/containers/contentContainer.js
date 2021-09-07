@@ -3,6 +3,7 @@ import DockerCommand from '../components/dockerCommand';
 import StatsContainer from '../components/statsContainer';
 import ContainerService from '../services/containerService';
 import UserDbService from '../services/userDbService';
+import axios from 'axios';
 import Loader from '../components/loader';
 
 const ContentContainer = ({ toggle }) => {
@@ -17,17 +18,19 @@ const ContentContainer = ({ toggle }) => {
     if (!result.token) {
       return UserDbService.logout();
     }
+
     console.log(result);
   }, []);
 
-  useEffect(async () => {
-    const result = await ContainerService.getConInfo(
-      'http://localhost:3000/api/containers'
-    );
+  let conInfo = useEffect(async () => {
+    await axios.get('http://localhost:3000/api/containers');
 
-    // setIsDataLoading(false);
-    // console.log(result, 'resultttt');
-    setTimeout(() => setConList(result), 1000);
+    setTimeout(async () => {
+      const result = await ContainerService.getConInfo(
+        'http://localhost:3000/api/containers/containers'
+      );
+      setConList(result);
+    }, 1000);
   }, [conStatus]);
 
   //getting stats about a particular container
