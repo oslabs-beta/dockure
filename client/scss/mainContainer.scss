@@ -6,7 +6,7 @@
 
 body {
   font-family: 'Roboto', sans-serif;
-  color: $font-dark-color;
+  color: $font-color;
 }
 
 button,
@@ -14,7 +14,6 @@ button:focus {
   border: none;
   outline: none;
   cursor: pointer;
-  background-color: white;
 }
 
 li {

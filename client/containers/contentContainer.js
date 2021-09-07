@@ -5,7 +5,7 @@ import ContainerService from '../services/containerService';
 import UserDbService from '../services/userDbService';
 import Loader from '../components/loader';
 
-const ContentContainer = () => {
+const ContentContainer = ({ toggle }) => {
   const [conList, setConList] = useState([]);
   const [isDataLoading, setIsDataLoading] = useState(true);
   const [conStatus, setConStatus] = useState(true);
@@ -24,7 +24,7 @@ const ContentContainer = () => {
     const result = await ContainerService.getConInfo(
       'http://localhost:3000/api/containers'
     );
-    
+
     // setIsDataLoading(false);
     // console.log(result, 'resultttt');
     setTimeout(() => setConList(result), 1000);
@@ -63,6 +63,7 @@ const ContentContainer = () => {
         conList={conList}
         conStatus={conStatus}
         setConStatus={setConStatus}
+        toggle={toggle}
       />
       <StatsContainer />
     </div>

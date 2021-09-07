@@ -1,55 +1,46 @@
 import React from 'react';
 import CodeMirror from 'codemirror/lib/codemirror.js';
-import 'codemirror/mode/dockerfile/dockerfile'
-import 'codemirror/lib/codemirror.css'
-import 'codemirror/theme/nord.css'
-import { Controlled as ControlledEditor} from 'react-codemirror2'
+import 'codemirror/mode/dockerfile/dockerfile';
+import 'codemirror/lib/codemirror.css';
+import 'codemirror/theme/nord.css';
+import { Controlled as ControlledEditor } from 'react-codemirror2';
 import { saveAs } from 'file-saver';
 
-
-
 const Editor = (props) => {
-
-  const { value, onChange } = props
+  const { value, onChange } = props;
 
   const handleChange = (editor, data, value) => {
-      onChange(value)
-  }
+    onChange(value);
+  };
 
   const save = async () => {
-    const file = await new Blob([value], { type: "text/plain" } )
-    saveAs(file, 'Dockerfile')
-  }
+    const file = await new Blob([value], { type: 'text/plain' });
+    saveAs(file, 'Dockerfile');
+  };
   return (
     <>
-      <div className="editor-con">
-        <div className="top-pane"> Edit your Dockerfile </div>
-        
+      <div className='editor-con'>
+        <div className='top-pane'> Edit your Dockerfile </div>
+
         <ControlledEditor
-
-          onBeforeChange={handleChange} 
+          onBeforeChange={handleChange}
           value={value}
-          className="code-mirror-wrapper"
-
+          className='code-mirror-wrapper'
           options={{
             lineWrapping: true,
             lint: true,
             mode: 'dockerfile',
             theme: 'nord',
-            lineNumbers:true,
+            lineNumbers: true,
           }}
         />
 
-        <div className="bottom-pane" 
-          download="Dockerfile" 
-          onClick={save}> 
-          Save your Dockerfile 
+        <div className='bottom-pane' download='Dockerfile' onClick={save}>
+          Save your Dockerfile
         </div>
-
       </div>
-      
     </>
   );
-}
+};
 
 export default Editor;

@@ -2,11 +2,18 @@
   display: flex;
 }
 .docker_command {
-  width: 41vw;
   height: 95vh;
   padding: 1rem 1.5rem;
   background-color: $background-color;
   overflow-y: auto;
+}
+
+.content_toggle {
+  width: 41vw;
+}
+
+.content_toggle_inactive {
+  width: 57vw;
 }
 
 .docker_buttons {
@@ -18,20 +25,76 @@
 
 .docker_btn {
   margin: 2px;
-  padding: 0.2rem 0.5rem;
+  padding: 0.25rem 0.5rem;
   font-size: $font-small;
   border-radius: 5px;
-  background-color: darken($gray-color, 10%);
+  // color: $font-color;
+  // background-color: lighten($background-color, 50%);
+  // border: 1px solid lighten($background-color, 10%);
+  // background-color: transparentize($white-color, 0.9%);
+  // background-color: $background-color;
+  // border: 1px solid $white-color;
+  // font-weight: bold;
+  // color: darken($primary-color, 18%);
 }
 
-.docker_btn:hover {
-  background-color: darken($gray-color, 20%);
+.docker_start {
+  background-color: transparentize($green-color, 0.3%);
+  color: $white-color;
 }
 
-.docker_btn:focus {
-  background-color: darken($gray-color, 10%);
+.docker_start:hover {
+  background-color: $green-color;
+  color: $white-color;
+}
+
+.docker_start:focus {
+  background-color: transparentize($green-color, 0.3%);
+  color: $white-color;
+}
+
+.docker_redbtn {
+  background-color: transparentize($orange-color, 0.3%);
+  color: $white-color;
+}
+
+.docker_redbtn:hover {
+  background-color: lighten($orange-color, 2%);
+  color: $white-color;
+}
+
+.docker_redbtn:focus {
+  background-color: transparentize($orange-color, 0.3%);
+  color: $white-color;
+}
+
+.docker_commonbtn {
+  background-color: transparentize($accent-color, 0.5%);
+  color: $white-color;
+}
+
+.docker_commonbtn:hover {
+  background-color: lighten($accent-color, 10%);
+  color: $white-color;
+}
+
+.docker_commonbtn:focus {
+  background-color: transparentize($accent-color, 0.5%);
+  color: $white-color;
 }
 
 .add_btn {
   margin-bottom: 0.8rem;
+  background-color: darken($accent-color, 20%);
+  color: $white-color;
+}
+
+.add_btn:hover {
+  background-color: lighten($accent-color, 10%);
+  color: $white-color;
+}
+
+.add_btn:focus {
+  background-color: darken($accent-color, 20%);
+  color: $white-color;
 }

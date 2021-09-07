@@ -26,20 +26,26 @@ const Login = () => {
   };
 
   const postSignIn = async () => {
+    const pwInput = document.querySelector('.signin_pw');
     const result = await UserDbService.postUserData(
       'http://localhost:3000/api/user/login',
       userData
     );
     if (result.id) {
       tokenStorage.saveToken(result.token);
-      setIsAuthenticated(true);
+      return setIsAuthenticated(true);
     }
+    setUserData((userData) => ({
+      ...userData,
+      password: '',
+    }));
+    pwInput.focus();
+    return setShowError(true);
   };
 
   const userSignIn = () => {
     if (!userData.username || !userData.password) {
-      alert('Username and Password can not be empty');
-      return;
+      return setShowError(true);
     }
     postSignIn();
   };
@@ -51,7 +57,6 @@ const Login = () => {
   return (
     <div className='login_page'>
       <div className='login_wallpaper'>
-        {showError && <div>Error!!</div>}
         <p className='login_head'>Welcome back!</p>
         <p className='login_intro'>You are almost in the promise land</p>
         <Link to='/signup'>
@@ -69,14 +74,17 @@ const Login = () => {
             onChange={userNameHandler}
           ></input>
           <input
-            className='signin_input'
+            className='signin_input signin_pw'
             placeholder='Password'
             type='password'
             value={userData.password}
             onChange={passwordHandler}
           ></input>
+          {showError && (
+            <div className='login_error'>Invalid username or password</div>
+          )}
         </form>
-        <a className='signin_forgotPW'>Forgot your password?</a>
+        {/* <a className='signin_forgotPW'>Forgot your password?</a> */}
         <button className='signin_btn' onClick={(e) => userSignIn()}>
           SIGN IN
         </button>

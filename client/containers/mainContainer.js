@@ -17,7 +17,6 @@ const MainContainer = ({ toggle, setIsLogin, setUserName }) => {
   const [notLogin, setNotLogin] = useState(false);
 
   useEffect(async () => {
-    console.log('check');
     const result = await UserDbService.getUserToken(
       'http://localhost:3000/api/user/me'
     );
@@ -40,13 +39,22 @@ const MainContainer = ({ toggle, setIsLogin, setUserName }) => {
               notLogin ? <Redirect to='/main' /> : <Component {...rest} />
             }
           /> */}
-          <Route path={`${main.path}`} exact component={ContentContainer} />
+          <Route
+            path={`${main.path}`}
+            exact
+            render={() => <ContentContainer toggle={toggle} />}
+          />
           <Route
             path={`${main.path}/images`}
             exact
-            component={ImageContainer}
+            render={() => <ImageContainer toggle={toggle} />}
           />
-          <Route path={`${main.path}/create`} exact component={CreateImage} />
+          <Route
+            path={`${main.path}/create`}
+            exact
+            component={CreateImage}
+            toggle={toggle}
+          />
         </Switch>
       </div>
     </div>
