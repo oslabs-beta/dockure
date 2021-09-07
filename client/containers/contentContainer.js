@@ -3,9 +3,11 @@ import DockerCommand from '../components/dockerCommand';
 import StatsContainer from '../components/statsContainer';
 import ContainerService from '../services/containerService';
 import UserDbService from '../services/userDbService';
+import Loader from '../components/loader';
 
 const ContentContainer = () => {
   const [conList, setConList] = useState([]);
+  const [isDataLoading, setIsDataLoading] = useState(true);
   const [conStatus, setConStatus] = useState(true);
 
   useEffect(async () => {
@@ -22,8 +24,10 @@ const ContentContainer = () => {
     const result = await ContainerService.getConInfo(
       'http://localhost:3000/api/containers'
     );
+    
+    // setIsDataLoading(false);
     // console.log(result, 'resultttt');
-    setConList(result);
+    setTimeout(() => setConList(result), 1000);
   }, [conStatus]);
 
   //getting stats about a particular container
@@ -50,6 +54,8 @@ const ContentContainer = () => {
           <Route path={`${main.path}/create`} exact component={CreateImage} />
         </Switch> */
   }
+
+  // if (isDataLoading) return <Loader />
 
   return (
     <div className='content_container'>
