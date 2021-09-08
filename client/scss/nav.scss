@@ -6,8 +6,15 @@
   // background-color: darken($accent-background-color, 4%);
   background-color: $accent-background-color;
   height: 95vh;
-  padding: 4rem 0;
+  padding: 2.5rem 0;
   border-right: 1px solid lighten($background-color, 10%);
+}
+
+.nav_icon {
+  width: 5rem;
+  height: auto;
+  align-self: center;
+  margin: 0 0 3rem 0;
 }
 
 .nav_btns {

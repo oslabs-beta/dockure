@@ -17,7 +17,6 @@ const SignUP = () => {
       ...userData,
       username: e.target.value,
     }));
-    console.log(userData.username);
   };
 
   const userEmailHandler = (e) => {
@@ -25,7 +24,6 @@ const SignUP = () => {
       ...userData,
       email: e.target.value,
     }));
-    console.log(userData.email);
   };
 
   const passwordHandler = (e) => {
@@ -33,7 +31,6 @@ const SignUP = () => {
       ...userData,
       password: e.target.value,
     }));
-    console.log(userData.password);
   };
 
   const sendUserData = async () => {
@@ -47,13 +44,11 @@ const SignUP = () => {
     if (!userData.username || !userData.email) {
       setShowUserError(true);
       setShowPWError(false);
-      // alert("Username and Email cannot be empty");
       return;
     }
     if (userData.password.length < 5) {
       setShowUserError(false);
       setShowPWError(true);
-      // alert("Password must be 5 characters or more")
       return;
     }
     sendUserData();
@@ -94,7 +89,7 @@ const SignUP = () => {
           ></input>
           {showUserError && (
             <div className='login_error'>
-              "Username and Email cannot be empty"
+              Username and Email cannot be empty
             </div>
           )}
           {showPWError && (

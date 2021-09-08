@@ -2,7 +2,7 @@
   background-color: $background-color;
   color: $gray-color;
   display: flex;
-  width: 43vw;
+  width: 45vw;
   flex-direction: column;
   align-items: center;
   height: 95vh;
@@ -15,7 +15,7 @@
     flex-direction: row;
     width: 80%;
     justify-content: space-evenly;
-    padding: 1rem .33rem;
+    padding: 1rem 0.33rem;
   }
 
   .stats_graph_dataKey {

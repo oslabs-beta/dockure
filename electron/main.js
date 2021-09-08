@@ -9,10 +9,10 @@ let mainWindow;
 
 function createWindow() {
   mainWindow = new BrowserWindow({
-    width: 1024,
-    height: 720,
-    minWidth: 800,
-    minHeight: 600,
+    width: 1200,
+    height: 770,
+    minWidth: 1040,
+    minHeight: 680,
     // frame: false,
     titleBarStyle: 'hiddenInset',
     webPreferences: {
@@ -27,7 +27,7 @@ function createWindow() {
     mainWindow.webContents.openDevTools();
     mainWindow.loadURL(`http://localhost:3000`);
   } else {
-    // when it is production mode, we are open the electron app
+    // when it is production mode, we are opening the electron app
     // need to yarn build first, and then yarn start.
     mainWindow.loadURL(
       url.format({

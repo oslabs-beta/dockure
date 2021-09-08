@@ -1,5 +1,5 @@
 import React, { component } from 'react';
-// import App from '../App';
+import dockureIconV2 from '../asset/dockureIconLogoV2.svg';
 
 import {
   BrowserRouter as Router,
@@ -14,6 +14,8 @@ const Nav = () => {
   let main = useRouteMatch();
   return (
     <ul className='nav'>
+      <img src={dockureIconV2} className='nav_icon' />
+      {/* <img src={dockureI} className='nav_icon' /> */}
       <Link to='/main'>
         <button className='nav_btns'>Containers</button>
       </Link>
