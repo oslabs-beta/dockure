@@ -11,8 +11,8 @@ imageRouter.post('/start', imageController.startImage, (req, res) => {
     return res.status(200).send('running');
 })
 
-imageRouter.post('/stop', imageController.stopImage, (req, res) => {
-    return res.status(200).send('stopped');
+imageRouter.post('/delete', imageController.deleteImage, (req, res) => {
+    return res.status(200).send('deleted');
 })
 
 imageRouter.post('/pull', imageController.pullImage, (req, res) => {

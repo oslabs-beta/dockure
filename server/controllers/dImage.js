@@ -39,12 +39,13 @@ imageController.startImage = (req, res, next) => {
     return next();
 }
 
-imageController.stopImage = (req, res, next) => {  
+imageController.deleteImage = (req, res, next) => {  
     
     console.log('Entered into imageController.stopImage')
-    res.locals.imageID = req.query.imageID
+    console.log(req.body)
+    res.locals.imageID = req.body.imageID
 
-    exec(`docker stop ${req.query.imageID}`, (error, stdout, stderr) => {
+    exec(`docker image rm ${req.body.imageID}`, (error, stdout, stderr) => {
         if (error) {
             console.log(`error: ${error.message}`);
             return next(error);
