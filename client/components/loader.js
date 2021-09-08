@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Loader = () => {
-    return <div>Loading!!!!!!!!!</div>
+    return <img src='../ball.svg' />
 }
 
 export default Loader;

@@ -1,43 +1,36 @@
-import React, { component, useState } from 'react';
+import React, { component, useState, useEffect } from 'react';
 import ImageItem from './imageItem';
-import imageService from '../services/imageService';
+import PullImage from './pullImage';
+import DockerBuild from './dockerBuild';
 
 const ImageList = ({ imageList }) => {
-  const [imageName, setImageName] = useState('');
 
-  const handlePull = async (e) => {
-    const pulledImage = await imageService.pullImageInfo(
-      '/api/images/pull',
-      imageName
-    );
-    console.log(pulledImage);
-  };
+  const [dockerAction, setDockerAction] = useState(true)
+  
 
-  const onSubmit = () => {
-    const input = document.querySelector('.image_input');
-    setImageName('');
-    handlePull();
-    input.focus();
-  };
+  const handleChange = (e) => {
+    console.log(e.target.value)
+    if(e.target.value === 'Build') return setDockerAction(false)
+    else return setDockerAction(true)
+  }
+
 
   const image = imageList.map((image, inx) => {
     return <ImageItem key={inx} id={image.Id} image={image} />;
   });
 
+//  else if (dockerAction === 'Build') let Form = <BuildImage />
+
   return (
     <div className='image_main'>
-      <div className='image_pull'>
-        <input
-          type='text'
-          value={imageName}
-          className='image_input'
-          placeholder='Type Image Name'
-          onChange={(e) => setImageName(e.target.value)}
-        />
-        <button className='image_submit' onClick={onSubmit}>
-          Pull
-        </button>
-      </div>
+      <select 
+        className="select"
+        onChange={handleChange}
+      >
+        <option value="Pull">Pull</option>
+        <option value="Build">Build</option>
+      </select>
+      {dockerAction ? <PullImage /> : <DockerBuild />}
       <ul className='image_list'>{image}</ul>
     </div>
   );
@@ -45,4 +38,4 @@ const ImageList = ({ imageList }) => {
 
 export default ImageList;
 
-// `https://hub.docker.com/search?q=${input.value}&type=image`
+// 
