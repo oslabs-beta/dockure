@@ -5,7 +5,12 @@ import { useDispatch } from 'react-redux';
 import { setStateMetrics } from '../redux/action/action.js';
 import Loader from './loader';
 
-const ContainerList = ({ conList, onCheckboxClickCallback, conStatus }) => {
+const ContainerList = ({
+  conList,
+  onCheckboxClickCallback,
+  conStatus,
+  selectedIds,
+}) => {
   //repotags, id, created, size
   //id has to be actual container id
   const dispatch = useDispatch();
@@ -31,6 +36,7 @@ const ContainerList = ({ conList, onCheckboxClickCallback, conStatus }) => {
   )
 
   const con = conList.map((container, inx) => {
+    const isChecked = !!selectedIds[container.Id];
     return (
       <ContainerItem
         key={inx}
@@ -39,6 +45,7 @@ const ContainerList = ({ conList, onCheckboxClickCallback, conStatus }) => {
         getData={() => getData(container.Id, container.State)}
         container={container}
         conStatus={conStatus}
+        isChecked={isChecked}
       />
     );
   });

@@ -7,7 +7,6 @@ const isAuth = require('../controllers/isAuth');
 const userRouter = Router();
 
 //route handler
-
 userRouter.post('/signup', userController.createUser, (req, res) => {
   res.status(200).send({ id: res.locals.id, token: res.locals.token });
 });

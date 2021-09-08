@@ -27,7 +27,10 @@ const Graph = ({ data, dataKey, dataType }) => {
               angle: -90,
               position: 'insideLeft',
               dy: 100,
-              dx: -5,
+              dx: -3,
+              style: {
+                fill: '#f7f7f7',
+              },
             }}
           />
           <Tooltip />

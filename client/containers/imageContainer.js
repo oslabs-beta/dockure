@@ -2,7 +2,7 @@ import React, { component, useEffect, useState } from 'react';
 import imageService from '../services/imageService';
 import ImageList from '../components/imageList';
 
-const ImageContainer = () => {
+const ImageContainer = ({ toggle }) => {
   const [imageList, setImageList] = useState([]);
 
   useEffect(async () => {
@@ -13,7 +13,11 @@ const ImageContainer = () => {
   }, []);
 
   return (
-    <div className='image_container'>
+    <div
+      className={`image_container ${
+        toggle ? 'image_toggle' : 'image_toggle_inactive'
+      }`}
+    >
       <p className='image_head'>WELCOME TO IMAGES</p>
       <ImageList imageList={imageList} />
     </div>
