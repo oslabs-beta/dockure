@@ -1,7 +1,6 @@
 import React, { component, useState, useEffect } from 'react';
 import imageService from '../services/imageService';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 
 const ImageItem = ({ id, image }) => {
   const [isRunning, setIsRunning] = useState();
@@ -26,6 +25,16 @@ const ImageItem = ({ id, image }) => {
     if (handleSubmit.data === 'running') setIsRunning(true);
   };
 
+   const deleteClick = async (e) => {
+    const ID = { image }.image.Id.slice(7, 19);
+    const handleSubmit = await imageService.deleteImage(
+      'http://localhost:3000/api/images/delete',
+      ID
+    );
+    // if (handleSubmit.data === 'running') setIsRunning(true);
+  };
+
+
   return (
     <div className='image_item'>
       <div className='image_tag'>Image Name </div>
@@ -42,11 +51,11 @@ const ImageItem = ({ id, image }) => {
             </Link>
           </div>
         )}
-        {/* <div>
-          <button className='image_button image_stop' onClick={stopClick}>
-            Stop
+        <div>
+          <button className='image_button image_stop' onClick={deleteClick}>
+            Delete
           </button>
-        </div> */}
+        </div>
       </div>
     </div>
   );
