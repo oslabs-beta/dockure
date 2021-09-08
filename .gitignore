@@ -5,3 +5,14 @@ package-lock.json
 promConfigFile.yaml
 data-out.yaml
 yarn.lock
+Dockure-darwin-arm64
+Dockure-darwin-x64
+Dockure-linux-armv7l
+Dockure-linux-arm64
+Dockure-linux-x64
+Dockure-linux-ia32
+Dockure-mas-arm64
+Dockure-mas-x64
+Dockure-win32-arm64
+Dockure-win32-ia32
+Dockure-win32-x64
