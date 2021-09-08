@@ -1,6 +1,8 @@
 import React, { component, useState, useEffect } from 'react';
 import imageService from '../services/imageService';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
 const ImageItem = ({ id, image }) => {
   const [isRunning, setIsRunning] = useState();
@@ -25,7 +27,7 @@ const ImageItem = ({ id, image }) => {
     if (handleSubmit.data === 'running') setIsRunning(true);
   };
 
-   const deleteClick = async (e) => {
+  const deleteClick = async (e) => {
     const ID = { image }.image.Id.slice(7, 19);
     const handleSubmit = await imageService.deleteImage(
       'http://localhost:3000/api/images/delete',
@@ -34,11 +36,13 @@ const ImageItem = ({ id, image }) => {
     // if (handleSubmit.data === 'running') setIsRunning(true);
   };
 
-
   return (
     <div className='image_item'>
       <div className='image_tag'>Image Name </div>
       <div className='image_name'>{checkRepoTag({ image })}</div>
+      <div>
+        <FontAwesomeIcon icon={faEllipsisV} />
+      </div>
       <div className='imagebtns'>
         {isRunning ? (
           <div className='image_running'>In Use</div>
