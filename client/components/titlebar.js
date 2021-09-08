@@ -61,7 +61,7 @@ const Titlebar = ({ toggle, setToggle, isLogin, setIsLogin, userName }) => {
       <div className='titlebar'>
         <div className='title_bar'>
           <div className='titlebar_traffic'>
-            <div
+            {/* <div
               className={`traffic ${isActive ? 'traffic_red' : 'traffic_gray'}`}
               // onClick={closeHandler}
             >
@@ -123,7 +123,7 @@ const Titlebar = ({ toggle, setToggle, isLogin, setIsLogin, userName }) => {
                   <FontAwesomeIcon icon={faExpandAlt} />
                 </div>
               </div>
-            )}
+            )} */}
 
             <div
               className={isLogin ? 'titlebar_toggle' : 'titlebar_btn_inactive'}

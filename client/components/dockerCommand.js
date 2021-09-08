@@ -1,10 +1,11 @@
-import React, { component, useState } from 'react';
-import ContainerList from './containerList';
-import { Link } from 'react-router-dom';
-import ContainerService from '../services/containerService';
+import React, { component, useState } from "react";
+import ContainerList from "./containerList";
+import { Link } from "react-router-dom";
+import ContainerService from "../services/containerService";
 
 const DockerCommand = ({ conList, conStatus, setConStatus, toggle }) => {
   const [selectedIds, setSelectedIds] = useState({});
+  let ready = true;
   // refactor code with redux;
 
   const onCheckboxClickCallback = (id) => {
@@ -21,20 +22,27 @@ const DockerCommand = ({ conList, conStatus, setConStatus, toggle }) => {
   const onClickButton = (url) => {
     // const check = document.querySelector('.item_checkbox');
     // console.log(selectedIds);
-    const promiseArr = [];
-    for (let id in selectedIds) {
-      let result = ContainerService.postClickBtn(url, id);
-      promiseArr.push(result);
+    if (ready) {
+      console.log("calling the function!!");
+      ready = false;
+      const promiseArr = [];
+
+      for (let id in selectedIds) {
+        let result = ContainerService.postClickBtn(url, id);
+        promiseArr.push(result);
+      }
+      // const values = await Promise.all(promiseArr);
+      Promise.all(promiseArr).then((values) => {
+        console.log(values[0].status);
+        // need to use redux to update status
+        if (conStatus) return setConStatus(false);
+        return setConStatus(true);
+      });
+      setTimeout(() => {
+        ready = true;
+        //if error there is a five second delay
+      }, 5000);
     }
-    // const values = await Promise.all(promiseArr);
-    Promise.all(promiseArr).then((values) => {
-      console.log(values[0].status);
-      // need to use redux to update status
-      // check.checked = false;
-      setSelectedIds({});
-      if (conStatus) return setConStatus(false);
-      return setConStatus(true);
-    });
   };
 
   return (
@@ -47,7 +55,7 @@ const DockerCommand = ({ conList, conStatus, setConStatus, toggle }) => {
         <button
           className='docker_btn docker_start'
           onClick={(e) =>
-            onClickButton('http://localhost:3000/api/containers/start')
+            onClickButton("http://localhost:3000/api/containers/start")
           }
         >
           Start
@@ -55,7 +63,7 @@ const DockerCommand = ({ conList, conStatus, setConStatus, toggle }) => {
         <button
           className='docker_btn docker_redbtn'
           onClick={(e) =>
-            onClickButton('http://localhost:3000/api/containers/stop')
+            onClickButton("http://localhost:3000/api/containers/stop")
           }
         >
           Stop
@@ -63,7 +71,7 @@ const DockerCommand = ({ conList, conStatus, setConStatus, toggle }) => {
         <button
           className='docker_btn docker_redbtn'
           onClick={(e) =>
-            onClickButton('http://localhost:3000/api/containers/kill')
+            onClickButton("http://localhost:3000/api/containers/kill")
           }
         >
           Kill
@@ -71,7 +79,7 @@ const DockerCommand = ({ conList, conStatus, setConStatus, toggle }) => {
         <button
           className='docker_btn docker_commonbtn'
           onClick={(e) =>
-            onClickButton('http://localhost:3000/api/containers/restart')
+            onClickButton("http://localhost:3000/api/containers/restart")
           }
         >
           Restart
@@ -80,7 +88,7 @@ const DockerCommand = ({ conList, conStatus, setConStatus, toggle }) => {
           className='docker_btn docker_commonbtn'
           onClick={(e) =>
             onClickButton(
-              'http://localhost:3000/api/containers/pause',
+              "http://localhost:3000/api/containers/pause",
               selectedIds
             )
           }
@@ -91,7 +99,7 @@ const DockerCommand = ({ conList, conStatus, setConStatus, toggle }) => {
           className='docker_btn docker_commonbtn'
           onClick={(e) =>
             onClickButton(
-              'http://localhost:3000/api/containers/resume',
+              "http://localhost:3000/api/containers/resume",
               selectedIds
             )
           }
@@ -102,7 +110,7 @@ const DockerCommand = ({ conList, conStatus, setConStatus, toggle }) => {
           className='docker_btn docker_redbtn'
           onClick={(e) =>
             onClickButton(
-              'http://localhost:3000/api/containers/remove',
+              "http://localhost:3000/api/containers/remove",
               selectedIds
             )
           }
@@ -110,8 +118,8 @@ const DockerCommand = ({ conList, conStatus, setConStatus, toggle }) => {
           Remove
         </button>
       </ul>
-      <Link to='/main/create'>
-        <button className='docker_btn add_btn'>
+      <Link to="/main/create">
+        <button className="docker_btn add_btn">
           {/* <span>+</span> */}
           <span> + Add Container</span>
         </button>

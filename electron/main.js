@@ -1,7 +1,7 @@
-const { app, BrowserWindow, ipcMain } = require('electron');
+const { app, BrowserWindow, ipcMain, Menu } = require('electron');
 const path = require('path');
 const url = require('url');
-const server = require('../server/server.js')
+const server = require('../server/server.js');
 
 require('../server/server');
 
@@ -13,7 +13,8 @@ function createWindow() {
     height: 720,
     minWidth: 800,
     minHeight: 600,
-    frame: false,
+    // frame: false,
+    titleBarStyle: 'hiddenInset',
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
@@ -36,6 +37,8 @@ function createWindow() {
       })
     );
   }
+
+  Menu.setApplicationMenu(null);
 
   // mainWindow.on('closed', () => {
   //   mainWindow = null;

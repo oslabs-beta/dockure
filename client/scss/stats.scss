@@ -10,6 +10,14 @@
   overflow-y: auto;
   border-left: 1px solid lighten($background-color, 10%);
 
+  #stats_time {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    justify-content: space-evenly;
+    padding: 1rem .33rem;
+  }
+
   .stats_graph_dataKey {
     color: $font-color;
   }

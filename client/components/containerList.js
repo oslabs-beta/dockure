@@ -3,6 +3,8 @@ import ContainerItem from './containerItem';
 import containerService from '../services/containerService';
 import { useDispatch } from 'react-redux';
 import { setStateMetrics } from '../redux/action/action.js';
+import { useSelector } from 'react-redux';
+import { timeSelector } from './time.selector';
 import Loader from './loader';
 
 const ContainerList = ({
@@ -11,6 +13,10 @@ const ContainerList = ({
   conStatus,
   selectedIds,
 }) => {
+
+  const { time } = useSelector(timeSelector);
+  console.log('time change: ', time);
+
   //repotags, id, created, size
   //id has to be actual container id
   const dispatch = useDispatch();
@@ -24,7 +30,9 @@ const ContainerList = ({
     if (containerState === 'running')
       stats = await containerService.getMetrics(
         'http://localhost:3000/api/metrics',
-        id
+        id,
+        time
+        //time goes here!!
       );
     dispatch(setStateMetrics(stats));
   };
