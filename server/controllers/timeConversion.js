@@ -12,11 +12,9 @@ timeConversionController.unixTime = (req, res, next) => {
 
         //get time from req.body and convert to unix time
         const start = currentTime - (req.query.start * 3600); 
-
         //pass these values onto the query controller
         res.locals.end = currentTime;
         res.locals.start = start;
-
         return next();  
     } catch (error) {
         console.log('error reached: ', error);

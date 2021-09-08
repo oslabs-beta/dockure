@@ -3,6 +3,7 @@ import * as types from '../action/actionTypes';
 const initialState = {
   containerList: [],
   metrics: [],
+  time: 1
   //activeId?
 };
 
@@ -23,6 +24,12 @@ export const containerReducer = (state = initialState, action) => {
         ...state,
         metrics: newMetrics
       }
+    case types.TIME_SELECTOR: {
+      return {
+        ...state,
+        time: action.payload
+      }
+    }
     default: {
       return state;
     }

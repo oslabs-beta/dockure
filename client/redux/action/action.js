@@ -9,3 +9,8 @@ export const setStateMetrics = (payload) => ({
   type: types.SET_STATE_METRICS,
   payload,
 });
+
+export const setTimeSelector = (payload) => ({
+  type: types.TIME_SELECTOR,
+  payload,
+})
