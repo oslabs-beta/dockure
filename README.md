@@ -119,7 +119,6 @@ Alternatively, you can skip steps 3-4 and run this application in dev mode outsi
 <!-- USAGE EXAMPLES -->
 ## Usage
 Once you are logged in there are loads you can do. Here are some examples:
-![signin](https://raw.githubusercontent.com/oslabs-beta/dockure/dev/.github/signin.png)
 
 * Our simple homepage displays containers and their data. You can view container data and/or select multiple containers you'd like to start and stop
 ![homepage](https://raw.githubusercontent.com/oslabs-beta/dockure/dev/.github/containerstab.png)
