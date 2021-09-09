@@ -12,11 +12,8 @@
 <br />
 <p align="center">
   <a href="https://github.com/oslabs-beta/dockure">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="https://raw.githubusercontent.com/oslabs-beta/dockure/dev/.github/dockureIconLogoV2.png" alt="Logo" width="80" height="80">
   </a>
-
-  <h2 align="center">Dockure</h3>
-
   <p align="center">
     Simplifying the containerization process outside of the command line.
     <br />
