@@ -61,9 +61,6 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
-
 ### Built With
 * [React](https://reactjs.org/docs/getting-started.html)
 * [Redux](https://redux.js.org/)
