@@ -13,15 +13,9 @@ const ContainerList = ({
   conStatus,
   selectedIds,
 }) => {
-
   const { time } = useSelector(timeSelector);
-  console.log('time change: ', time);
-
-  //repotags, id, created, size
-  //id has to be actual container id
   const dispatch = useDispatch();
   const getData = async (id, containerState) => {
-    // const stats = await containerService.getMetrics('api/containers/stats', { id: id })
     console.log('CONTAINER INFO: ', containerState);
     let stats = {
       cpu: [],
@@ -32,16 +26,13 @@ const ContainerList = ({
         'http://localhost:3000/api/metrics',
         id,
         time
-        //time goes here!!
       );
     dispatch(setStateMetrics(stats));
   };
-  
-  if(!conList) return null;
 
-  if(!conList.length) return (
-    <Loader />
-  )
+  if (!conList) return null;
+
+  if (!conList.length) return <Loader />;
 
   const con = conList.map((container, inx) => {
     const isChecked = !!selectedIds[container.Id];
@@ -58,12 +49,7 @@ const ContainerList = ({
     );
   });
 
-  return (
-    <ul className='container_list'>
-      {con}
-    </ul>
-  );
+  return <ul className='container_list'>{con}</ul>;
 };
 
 export default ContainerList;
-

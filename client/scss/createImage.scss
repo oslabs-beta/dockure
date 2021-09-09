@@ -1,66 +1,75 @@
-.create-image {
+.create_image {
   display: flex;
-  // padding: 4rem 2rem;
+  justify-content: space-around;
+  height: 95vh;
+  background-color: $background-color;
   overflow-y: auto;
 }
 
-.editor-con {
-  flex-grow: 1;
-  flex-basis: 0;
-  display: flex-grid;
-  grid-template-columns: 1fr 1fr;
+.create_toggle {
+  width: 84vw;
+}
+
+.create_toggle_inactive {
+  width: 100vw;
+}
+
+.editor_con {
+  margin: 2rem 0;
+  width: 28rem;
+  display: flex;
   flex-direction: column;
-  padding: .5rem;
-  // background-color: hsl(225, 6%, 25%)
 }
 
 .YAML.collapsed {
-  flex-grow: 0;
   height: 0;
   width: 0;
 }
 
 .Dockerfile.collapsed {
-  flex-grow: 0;
   height: 0;
   width: 0;
 }
 
-.editor-title {
+.editor_title {
   display: flex;
   justify-content: space-between;
-  background-color: hsl(225, 6%, 13%);
-  color: white;
-  padding: .5rem .5rem .5rem 1rem;
-  border-top-right-radius: .5rem;
-  border-top-left-radius: .5rem;
+  background-color: darken($accent-background-color, 4%);
+  padding: 0.5rem 0.5rem 0.5rem 1rem;
+  border-top-right-radius: 0.5rem;
+  border-top-left-radius: 0.5rem;
+  color: darken($font-color, 10%);
+}
+
+.editor_openBtn {
+  background-color: darken($accent-background-color, 4%);
+  color: darken($font-color, 10%);
+  font-size: $font-small;
+  padding: 3px;
+  border: 1px solid darken($font-color, 50%);
+  border-radius: 6px;
+}
+.editor_openBtn:hover {
+  background-color: $primary-color;
+  color: darken($font-color, 10%);
+  border: 1px solid darken($primary-color, 10%);
+  border-radius: 6px;
+}
+.editor_openBtn:focus {
+  color: darken($font-color, 10%);
+  border: 1px solid darken($font-color, 50%);
+  border-radius: 6px;
 }
 
 .code-mirror-wrapper {
-  flex-grow: 1;
+  // flex-grow: 1;
   overflow: hidden;
 }
 
-// .CodeMirror {
-//   // height: 100% !important
-// }
-
-.save {
-  background-color: hsl(225, 6%, 13%);
-  color: white;
-  padding: .5rem .5rem .5rem 1rem;
-  border-bottom-right-radius: .5rem;
-  border-bottom-left-radius: .5rem;
+.editor_save {
+  background-color: darken($accent-background-color, 4%);
+  padding: 0.5rem 0.5rem 0.5rem 1rem;
+  color: darken($font-color, 10%);
+  border-bottom-right-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
 }
-
-
-// .docker-build-btn {
-//     text-decoration: none;
-//     font-size: 16px;
-//     font-weight: bold;
-//     background-color: transparent;
-//     padding: 12px 16px;
-//     border: solid 1px;
-//     border-radius: 5px;
-
-// }

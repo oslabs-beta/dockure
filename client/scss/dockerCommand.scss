@@ -9,11 +9,11 @@
 }
 
 .content_toggle {
-  width: 41vw;
+  width: 37vw;
 }
 
 .content_toggle_inactive {
-  width: 57vw;
+  width: 53vw;
 }
 
 .docker_buttons {
@@ -28,14 +28,6 @@
   padding: 0.25rem 0.5rem;
   font-size: $font-small;
   border-radius: 5px;
-  // color: $font-color;
-  // background-color: lighten($background-color, 50%);
-  // border: 1px solid lighten($background-color, 10%);
-  // background-color: transparentize($white-color, 0.9%);
-  // background-color: $background-color;
-  // border: 1px solid $white-color;
-  // font-weight: bold;
-  // color: darken($primary-color, 18%);
 }
 
 .docker_start {
@@ -69,7 +61,7 @@
 }
 
 .docker_commonbtn {
-  background-color: transparentize($accent-color, 0.5%);
+  background-color: lighten($background-color, 12%);
   color: $white-color;
 }
 

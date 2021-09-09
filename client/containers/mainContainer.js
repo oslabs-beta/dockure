@@ -14,8 +14,6 @@ import {
 } from 'react-router-dom';
 
 const MainContainer = ({ toggle, setIsLogin, setUserName }) => {
-  const [notLogin, setNotLogin] = useState(false);
-
   useEffect(async () => {
     const result = await UserDbService.getUserToken(
       'http://localhost:3000/api/user/me'
@@ -34,11 +32,6 @@ const MainContainer = ({ toggle, setIsLogin, setUserName }) => {
       <div className='nav_content'>
         {toggle && <Nav />}
         <Switch>
-          {/* <Route
-            render={() =>
-              notLogin ? <Redirect to='/main' /> : <Component {...rest} />
-            }
-          /> */}
           <Route
             path={`${main.path}`}
             exact
@@ -52,8 +45,7 @@ const MainContainer = ({ toggle, setIsLogin, setUserName }) => {
           <Route
             path={`${main.path}/create`}
             exact
-            component={CreateImage}
-            toggle={toggle}
+            render={() => <CreateImage toggle={toggle} />}
           />
         </Switch>
       </div>

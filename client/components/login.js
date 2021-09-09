@@ -15,7 +15,6 @@ const Login = () => {
       ...userData,
       username: e.target.value,
     }));
-    console.log(userData.username);
   };
 
   const passwordHandler = (e) => {
