@@ -16,7 +16,6 @@ const ContainerList = ({
   const { time } = useSelector(timeSelector);
   const dispatch = useDispatch();
   const getData = async (id, containerState) => {
-    console.log('CONTAINER INFO: ', containerState);
     let stats = {
       cpu: [],
       memory: [],

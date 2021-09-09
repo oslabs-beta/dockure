@@ -18,8 +18,6 @@ const ContentContainer = ({ toggle }) => {
     if (!result.token) {
       return UserDbService.logout();
     }
-
-    console.log(result);
   }, []);
 
   let conInfo = useEffect(async () => {
@@ -32,33 +30,6 @@ const ContentContainer = ({ toggle }) => {
       setConList(result);
     }, 1000);
   }, [conStatus]);
-
-  //getting stats about a particular container
-
-  //how do we pass this infoirmation from conList to Stats
-
-  {
-    /* <Switch> */
-  }
-  {
-    /* <Route
-            render={() =>
-              notLogin ? <Redirect to='/main' /> : <Component {...rest} />
-            }
-          /> */
-  }
-  {
-    /* <Route path={`${main.path}`} exact component={ContentContainer} />
-          <Route
-            path={`${main.path}/images`}
-            exact
-            component={ImageContainer}
-          />
-          <Route path={`${main.path}/create`} exact component={CreateImage} />
-        </Switch> */
-  }
-
-  // if (isDataLoading) return <Loader />
 
   return (
     <div className='content_container'>

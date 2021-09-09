@@ -9,7 +9,6 @@ const PullImage = () => {
       '/api/images/pull',
       imageName
     );
-    console.log(pulledImage);
   };
 
   const onSubmit = () => {
@@ -45,4 +44,3 @@ const PullImage = () => {
 
 export default PullImage;
 
-//

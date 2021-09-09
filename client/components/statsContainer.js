@@ -8,20 +8,12 @@ import { getMetricsSelector } from './stats.selector';
 
 const Stats = () => {
   const { metrics } = useSelector(getMetricsSelector);
-  console.log('Metrics on the Frontend: ', metrics);
   const dispatch = useDispatch();
-
-  // function setTime (time) {
-  //   return dispatch(setTimeSelector(time));
-  // }
-
-
 
   return (
     <div className='stats'>
       <div id='stats_time'>
         <button className='item_dataBtn' onClick={() => {
-          console.log('Button clicked!')
           dispatch(setTimeSelector(1))
         }}>1 Hour</button>
         <button className='item_dataBtn' onClick={() => dispatch(setTimeSelector(8))}>8 Hour</button>

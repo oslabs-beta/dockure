@@ -4,7 +4,6 @@ import UserDbService from '../services/userDbService';
 import TokenStorage from '../db/token';
 const tokenStorage = new TokenStorage();
 
-//Nate: OAuth?
 const Login = () => {
   const [userData, setUserData] = useState({ username: '', password: '' });
   const [showError, setShowError] = useState(false);

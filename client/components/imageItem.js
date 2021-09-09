@@ -11,12 +11,11 @@ const ImageItem = ({ id, image }) => {
   const [clickStart, setClickStart] = useState(0);
 
   const checkRepoTag = ({ image }) => {
-    //at index zero because it is an array which is the only way to compare with string value
+    
     if (image.RepoTags[0] === '<none>:<none>') {
       image.RepoTags = ['Anonymous'];
     }
 
-    //should this be the first index of the repo tag array or the last?
     return image.RepoTags[0];
   };
 
@@ -32,7 +31,6 @@ const ImageItem = ({ id, image }) => {
   const deleteClick = async (e) => {
     const ID = { image }.image.Id.slice(7, 19);
     setOptClick(false);
-    console.log(ID);
     const handleSubmit = await imageService.deleteImage(
       'http://localhost:3000/api/images/delete',
       ID

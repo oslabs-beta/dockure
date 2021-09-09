@@ -37,7 +37,6 @@ class ImageService {
   static async deleteImage(url, ID) {
     try {
       const result = await axios.post(url, { imageID: ID });
-      console.log(result);
       return result;
     } catch (error) {
       console.log('There was an error starting the Image: ', error);

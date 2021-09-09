@@ -29,7 +29,6 @@ userController.createUser = async (req, res, next) => {
 
     return next();
   } catch (err) {
-    console.log(err);
     return next({
       status: 500,
       message: 'Username already exists',
@@ -63,7 +62,6 @@ userController.userLogin = async (req, res, next) => {
     res.locals.token = token;
     return next();
   } catch (err) {
-    console.log('user:', err);
     return next({
       status: 500,
       message: err.message,
@@ -72,7 +70,7 @@ userController.userLogin = async (req, res, next) => {
 };
 
 userController.me = async (req, res, next) => {
-  // need to check id in database (req.userId)
+
   const id = req.userId;
   const params = [id];
   const query = `SELECT * FROM users WHERE id=$1 `;
@@ -81,7 +79,6 @@ userController.me = async (req, res, next) => {
   if (!user) {
     return res.status(404).json({ message: 'User not found' });
   }
-  console.log('checking jwt');
   res.locals.id = user.id;
   res.locals.token = req.token;
   res.locals.username = user.username;
@@ -89,7 +86,6 @@ userController.me = async (req, res, next) => {
 };
 
 function createJwtToken(id) {
-  // jwt.sign(payload, secretOrPrivateKey, options)
   return jwt.sign({ id }, config.jwt.secretKey, {
     expiresIn: config.jwt.expiresInSec,
   });
