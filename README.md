@@ -68,8 +68,6 @@
 
 
 ### Built With
-
-This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 * [React](https://reactjs.org/docs/getting-started.html)
 * [Redux](https://redux.js.org/)
 * [Express](https://expressjs.com/)
@@ -84,22 +82,21 @@ This section should list any major frameworks that you built your project using.
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+Starting our app is super easy! Just make sure you have Yarn and Docker if you don't already.
 
 ### Prerequisites
 
-1. Must have [Docker Desktop]() or Docker Daemon running in the background.
+1. Must have [Docker Desktop](https://www.docker.com/products/docker-desktop) or Docker Daemon running in the background.
 2. Must install yarn:
   ```sh
   npm install yarn
   ```
 
 ### Installation
-
+1. Download the app:
 * For Windows users:
 * For Mac users:
-* Make sure you have Docker running in the background, and that's it!
+2. Make sure you have Docker running in the background, and that's it!
    ```
 
 
@@ -107,7 +104,6 @@ To get a local copy up and running follow these simple example steps.
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-_For more examples, please refer to the [Documentation](https://example.com)_
 
 <!-- ROADMAP -->
 ## Roadmap
@@ -136,11 +132,11 @@ Distributed under the MIT License. See `LICENSE` for more information.
 ## Contact
 
 
-* Liam - [LinkedIn](https://Linkedin.com/), [Github](github.com/lptalty)
-* Van - [LinkedIn](https://Linkedin.com/), [Github](github.com/vanbietnguyen)
-* Alex - [LinkedIn](https://Linkedin.com/), [Github](github.com/AlexZayas)
-* Hazel - [LinkedIn](https://Linkedin.com/), [Github](github.com/hazel0109)
-* Nate - [LinkedIn](https://Linkedin.com/), [Github](github.com/n-tracy1)
+* Liam - [LinkedIn](https://www.linkedin.com/in/liamtalty/), [Github](github.com/lptalty)
+* Van - [LinkedIn](https://Linkedin.com/in/biet-van-nguyen-6879434a/), [Github](github.com/vanbietnguyen)
+* Alex - [LinkedIn](https://www.linkedin.com/in/alexander-zayas-jr/), [Github](github.com/AlexZayas)
+* Hazel - [LinkedIn](https://www.linkedin.com/in/hyeseon-na/), [Github](github.com/hazel0109)
+* Nate - [LinkedIn](https://Linkedin.com/in/nathanael-tracy/), [Github](github.com/n-tracy1)
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
