@@ -70,15 +70,15 @@
 ### Built With
 
 This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-* [React]()
-* [Redux]()
-* [Express]()
-* [Docker]()
-* [Docker REST API]()
-* [Node child_process]()
-* [Electron]()
-* [Prometheus]()
-* [CAdvisor]()
+* [React](https://reactjs.org/docs/getting-started.html)
+* [Redux](https://redux.js.org/)
+* [Express](https://expressjs.com/)
+* [Docker](https://docs.docker.com/)
+* [Docker REST API](https://docs.docker.com/engine/api/v1.41/#)
+* [Node child_process](https://nodejs.org/api/child_process.html)
+* [Electron](https://www.electronjs.org/docs)
+* [Prometheus](https://prometheus.io/docs/introduction/overview/)
+* [CAdvisor](https://github.com/google/cadvisor/blob/master/docs/storage/prometheus.md)
 * [Socat (in the localhost)]()
 
 <!-- GETTING STARTED -->
@@ -136,19 +136,19 @@ Distributed under the MIT License. See `LICENSE` for more information.
 ## Contact
 
 
-* Liam - [LinkedIn](https://Linkedin.com/), [Github]()
-* Van - [LinkedIn](https://Linkedin.com/), [Github]()
-* Alex - [LinkedIn](https://Linkedin.com/), [Github]()
-* Hazel - [LinkedIn](https://Linkedin.com/), [Github]()
-* Nate - [LinkedIn](https://Linkedin.com/), [Github]()
+* Liam - [LinkedIn](https://Linkedin.com/), [Github](github.com/lptalty)
+* Van - [LinkedIn](https://Linkedin.com/), [Github](github.com/vanbietnguyen)
+* Alex - [LinkedIn](https://Linkedin.com/), [Github](github.com/AlexZayas)
+* Hazel - [LinkedIn](https://Linkedin.com/), [Github](github.com/hazel0109)
+* Nate - [LinkedIn](https://Linkedin.com/), [Github](github.com/n-tracy1)
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
-* [Yarn]()
-* [Webpack]()
-* [CodeMirror]()
-* [BCrypt]()
-* [PostGreSQL]()
+* [Yarn](https://classic.yarnpkg.com/en/docs/)
+* [Webpack](https://webpack.js.org/)
+* [CodeMirror](https://codemirror.net/doc/manual.html)
+* [BCrypt](https://www.npmjs.com/package/bcrypt)
+* [PostGreSQL](https://www.postgresql.org/docs/)
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
