@@ -23,12 +23,15 @@ const Editor = (props) => {
 
   return (
     <>
-      <div className={`editor-con`}>
-        <div className='editor-title'>
+      <div className={`editor_con`}>
+        <div className='editor_title'>
           {' '}
           {`Edit your ${displayName}`}
-          <button onClick={() => setOpen((prevOpen) => !prevOpen)}>
-            {`${open ? 'close' : 'open'}`}
+          <button
+            className='editor_openBtn'
+            onClick={() => setOpen((prevOpen) => !prevOpen)}
+          >
+            {`${open ? 'Close' : 'Open'}`}
           </button>
         </div>
         <div className={`${displayName} ${open ? '' : 'collapsed'}`}>
@@ -45,7 +48,7 @@ const Editor = (props) => {
             }}
           />
         </div>
-        <div className='save' download='Dockerfile' onClick={save}>
+        <div className='editor_save' download='Dockerfile' onClick={save}>
           {`Save your ${displayName}`}
         </div>
       </div>

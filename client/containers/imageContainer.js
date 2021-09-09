@@ -18,7 +18,6 @@ const ImageContainer = ({ toggle }) => {
         toggle ? 'image_toggle' : 'image_toggle_inactive'
       }`}
     >
-      <p className='image_head'>WELCOME TO IMAGES</p>
       <ImageList imageList={imageList} />
     </div>
   );

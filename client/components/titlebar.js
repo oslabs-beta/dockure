@@ -1,4 +1,4 @@
-import React, { component, useState } from 'react';
+import React, { component, useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import UserStatus from './userStatus';
 import dockureLogoTitle from '../asset/dockureLogoTitle.svg';
@@ -15,10 +15,19 @@ const Titlebar = ({ toggle, setToggle, isLogin, setIsLogin, userName }) => {
     return setToggle(false);
   };
 
-  const userHandler = () => {
+  const userHandler = (e) => {
+    e.stopPropagation();
     if (!userStat) return setUserStat(true);
     return setUserStat(false);
   };
+
+  useEffect(() => {
+    if (userStat) {
+      document.body.addEventListener('click', () => {
+        setUserStat(false);
+      });
+    }
+  }, [userStat]);
 
   return (
     <>
