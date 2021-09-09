@@ -85,25 +85,45 @@
 Starting our app is super easy! Just make sure you have Yarn and Docker if you don't already.
 
 ### Prerequisites
-
+In order for the application to work:
 1. Must have [Docker Desktop](https://www.docker.com/products/docker-desktop) or Docker Daemon running in the background.
 2. Must install yarn:
   ```sh
   npm install yarn
   ```
-
+* For security purposes, please make sure you use this app in your local network unless you provide your own TCP TLS/SSH security. Pre-packaged SSH capabilities are currently in beta!
 ### Installation
-1. Download the app:
-* For Windows users:
-* For Mac users:
-2. Make sure you have Docker running in the background, and that's it!
+The pre-bundled app will be coming in Dockure 2.0, but for now:
+1. Clone the repo
+2. install dependencies
+   ```sh
+   yarn install
    ```
+3. build the app
+   ```sh
+   yarn build
+   ```
+4. start it
+   ```sh
+   yarn start
+   ```
+* After logging in for the first time, it may take some time for dependencies to load.
 
+Alternatively, you can skip steps 3-4 and run this application in dev mode outside of electron:
+  ```sh
+   yarn dev
+   ```
 
 
 <!-- USAGE EXAMPLES -->
 ## Usage
+Once you are logged in there are loads you can do. Here are some examples:
 
+* Our simple homepage displays containers and their data. You can view container data and/or select multiple containers you'd like to start and stop
+
+* In our images tab, you can run your images to build containers. You can also pull locally or on Docker Hub and build images.
+
+* In our create image tab, we provide a simple Dockerfile or YAML editor for you to create, edit and save your own files without opening up an IDE
 
 <!-- ROADMAP -->
 ## Roadmap
