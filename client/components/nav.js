@@ -23,7 +23,7 @@ const Nav = () => {
         <button className='nav_btns'>Images</button>
       </Link>
       <Link to='/main/create'>
-        <button className='nav_btns'>Create Image</button>
+        <button className='nav_btns'>YAML Editor</button>
       </Link>
     </ul>
   );

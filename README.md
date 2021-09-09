@@ -106,6 +106,10 @@ The pre-bundled app will be coming in Dockure 2.0, but for now:
    ```
 * After logging in for the first time, it may take some time for dependencies to load.
 
+![signin](https://raw.githubusercontent.com/oslabs-beta/dockure/dev/.github/signin.png)
+
+
+
 Alternatively, you can skip steps 3-4 and run this application in dev mode outside of electron:
   ```sh
    yarn dev
@@ -115,12 +119,19 @@ Alternatively, you can skip steps 3-4 and run this application in dev mode outsi
 <!-- USAGE EXAMPLES -->
 ## Usage
 Once you are logged in there are loads you can do. Here are some examples:
+![signin](https://raw.githubusercontent.com/oslabs-beta/dockure/dev/.github/signin.png)
 
 * Our simple homepage displays containers and their data. You can view container data and/or select multiple containers you'd like to start and stop
+![homepage](https://raw.githubusercontent.com/oslabs-beta/dockure/dev/.github/containerstab.png)
 
 * In our images tab, you can run your images to build containers. You can also pull locally or on Docker Hub and build images.
+![imagestab](https://raw.githubusercontent.com/oslabs-beta/dockure/dev/.github/imagestab.png)
 
-* In our create image tab, we provide a simple Dockerfile or YAML editor for you to create, edit and save your own files without opening up an IDE
+![build](https://raw.githubusercontent.com/oslabs-beta/dockure/dev/.github/build.png)
+
+
+* In our YAML/Dockerfile editor tab, we provide a simple Dockerfile or YAML editor for you to create, edit and save your own files without opening up an IDE.
+![yaml](https://raw.githubusercontent.com/oslabs-beta/dockure/dev/.github/createimage.png)
 
 <!-- ROADMAP -->
 ## Roadmap
