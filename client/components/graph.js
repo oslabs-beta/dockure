@@ -75,7 +75,7 @@ const Graph = ({ data, dataKey, dataType }) => {
               dy: 100,
               dx: -3,
               style: {
-                fill: '#555555',
+                fill: '#989898',
                 fontSize: '1rem'
               },
             }}
