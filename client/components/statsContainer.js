@@ -28,13 +28,13 @@ const Stats = () => {
         <button className='item_dataBtn' onClick={() => dispatch(setTimeSelector(24))}>24 Hour</button>
       </div>
 
-      <div style={{color:'#555555'}}>CPU Usage</div>
+      <div style={{color:'#989898'}}>CPU Usage</div> 
       <Graph
         data={metrics.cpu}
         dataKey={'percentTotalCpuUsed'}
         dataType={'CPU'}
       />
-      <div style={{color:'#555555'}}>Memory Usage</div>
+      <div style={{color:'#989898'}}>Memory Usage</div>   
       <Graph
         data={metrics.memory}
         dataKey={'percentTotalMemoryUsed'}
