@@ -1,0 +1,92 @@
+.content_container {
+  display: flex;
+}
+.docker_command {
+  height: 95vh;
+  padding: 1rem 1.5rem;
+  background-color: $background-color;
+  overflow-y: auto;
+}
+
+.content_toggle {
+  width: 37vw;
+}
+
+.content_toggle_inactive {
+  width: 53vw;
+}
+
+.docker_buttons {
+  display: flex;
+  align-items: center;
+  height: 6vh;
+  margin-bottom: 0.1rem;
+}
+
+.docker_btn {
+  margin: 2px;
+  padding: 0.25rem 0.5rem;
+  font-size: $font-small;
+  border-radius: 5px;
+}
+
+.docker_start {
+  background-color: transparentize($green-color, 0.3%);
+  color: $white-color;
+}
+
+.docker_start:hover {
+  background-color: $green-color;
+  color: $white-color;
+}
+
+.docker_start:focus {
+  background-color: transparentize($green-color, 0.3%);
+  color: $white-color;
+}
+
+.docker_redbtn {
+  background-color: transparentize($orange-color, 0.3%);
+  color: $white-color;
+}
+
+.docker_redbtn:hover {
+  background-color: lighten($orange-color, 2%);
+  color: $white-color;
+}
+
+.docker_redbtn:focus {
+  background-color: transparentize($orange-color, 0.3%);
+  color: $white-color;
+}
+
+.docker_commonbtn {
+  background-color: lighten($background-color, 12%);
+  color: $white-color;
+}
+
+.docker_commonbtn:hover {
+  background-color: lighten($accent-color, 10%);
+  color: $white-color;
+}
+
+.docker_commonbtn:focus {
+  background-color: transparentize($accent-color, 0.5%);
+  color: $white-color;
+}
+
+.add_btn {
+  margin-bottom: 0.8rem;
+  background-color: darken($accent-color, 20%);
+  color: $white-color;
+}
+
+.add_btn:hover {
+  background-color: lighten($accent-color, 10%);
+  color: $white-color;
+}
+
+.add_btn:focus {
+  background-color: darken($accent-color, 20%);
+  color: $white-color;
+}

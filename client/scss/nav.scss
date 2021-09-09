@@ -1,0 +1,40 @@
+.nav {
+  display: flex;
+  flex-direction: column;
+  width: 16vw;
+  min-width: 9rem;
+  background-color: $accent-background-color;
+  height: 95vh;
+  padding: 2.5rem 0;
+}
+
+.nav_icon {
+  width: 5rem;
+  height: auto;
+  align-self: center;
+  margin: 0 0 2.5rem 0;
+}
+
+.nav_btns {
+  text-align: start;
+  width: 15vw;
+  min-width: 8.5rem;
+  background-color: $accent-background-color;
+  color: $font-color;
+  font-size: $font-nav;
+  padding: 1rem 0 1rem 2rem;
+  border-radius: 0 10px 10px 0;
+}
+
+.nav_btns:hover {
+  background-color: lighten($accent-background-color, 5%);
+  border-left: 0.5rem solid lighten($primary-color, 30%);
+  padding: 1rem 0 1rem 1.5rem;
+  color: $font-color;
+}
+
+.nav_btns:focus {
+  background-color: transparentize($primary-color, 0.6%);
+  color: $white-color;
+  font-weight: bold;
+}

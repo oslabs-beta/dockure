@@ -1,0 +1,75 @@
+.create_image {
+  display: flex;
+  justify-content: space-around;
+  height: 95vh;
+  background-color: $background-color;
+  overflow-y: auto;
+}
+
+.create_toggle {
+  width: 84vw;
+}
+
+.create_toggle_inactive {
+  width: 100vw;
+}
+
+.editor_con {
+  margin: 2rem 0;
+  width: 28rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.YAML.collapsed {
+  height: 0;
+  width: 0;
+}
+
+.Dockerfile.collapsed {
+  height: 0;
+  width: 0;
+}
+
+.editor_title {
+  display: flex;
+  justify-content: space-between;
+  background-color: darken($accent-background-color, 4%);
+  padding: 0.5rem 0.5rem 0.5rem 1rem;
+  border-top-right-radius: 0.5rem;
+  border-top-left-radius: 0.5rem;
+  color: darken($font-color, 10%);
+}
+
+.editor_openBtn {
+  background-color: darken($accent-background-color, 4%);
+  color: darken($font-color, 10%);
+  font-size: $font-small;
+  padding: 3px;
+  border: 1px solid darken($font-color, 50%);
+  border-radius: 6px;
+}
+.editor_openBtn:hover {
+  background-color: $primary-color;
+  color: darken($font-color, 10%);
+  border: 1px solid darken($primary-color, 10%);
+  border-radius: 6px;
+}
+.editor_openBtn:focus {
+  color: darken($font-color, 10%);
+  border: 1px solid darken($font-color, 50%);
+  border-radius: 6px;
+}
+
+.code-mirror-wrapper {
+  // flex-grow: 1;
+  overflow: hidden;
+}
+
+.editor_save {
+  background-color: darken($accent-background-color, 4%);
+  padding: 0.5rem 0.5rem 0.5rem 1rem;
+  color: darken($font-color, 10%);
+  border-bottom-right-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}

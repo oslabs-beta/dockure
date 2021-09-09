@@ -1,0 +1,42 @@
+.user_status {
+  width: 200px;
+  position: absolute;
+  margin-left: 79vw;
+  z-index: 1;
+  padding: 0.5rem 0;
+  background-color: darken($background-color, 4%);
+  border-radius: 5px;
+  border: 1px solid darken($background-color, 10%);
+  box-shadow: 0 0 10px rgba(26, 25, 25, 0.2);
+  color: $font-color;
+}
+
+.starus_user_name {
+  margin: 1rem 1.5rem;
+  font-weight: bolder;
+}
+
+.status_block {
+  width: 100%;
+  padding: 0.5rem 0;
+}
+
+.block_line {
+  border-bottom: 1.5px solid lighten($background-color, 10%);
+}
+
+.user_btn {
+  text-align: left;
+  width: 100%;
+  height: 30px;
+  cursor: pointer;
+  padding: 0 1.5rem;
+  margin: 1rem 0 0;
+  color: $font-color;
+  background-color: darken($background-color, 5%);
+}
+
+.user_btn:hover {
+  background-color: transparentize($primary-color, 0.3%);
+  color: $white-color;
+}

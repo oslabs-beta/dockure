@@ -6,6 +6,7 @@
 
 body {
   font-family: 'Roboto', sans-serif;
+  color: $font-color;
 }
 
 button,
@@ -13,7 +14,6 @@ button:focus {
   border: none;
   outline: none;
   cursor: pointer;
-  background-color: white;
 }
 
 li {
@@ -23,7 +23,16 @@ li {
 a {
   text-decoration: none;
 }
+input {
+  padding: 0.8rem 0.6rem;
+  outline: none;
+}
 
-h1 {
-  color: blue;
+.main_container {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav_content {
+  display: flex;
 }
