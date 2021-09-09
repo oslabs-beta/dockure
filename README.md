@@ -68,38 +68,35 @@
 
 
 ### Built With
-
-This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-* [React]()
-* [Redux]()
-* [Express]()
-* [Docker]()
-* [Docker REST API]()
-* [Node child_process]()
-* [Electron]()
-* [Prometheus]()
-* [CAdvisor]()
+* [React](https://reactjs.org/docs/getting-started.html)
+* [Redux](https://redux.js.org/)
+* [Express](https://expressjs.com/)
+* [Docker](https://docs.docker.com/)
+* [Docker REST API](https://docs.docker.com/engine/api/v1.41/#)
+* [Node child_process](https://nodejs.org/api/child_process.html)
+* [Electron](https://www.electronjs.org/docs)
+* [Prometheus](https://prometheus.io/docs/introduction/overview/)
+* [CAdvisor](https://github.com/google/cadvisor/blob/master/docs/storage/prometheus.md)
 * [Socat (in the localhost)]()
 
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+Starting our app is super easy! Just make sure you have Yarn and Docker if you don't already.
 
 ### Prerequisites
 
-1. Must have [Docker Desktop]() or Docker Daemon running in the background.
+1. Must have [Docker Desktop](https://www.docker.com/products/docker-desktop) or Docker Daemon running in the background.
 2. Must install yarn:
   ```sh
   npm install yarn
   ```
 
 ### Installation
-
+1. Download the app:
 * For Windows users:
 * For Mac users:
-* Make sure you have Docker running in the background, and that's it!
+2. Make sure you have Docker running in the background, and that's it!
    ```
 
 
@@ -107,7 +104,6 @@ To get a local copy up and running follow these simple example steps.
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-_For more examples, please refer to the [Documentation](https://example.com)_
 
 <!-- ROADMAP -->
 ## Roadmap
@@ -136,19 +132,19 @@ Distributed under the MIT License. See `LICENSE` for more information.
 ## Contact
 
 
-* Liam - [LinkedIn](https://Linkedin.com/), [Github]()
-* Van - [LinkedIn](https://Linkedin.com/), [Github]()
-* Alex - [LinkedIn](https://Linkedin.com/), [Github]()
-* Hazel - [LinkedIn](https://Linkedin.com/), [Github]()
-* Nate - [LinkedIn](https://Linkedin.com/), [Github]()
+* Liam - [LinkedIn](https://www.linkedin.com/in/liamtalty/), [Github](github.com/lptalty)
+* Van - [LinkedIn](https://Linkedin.com/in/biet-van-nguyen-6879434a/), [Github](github.com/vanbietnguyen)
+* Alex - [LinkedIn](https://www.linkedin.com/in/alexander-zayas-jr/), [Github](github.com/AlexZayas)
+* Hazel - [LinkedIn](https://www.linkedin.com/in/hyeseon-na/), [Github](github.com/hazel0109)
+* Nate - [LinkedIn](https://Linkedin.com/in/nathanael-tracy/), [Github](github.com/n-tracy1)
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
-* [Yarn]()
-* [Webpack]()
-* [CodeMirror]()
-* [BCrypt]()
-* [PostGreSQL]()
+* [Yarn](https://classic.yarnpkg.com/en/docs/)
+* [Webpack](https://webpack.js.org/)
+* [CodeMirror](https://codemirror.net/doc/manual.html)
+* [BCrypt](https://www.npmjs.com/package/bcrypt)
+* [PostGreSQL](https://www.postgresql.org/docs/)
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
