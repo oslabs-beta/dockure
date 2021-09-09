@@ -20,7 +20,6 @@ const DockerCommand = ({ conList, conStatus, setConStatus, toggle }) => {
 
   const onClickButton = (url) => {
     if (ready) {
-      console.log('calling the function!!');
       ready = false;
       const promiseArr = [];
 
@@ -35,7 +34,6 @@ const DockerCommand = ({ conList, conStatus, setConStatus, toggle }) => {
       });
       setTimeout(() => {
         ready = true;
-        //if error there is a five second delay
       }, 5000);
     }
   };
@@ -121,8 +119,6 @@ const DockerCommand = ({ conList, conStatus, setConStatus, toggle }) => {
         </Link>
       </div>
 
-      {/* get data of the which container got picked, and apply the buttons // or
-      we can send all the button functions to the containerlist as props. */}
       <ContainerList
         conList={conList}
         onCheckboxClickCallback={onCheckboxClickCallback}

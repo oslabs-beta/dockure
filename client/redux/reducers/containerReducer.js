@@ -4,7 +4,6 @@ const initialState = {
   containerList: [],
   metrics: [],
   time: 1
-  //activeId?
 };
 
 export const containerReducer = (state = initialState, action) => {
@@ -16,10 +15,7 @@ export const containerReducer = (state = initialState, action) => {
       };
     }
     case types.SET_STATE_METRICS:
-      console.log('Entered set_state_metrics');
-      console.log(action.payload, 'payload')
       const newMetrics = action.payload;
-      console.log(newMetrics, 'newMetrics')
       return {
         ...state,
         metrics: newMetrics
@@ -35,5 +31,3 @@ export const containerReducer = (state = initialState, action) => {
     }
   }
 };
-
-//change reducer to include stats

@@ -4,7 +4,6 @@ class ContainerService {
   static async getConInfo(url) {
     try {
       let result = await axios.get(url);
-      // console.log('This is container information: ', result.data);
       return result.data;
     } catch (err) {
       console.log(
@@ -16,16 +15,14 @@ class ContainerService {
 
   static async getMetrics(url, id, time) {
     try {
-      //get current memory used by container
       const memoryStats = await axios.get(url, {
         params: {
           id,
-          //make the states the time that will be the third arg!!
           start: time,
           query: `container_memory_usage_bytes{id=~'/docker/${id}'}`,
         },
       });
-      //get total machine memory:
+
       const machineMem = await axios.get(url, {
         params: {
           id,
@@ -33,7 +30,7 @@ class ContainerService {
           query: `machine_memory_bytes`,
         },
       });
-      //get total cpu seconds used per container
+
       const cpuStats = await axios.get(url, {
         params: {
           id,
@@ -41,7 +38,7 @@ class ContainerService {
           query: `sum(rate(container_cpu_usage_seconds_total {id=~'/docker/${id}'} [5m]))`,
         },
       });
-      //get total cores of machine
+
       const cores = await axios.get(url, {
         params: {
           id,
@@ -53,7 +50,7 @@ class ContainerService {
       const data = {};
       data.memory = [];
       data.cpu = [];
-      //parse the memory data into something more readable: --> COULD MAKE THIS MORE MODULAR
+
       memoryStats.data.forEach((dataPoint, i) => {
         const machineMemory = machineMem.data[0][1];
         const time = new Date(dataPoint[0] * 1000);
@@ -63,7 +60,7 @@ class ContainerService {
         });
       });
 
-      //parse cpu data into percentages --> AGAIN CAN MAKE THIS MORE MODULAR
+
       cpuStats.data.forEach((dataPoint) => {
         const time = new Date(dataPoint[0] * 1000);
         data.cpu.push({
@@ -84,7 +81,6 @@ class ContainerService {
   static postClickBtn(url, id) {
     try {
       const result = axios.post(url, { containerID: id });
-      // console.log('result from post click button in container service is :', result)
       return result;
     } catch (err) {
       console.log('There is error on button functions in container service');
@@ -93,5 +89,4 @@ class ContainerService {
 
 }
 
-// ContainerService.getConInfo('http://localhost:3000/api')
 export default ContainerService;

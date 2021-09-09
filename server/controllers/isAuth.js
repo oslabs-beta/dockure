@@ -15,14 +15,11 @@ const isAuth = async (req, res, next) => {
     if (error) {
       return res.status(401).json(AUTH_ERROR);
     }
-    //need to check id if it is in data base => query.
 
-    // (decoded.id)
     const id = decoded.id;
     const params = [id];
     const query = `SELECT id FROM users WHERE id=$1 `;
     const { rows } = await pool.query(query, params);
-    // console.log('user: ', rows[0]);
     const user = rows[0];
     if (!user) {
       return res.status(401).json(AUTH_ERROR);

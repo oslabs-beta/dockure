@@ -17,12 +17,10 @@ const createUserTable = `
    email VARCHAR (50) UNIQUE NOT NULL
    )`;
 
-// //do i have to make the userId and UserName unique in thid query string above?
 
 pool.query(createUserTable, (err, res) => {
   if (err) {
-    console.log(err);
-    return;
+    return err;
   }
 });
 

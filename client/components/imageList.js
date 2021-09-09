@@ -7,7 +7,6 @@ const ImageList = ({ imageList }) => {
   const [dockerAction, setDockerAction] = useState(true);
 
   const handleChange = (e) => {
-    console.log(e.target.value);
     if (e.target.value === 'Build') return setDockerAction(false);
     else return setDockerAction(true);
   };
@@ -15,8 +14,6 @@ const ImageList = ({ imageList }) => {
   const image = imageList.map((image, inx) => {
     return <ImageItem key={inx} id={image.Id} image={image} />;
   });
-
-  //  else if (dockerAction === 'Build') let Form = <BuildImage />
 
   return (
     <div className='image_main'>
@@ -34,4 +31,3 @@ const ImageList = ({ imageList }) => {
 
 export default ImageList;
 
-//

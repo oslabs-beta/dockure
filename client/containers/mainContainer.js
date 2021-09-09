@@ -54,15 +54,3 @@ const MainContainer = ({ toggle, setIsLogin, setUserName }) => {
 };
 export default MainContainer;
 
-// const App = () => {
-//   return (
-//     <Router>
-//       <Switch>
-//         <Route path="/login" component={Login} />
-//         <ProtectedRoute exact={true} path="/">
-//           <MainAppContainer />
-//         </ProtectedRoute>
-//       </Switch>
-//     </Router>
-//   );
-// };
