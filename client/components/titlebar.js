@@ -45,7 +45,7 @@ const Titlebar = ({ toggle, setToggle, isLogin, setIsLogin, userName }) => {
           <div className='titlebar_btns'>
             {/* <div className={isLogin ? 'titlebar_btn' : 'titlebar_btn_inactive'}> */}
             <a
-              href='/'
+              href='http://dockure.com/'
               className={isLogin ? 'titlebar_link' : 'titlebar_btn_inactive'}
             >
               <img src={dockureIconW} className='titlebar_icon' />
