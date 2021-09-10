@@ -93,11 +93,30 @@ The pre-bundled app will be coming in Dockure 2.0, but for now:
    ```sh
    yarn install
    ```
-3. build the app
+3. create an .env file in the root directory filling out the DB_host and JWT secret like below:
+```
+# Database
+DB_HOST=your.db.here
+# Bcrypt
+BCRYPT_SALT_ROUNDS=10
+# JWT
+JWT_SECRET=your.secret.here
+JWT_EXPIRES_SEC=86400
+```
+|-- .github (folder)
+|-- client (folder)
+|-- electron (folder)
+|-- server (folder)
+
+|-- .env (file) <----- right here!
+|-- index.html
+|-- etcetra...
+      
+4. build the app
    ```sh
    yarn build
    ```
-4. start it
+5. start it
    ```sh
    yarn start
    ```
@@ -107,7 +126,7 @@ The pre-bundled app will be coming in Dockure 2.0, but for now:
 
 
 
-Alternatively, you can skip steps 3-4 and run this application in dev mode outside of electron:
+Alternatively, you can skip steps 4-5 and run this application in dev mode outside of electron:
   ```sh
    yarn dev
    ```
