@@ -103,6 +103,7 @@ BCRYPT_SALT_ROUNDS=10
 JWT_SECRET=your.secret.here
 JWT_EXPIRES_SEC=86400
 ```
+```
 |-- .github (folder)
 |-- client (folder)
 |-- electron (folder)
@@ -111,7 +112,7 @@ JWT_EXPIRES_SEC=86400
 |-- .env (file) <----- right here!
 |-- index.html
 |-- etcetra...
-      
+```
 4. build the app
    ```sh
    yarn build
