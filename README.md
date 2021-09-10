@@ -93,7 +93,7 @@ The pre-bundled app will be coming in Dockure 2.0, but for now:
    ```sh
    yarn install
    ```
-3. create an .env file in the root directory filling out the DB_host and JWT secret like below:
+3. create an .env file in the root directory filling in your personal DB_host and JWT secret like below:
 ```
 # Database
 DB_HOST=your.db.here
