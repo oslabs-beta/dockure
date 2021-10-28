@@ -1,6 +1,6 @@
 import React, { component, useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import UserStatus from './userStatus';
+import UserStatus from './userComponents/userStatus';
 import dockureLogoTitle from '../asset/dockureLogoTitle.svg';
 import dockureIconW from '../asset/dockureIconW1.svg';
 import { faBars, faUser } from '@fortawesome/free-solid-svg-icons';

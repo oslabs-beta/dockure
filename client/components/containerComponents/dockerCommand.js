@@ -1,7 +1,7 @@
 import React, { component, useState } from 'react';
 import ContainerList from './containerList';
 import { Link } from 'react-router-dom';
-import ContainerService from '../services/containerService';
+import ContainerService from '../../services/containerService';
 
 const DockerCommand = ({ conList, conStatus, setConStatus, toggle }) => {
   const [selectedIds, setSelectedIds] = useState({});

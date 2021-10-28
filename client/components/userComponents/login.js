@@ -1,7 +1,7 @@
 import React, { Component, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
-import UserDbService from '../services/userDbService';
-import TokenStorage from '../db/token';
+import UserDbService from '../../services/userDbService';
+import TokenStorage from '../../db/token';
 const tokenStorage = new TokenStorage();
 
 const Login = () => {

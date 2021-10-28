@@ -1,5 +1,5 @@
 import React, { component, useState, useEffect } from 'react';
-import imageService from '../services/imageService';
+import imageService from '../../services/imageService';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';

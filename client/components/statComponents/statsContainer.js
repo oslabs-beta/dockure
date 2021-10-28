@@ -2,9 +2,9 @@ import React, { component, useEffect, useState } from 'react';
 import Graph from './graph';
 
 import { useDispatch } from 'react-redux';
-import { setTimeSelector } from '../redux/action/action.js';
+import { setTimeSelector } from '../../redux/action/action.js';
 import { useSelector } from 'react-redux';
-import { getMetricsSelector } from './stats.selector';
+import { getMetricsSelector } from '../selectors/stats.selector';
 
 const Stats = () => {
   const { metrics } = useSelector(getMetricsSelector);

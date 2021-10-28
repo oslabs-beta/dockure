@@ -1,6 +1,6 @@
 import React, { Component, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
-import UserDbService from '../services/userDbService';
+import UserDbService from '../../services/userDbService';
 
 const SignUP = () => {
   const [userData, setUserData] = useState({
