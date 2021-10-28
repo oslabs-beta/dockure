@@ -1,11 +1,11 @@
 import React, { component, useState, useEffect } from 'react';
 import ContainerItem from './containerItem';
-import containerService from '../services/containerService';
+import containerService from '../../services/containerService';
 import { useDispatch } from 'react-redux';
-import { setStateMetrics } from '../redux/action/action.js';
+import { setStateMetrics } from '../../redux/action/action.js';
 import { useSelector } from 'react-redux';
-import { timeSelector } from './time.selector';
-import Loader from './loader';
+import { timeSelector } from '../selectors/time.selector';
+import Loader from '../loader';
 
 const ContainerList = ({
   conList,

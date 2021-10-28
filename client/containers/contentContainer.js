@@ -1,6 +1,6 @@
 import React, { component, useEffect, useState } from 'react';
-import DockerCommand from '../components/dockerCommand';
-import StatsContainer from '../components/statsContainer';
+import DockerCommand from '../components/containerComponents/dockerCommand';
+import StatsContainer from '../components/statComponents/statsContainer';
 import ContainerService from '../services/containerService';
 import UserDbService from '../services/userDbService';
 import axios from 'axios';

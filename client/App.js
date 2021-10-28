@@ -1,7 +1,7 @@
 import React, { Component, useState, useEffect } from 'react';
 import MainContainer from './containers/mainContainer';
-import Login from './components/login';
-import SignUP from './components/signUp';
+import Login from './components/userComponents/login';
+import SignUP from './components/userComponents/signUp';
 import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 import Titlebar from './components/titlebar';
 import ProtectedRoute from './containers/protectedRoute';

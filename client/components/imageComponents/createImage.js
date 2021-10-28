@@ -2,7 +2,7 @@ import React, { Component, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Editor from './editor.js';
 import axios from 'axios';
-import imageService from '../services/imageService';
+import imageService from '../../services/imageService';
 
 const CreateImage = ({ toggle }) => {
   const [yaml, setYaml] = useState(imageService.yamlBoiler());

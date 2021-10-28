@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import imageService from '../services/imageService';
+import imageService from '../../services/imageService';
 
 const PullImage = () => {
   const [imageName, setImageName] = useState('');
