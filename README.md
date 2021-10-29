@@ -177,7 +177,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 
 * Liam - [LinkedIn](https://www.linkedin.com/in/liamtalty/), [Github](github.com/lptalty)
-* Van - [LinkedIn](https://Linkedin.com/in/biet-van-nguyen-6879434a/), [Github](github.com/vanbietnguyen)
+* Van - [LinkedIn](https://www.linkedin.com/in/van-biet-nguyen/), [Github](github.com/vanbietnguyen)
 * Alex - [LinkedIn](https://www.linkedin.com/in/alexander-zayas-jr/), [Github](github.com/AlexZayas)
 * Hazel - [LinkedIn](https://www.linkedin.com/in/hyeseon-na/), [Github](github.com/hazel0109)
 * Nate - [LinkedIn](https://Linkedin.com/in/nathanael-tracy/), [Github](github.com/n-tracy1)
