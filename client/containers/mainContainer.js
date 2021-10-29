@@ -2,7 +2,7 @@ import React, { component, useState, useEffect } from 'react';
 import Nav from '../components/nav';
 import ContentContainer from './contentContainer';
 import ImageContainer from './imageContainer';
-import CreateImage from '../components/createImage';
+import CreateImage from '../components/imageComponents/createImage';
 import UserDbService from '../services/userDbService';
 
 import {
