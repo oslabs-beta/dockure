@@ -38,16 +38,16 @@ const ContainerItem = ({
             value={container.Id}
             checked={isChecked}
             className='item_checkbox'
-            onClick={(e) => onCheckboxClickCallback(e.target.value)}
+            onChange={(e) => onCheckboxClickCallback(e.target.value)}
           />
-          <div className='item_name'> {container.Names[0].slice(1)} </div>
+          <div className='item_name'>{container.Names[0].slice(1)}</div>
         </div>
-        <div className='item_createdat'> {moment(date).fromNow()} </div>
+        <div className='item_createdat'>{moment(date).fromNow()}</div>
       </div>
       <div className='item_state_dateBtn'>
         <div
           className={`item_state ${
-            isRunning ? 'is_running' : `${isExited ? 'is_existed' : 'is_else'}`
+            isRunning ? 'is_running' : `${isExited ? 'is_exited' : 'is_else'}`
           }`}
         >
           {container.State}

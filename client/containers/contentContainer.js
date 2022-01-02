@@ -4,12 +4,11 @@ import StatsContainer from '../components/statComponents/statsContainer';
 import ContainerService from '../services/containerService';
 import UserDbService from '../services/userDbService';
 import axios from 'axios';
-import Loader from '../components/loader';
 
 const ContentContainer = ({ toggle }) => {
   const [conList, setConList] = useState([]);
-  const [isDataLoading, setIsDataLoading] = useState(true);
   const [conStatus, setConStatus] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(async () => {
     const result = await UserDbService.getUserToken(
@@ -20,19 +19,26 @@ const ContentContainer = ({ toggle }) => {
     }
   }, []);
 
-  let conInfo = useEffect(async () => {
-    await axios.get('http://localhost:3000/api/containers');
-
-    setTimeout(async () => {
-      const result = await ContainerService.getConInfo(
-        'http://localhost:3000/api/containers/containers'
-      );
-      setConList(result);
-    }, 1000);
+  useEffect(() => {
+    const callConStatus = async () => {
+      await axios.get('http://localhost:3000/api/containers');
+      try {
+        const result = await ContainerService.getConInfo(
+          'http://localhost:3000/api/containers/containers'
+        );
+        setConList(result);
+      } catch (err) {
+        setError(true);
+      }
+    };
+    callConStatus();
   }, [conStatus]);
 
   return (
     <div className='content_container'>
+      {error && (
+        <div>Cannot get the docker containers. Please reopen the app</div>
+      )}
       <DockerCommand
         conList={conList}
         conStatus={conStatus}

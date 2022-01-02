@@ -7,7 +7,8 @@
     "start": "cross-env NODE_ENV=production electron .",
     "build": "NODE_ENV=production webpack",
     "dev": "cross-env NODE_ENV=development concurrently \"NODE_ENV=development webpack serve --open\" \"NODE_ENV=development nodemon ./server/server.js\"",
-    "test-start": "cross-env NODE_ENV=development concurrently 'electron .' 'nodemon server/server.js'"
+    "test-start": "cross-env NODE_ENV=development concurrently 'electron .' 'nodemon server/server.js'",
+    "test": "jest"
   },
   "nodemonConfig": {
     "ignore": [
@@ -54,6 +55,10 @@
     "@babel/preset-env": "^7.15.0",
     "@babel/preset-react": "^7.14.5",
     "@babel/preset-typescript": "^7.15.0",
+    "@testing-library/jest-dom": "^5.15.1",
+    "@testing-library/react": "^12.1.2",
+    "@testing-library/user-event": "^13.5.0",
+    "babel-jest": "^27.3.1",
     "babel-loader": "^8.2.2",
     "concurrently": "^6.2.1",
     "cross-env": "^7.0.3",
@@ -61,7 +66,9 @@
     "electron": "13.1.9",
     "html-webpack-plugin": "^5.3.2",
     "isomorphic-fetch": "^3.0.0",
+    "jest": "^27.3.1",
     "nodemon": "^2.0.12",
+    "react-test-renderer": "^17.0.2",
     "resolve-url-loader": "^4.0.0",
     "sass": "^1.37.5",
     "sass-loader": "^12.1.0",
@@ -71,5 +78,8 @@
     "webpack": "^5.50.0",
     "webpack-cli": "^4.7.2",
     "webpack-dev-server": "^3.11.2"
+  },
+  "jest":{
+    "testEnvironment": "jsdom"
   }
 }
