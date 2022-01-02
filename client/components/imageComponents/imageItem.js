@@ -1,6 +1,6 @@
-import React, { component, useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import imageService from '../../services/imageService';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import ImageItemDeleteBtn from './imageItemDeleteBtn';
@@ -8,14 +8,12 @@ import ImageItemDeleteBtn from './imageItemDeleteBtn';
 const ImageItem = ({ id, image }) => {
   const [isRunning, setIsRunning] = useState();
   const [optClick, setOptClick] = useState(false);
-  const [clickStart, setClickStart] = useState(0);
+  let history = useHistory();
 
   const checkRepoTag = ({ image }) => {
-    
     if (image.RepoTags[0] === '<none>:<none>') {
       image.RepoTags = ['Anonymous'];
     }
-
     return image.RepoTags[0];
   };
 
@@ -25,7 +23,10 @@ const ImageItem = ({ id, image }) => {
       'http://localhost:3000/api/images/start',
       ID
     );
-    if (handleSubmit.data === 'running') setIsRunning(true);
+    if (handleSubmit.data === 'running') {
+      setIsRunning(true);
+      history.push('/main');
+    }
   };
 
   const deleteClick = async (e) => {
@@ -37,19 +38,9 @@ const ImageItem = ({ id, image }) => {
     );
   };
 
-  const optHandler = (e) => {
-    e.stopPropagation();
-    if (optClick) return setOptClick(false);
-    return setOptClick(true);
+  const optHandler = () => {
+    setOptClick(!optClick);
   };
-
-  useEffect(() => {
-    if (optClick) {
-      document.body.addEventListener('click', () => {
-        setOptClick(false);
-      });
-    }
-  }, [optClick]);
 
   return (
     <div className='image_item'>
@@ -66,13 +57,9 @@ const ImageItem = ({ id, image }) => {
         {isRunning ? (
           <div className='image_running'>In Use</div>
         ) : (
-          <div>
-            <Link to='/main'>
-              <button className='image_button image_start' onClick={startClick}>
-                Start
-              </button>
-            </Link>
-          </div>
+          <button className='image_button image_start' onClick={startClick}>
+            Start
+          </button>
         )}
       </div>
     </div>

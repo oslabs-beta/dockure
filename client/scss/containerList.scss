@@ -37,6 +37,10 @@
   height: 1rem;
 }
 
+.checkbox_invisible {
+  visibility: hidden;
+}
+
 .item_name {
   font-weight: bold;
   margin-left: 0.8rem;
@@ -70,7 +74,7 @@
   color: darken($green-color, 5%);
 }
 
-.is_existed {
+.is_exited {
   background-color: darken($background-color, 3%);
   border: 1px solid lighten($orange-color, 4%);
   color: lighten($orange-color, 4%);

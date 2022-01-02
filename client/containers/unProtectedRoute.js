@@ -1,18 +1,19 @@
-import React, { component } from 'react';
+import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
+import decode from 'jwt-decode';
 import TokenStorage from '../db/token';
-const tokenStorageService = new TokenStorage();
 
 const UnProtectedRoute = ({ component: Component, ...rest }) => {
-  const token = tokenStorageService.getToken();
-  let isToken = false;
-  if (token) isToken = true;
+  const token = TokenStorage.getToken();
+  const decodeToken = token ? decode(token) : false;
+  const now = Math.floor(new Date().getTime() / 1000);
+  const isNotExpired = decodeToken ? decodeToken.exp > now : false;
 
   return (
     <Route
       {...rest}
       render={() =>
-        isToken ? <Redirect to='/main' /> : <Component {...rest} />
+        isNotExpired ? <Redirect to='/main' /> : <Component {...rest} />
       }
     />
   );

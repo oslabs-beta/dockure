@@ -6,9 +6,12 @@ class ContainerService {
       let result = await axios.get(url);
       return result.data;
     } catch (err) {
-      console.log(
-        'There was an error getting container information from services/containerService: ' +
-          err
+      // console.log(
+      //   'There was an error getting container information from services/containerService: ' +
+      //     err
+      // );
+      return new Error(
+        'There was an error getting container information from services/containerService'
       );
     }
   }
@@ -60,7 +63,6 @@ class ContainerService {
         });
       });
 
-
       cpuStats.data.forEach((dataPoint) => {
         const time = new Date(dataPoint[0] * 1000);
         data.cpu.push({
@@ -86,7 +88,6 @@ class ContainerService {
       console.log('There is error on button functions in container service');
     }
   }
-
 }
 
 export default ContainerService;

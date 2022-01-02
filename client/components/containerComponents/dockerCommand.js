@@ -1,12 +1,12 @@
-import React, { component, useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import ContainerList from './containerList';
 import { Link } from 'react-router-dom';
 import ContainerService from '../../services/containerService';
+import { throttle } from '../../services/utilities';
 
-const DockerCommand = ({ conList, conStatus, setConStatus, toggle }) => {
+const DockerCommand = ({ conList, conStatus, toggle, setConStatus }) => {
   const [selectedIds, setSelectedIds] = useState({});
-  let ready = true;
-
+  const [loading, setLoading] = useState(false);
   const onCheckboxClickCallback = (id) => {
     let newSelectedIds = { ...selectedIds };
     if (selectedIds[id]) {
@@ -18,24 +18,27 @@ const DockerCommand = ({ conList, conStatus, setConStatus, toggle }) => {
     setSelectedIds(newSelectedIds);
   };
 
-  const onClickButton = (url) => {
-    if (ready) {
-      ready = false;
-      const promiseArr = [];
-
-      for (let id in selectedIds) {
-        let result = ContainerService.postClickBtn(url, id);
-        promiseArr.push(result);
-      }
-      Promise.all(promiseArr).then((values) => {
-        setSelectedIds({});
-        if (conStatus) return setConStatus(false);
-        return setConStatus(true);
-      });
-      setTimeout(() => {
-        ready = true;
-      }, 5000);
+  const updateContainerStatuses = (ids, url, conStatus, loading) => {
+    setLoading(true);
+    const promiseArr = [];
+    for (let id in ids) {
+      let result = ContainerService.postClickBtn(url, id);
+      promiseArr.push(result);
     }
+    Promise.all(promiseArr).then((values) => {
+      setSelectedIds({});
+      setConStatus(!conStatus);
+      setLoading(false);
+    });
+  };
+
+  const updateContainerStatusesThrottle = useCallback(
+    throttle(updateContainerStatuses, 5000),
+    []
+  );
+
+  const onClickButton = (url) => {
+    updateContainerStatusesThrottle(selectedIds, url, conStatus, loading);
   };
 
   return (
@@ -118,7 +121,7 @@ const DockerCommand = ({ conList, conStatus, setConStatus, toggle }) => {
           </button>
         </Link>
       </div>
-
+      {loading && <div>Please wait...</div>}
       <ContainerList
         conList={conList}
         onCheckboxClickCallback={onCheckboxClickCallback}

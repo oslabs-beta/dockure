@@ -1,7 +1,5 @@
-import React, { Component, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
 import Editor from './editor.js';
-import axios from 'axios';
 import imageService from '../../services/imageService';
 
 const CreateImage = ({ toggle }) => {

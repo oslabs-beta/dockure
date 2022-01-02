@@ -1,6 +1,5 @@
 import axios from 'axios';
 import TokenStorage from '../db/token';
-const tokenStorageService = new TokenStorage();
 
 class UserDbService {
   static async postUserData(url, userData) {
@@ -14,7 +13,7 @@ class UserDbService {
   }
 
   static async getUserToken(url) {
-    const token = tokenStorageService.getToken();
+    const token = TokenStorage.getToken();
     try {
       const result = await axios.get(url, {
         headers: { Authorization: `Bearer ${token}` },
@@ -27,7 +26,7 @@ class UserDbService {
   }
 
   static logout() {
-    tokenStorageService.clearToken();
+    TokenStorage.clearToken();
   }
 }
 

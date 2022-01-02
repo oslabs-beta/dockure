@@ -1,10 +1,10 @@
-import React, { component, useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import ImageItem from './imageItem';
 import PullImage from './pullImage';
 import DockerBuild from './dockerBuild';
 import Loader from '../loader';
 
-const ImageList = ({ imageList }) => {
+const ImageList = ({ imageList, updateImage, setUpdateImage }) => {
   const [dockerAction, setDockerAction] = useState(true);
 
   const handleChange = (e) => {
@@ -27,7 +27,17 @@ const ImageList = ({ imageList }) => {
           <option value='Pull'>Pull</option>
           <option value='Build'>Build</option>
         </select>
-        {dockerAction ? <PullImage /> : <DockerBuild />}
+        {dockerAction ? (
+          <PullImage
+            updateImage={updateImage}
+            setUpdateImage={setUpdateImage}
+          />
+        ) : (
+          <DockerBuild
+            updateImage={updateImage}
+            setUpdateImage={setUpdateImage}
+          />
+        )}
       </div>
       <ul className='image_list'>{image}</ul>
     </div>
@@ -35,4 +45,3 @@ const ImageList = ({ imageList }) => {
 };
 
 export default ImageList;
-

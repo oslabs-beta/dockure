@@ -1,4 +1,5 @@
-import React, { Component, useState } from 'react';
+import React, { useState } from 'react';
+import Titlebar from '../titlebar';
 import { Link, Redirect } from 'react-router-dom';
 import UserDbService from '../../services/userDbService';
 
@@ -12,24 +13,10 @@ const SignUP = () => {
   const [showPWError, setShowPWError] = useState(false);
   const [isSignUp, setIsSignUp] = useState(false);
 
-  const userNameHandler = (e) => {
+  const userHandler = (e) => {
     setUserData((userData) => ({
       ...userData,
-      username: e.target.value,
-    }));
-  };
-
-  const userEmailHandler = (e) => {
-    setUserData((userData) => ({
-      ...userData,
-      email: e.target.value,
-    }));
-  };
-
-  const passwordHandler = (e) => {
-    setUserData((userData) => ({
-      ...userData,
-      password: e.target.value,
+      [e.target.name]: e.target.value,
     }));
   };
 
@@ -62,57 +49,61 @@ const SignUP = () => {
   //*******only when the sign up is successful, we are going to sign in link.******
 
   return (
-    <div className='login_page'>
-      <div className='signin_page'>
-        <p className='signin_head'>Create Account</p>
-        <form className='signin_form'>
-          <input
-            className='signin_input'
-            placeholder='Username'
-            type='text'
-            value={userData.username}
-            onChange={userNameHandler}
-          ></input>
-          <input
-            className='signin_input'
-            placeholder='Email'
-            type='text'
-            value={userData.email}
-            onChange={userEmailHandler}
-          ></input>
-          <input
-            className='signin_input'
-            placeholder='Password'
-            type='password'
-            value={userData.password}
-            onChange={passwordHandler}
-          ></input>
-          {showUserError && (
-            <div className='login_error'>
-              Username and Email cannot be empty
-            </div>
-          )}
-          {showPWError && (
-            <div className='login_error'>
-              Password must be 5 characters or more
-            </div>
-          )}
-        </form>
-        {/* <Link to='/'> */}
-        <button className='signin_btn' onClick={(e) => signUpHandler()}>
-          SIGN UP
-        </button>
-        {/* </Link> */}
+    <section>
+      <Titlebar />
+      <div className='login_page'>
+        <div className='signin_page'>
+          <p className='signin_head'>Create Account</p>
+          <form className='signin_form'>
+            <input
+              className='signin_input'
+              placeholder='Username'
+              name='username'
+              type='text'
+              value={userData.username}
+              onChange={userHandler}
+            ></input>
+            <input
+              className='signin_input'
+              placeholder='Email'
+              name='email'
+              type='text'
+              value={userData.email}
+              onChange={userHandler}
+            ></input>
+            <input
+              className='signin_input'
+              placeholder='Password'
+              name='password'
+              type='password'
+              value={userData.password}
+              onChange={userHandler}
+            ></input>
+            {showUserError && (
+              <div className='login_error'>
+                Username and Email cannot be empty
+              </div>
+            )}
+            {showPWError && (
+              <div className='login_error'>
+                Password must be 5 characters or more
+              </div>
+            )}
+          </form>
+          <button className='signin_btn' onClick={(e) => signUpHandler()}>
+            SIGN UP
+          </button>
+        </div>
+        <div className='login_wallpaper'>
+          <p className='login_head'>Hello, Friend!</p>
+          <p className='login_intro'>Enter your personal details</p>
+          <p className='login_intro'>and enjoy Dockure</p>
+          <Link to='/'>
+            <button className='login_wall_btn'>SIGN IN</button>
+          </Link>
+        </div>
       </div>
-      <div className='login_wallpaper'>
-        <p className='login_head'>Hello, Friend!</p>
-        <p className='login_intro'>Enter your personal details</p>
-        <p className='login_intro'>and enjoy Dockure</p>
-        <Link to='/'>
-          <button className='login_wall_btn'>SIGN IN</button>
-        </Link>
-      </div>
-    </div>
+    </section>
   );
 };
 

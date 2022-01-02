@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import imageService from '../../services/imageService';
 
-const DockerBuild = () => {
+const DockerBuild = ({ updateImage, setUpdateImage }) => {
   const defaultPath = '~/';
   const [dockerPath, setDockerPath] = useState(defaultPath);
   const [imageName, setImageName] = useState('');
@@ -12,6 +12,7 @@ const DockerBuild = () => {
       imageName: imageName,
       path: dockerPath,
     });
+    setUpdateImage(!updateImage);
   };
 
   return (

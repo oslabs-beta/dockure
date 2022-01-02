@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import imageService from '../../services/imageService';
 
-const PullImage = () => {
+const PullImage = ({ updateImage, setUpdateImage }) => {
   const [imageName, setImageName] = useState('');
 
   const handlePull = async (e) => {
@@ -13,6 +13,7 @@ const PullImage = () => {
 
   const onSubmit = () => {
     const input = document.querySelector('.image_input');
+    setUpdateImage(!updateImage);
     setImageName('');
     handlePull();
     input.focus();
@@ -43,4 +44,3 @@ const PullImage = () => {
 };
 
 export default PullImage;
-
