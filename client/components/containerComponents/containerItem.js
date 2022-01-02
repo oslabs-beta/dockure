@@ -1,33 +1,14 @@
-import React, { component, useState, useEffect } from 'react';
+import React from 'react';
 import moment from 'moment';
 
 const ContainerItem = ({
-  id,
   container,
   getData,
   onCheckboxClickCallback,
-  conStatus,
   isChecked,
 }) => {
-  const [isRunning, setIsRunning] = useState(false);
-  const [isExited, setIsExited] = useState(false);
-
-  useEffect(() => {
-    if (container.State === 'running') return setIsRunning(true);
-    if (container.State === 'exited') {
-      setIsRunning(false);
-      return setIsExited(true);
-    } else {
-      setIsRunning(false);
-      return setIsExited(false);
-    }
-  }, [container.State]);
-
   const utc = new Date(0);
-
   const date = utc.setUTCSeconds(container.Created);
-
-  //https://momentjs.com/docs/#/displaying/from/
 
   return (
     <li className='container_item'>
@@ -45,11 +26,7 @@ const ContainerItem = ({
         <div className='item_createdat'>{moment(date).fromNow()}</div>
       </div>
       <div className='item_state_dateBtn'>
-        <div
-          className={`item_state ${
-            isRunning ? 'is_running' : `${isExited ? 'is_exited' : 'is_else'}`
-          }`}
-        >
+        <div className={`item_state ${containerStatus(container.State)}`}>
           {container.State}
         </div>
         <button className='item_dataBtn' onClick={getData}>
@@ -61,3 +38,14 @@ const ContainerItem = ({
 };
 
 export default ContainerItem;
+
+function containerStatus(state) {
+  switch (state) {
+    case 'running':
+      return 'is_running';
+    case 'exited':
+      return 'is_exited';
+    default:
+      return 'is_else';
+  }
+}

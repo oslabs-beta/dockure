@@ -2,7 +2,6 @@ import React, { Component, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import UserDbService from '../../services/userDbService';
 import TokenStorage from '../../db/token';
-const tokenStorage = new TokenStorage();
 
 const Login = () => {
   const [userData, setUserData] = useState({ username: '', password: '' });
@@ -30,7 +29,7 @@ const Login = () => {
       userData
     );
     if (result.id) {
-      tokenStorage.saveToken(result.token);
+      TokenStorage.saveToken(result.token);
       return setIsAuthenticated(true);
     }
     setUserData((userData) => ({

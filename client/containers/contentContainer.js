@@ -1,4 +1,4 @@
-import React, { component, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import DockerCommand from '../components/containerComponents/dockerCommand';
 import StatsContainer from '../components/statComponents/statsContainer';
 import ContainerService from '../services/containerService';

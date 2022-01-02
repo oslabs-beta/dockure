@@ -1,4 +1,4 @@
-import React, { component, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import imageService from '../../services/imageService';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -11,7 +11,6 @@ const ImageItem = ({ id, image }) => {
   const [clickStart, setClickStart] = useState(0);
 
   const checkRepoTag = ({ image }) => {
-    
     if (image.RepoTags[0] === '<none>:<none>') {
       image.RepoTags = ['Anonymous'];
     }

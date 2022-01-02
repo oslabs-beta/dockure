@@ -1,4 +1,4 @@
-import React, { component, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import UserStatus from './userComponents/userStatus';
 import dockureLogoTitle from '../asset/dockureLogoTitle.svg';
@@ -6,8 +6,6 @@ import dockureIconW from '../asset/dockureIconW1.svg';
 import { faBars, faUser } from '@fortawesome/free-solid-svg-icons';
 
 const Titlebar = ({ toggle, setToggle, isLogin, setIsLogin, userName }) => {
-  const [isActive, setIsActive] = useState(true);
-  const [isMaximized, setIsMaximized] = useState();
   const [userStat, setUserStat] = useState(false);
 
   const toggleHandler = () => {
@@ -16,7 +14,6 @@ const Titlebar = ({ toggle, setToggle, isLogin, setIsLogin, userName }) => {
   };
 
   const userHandler = (e) => {
-    e.stopPropagation();
     if (!userStat) return setUserStat(true);
     return setUserStat(false);
   };
@@ -43,14 +40,12 @@ const Titlebar = ({ toggle, setToggle, isLogin, setIsLogin, userName }) => {
           </div>
           <img src={dockureLogoTitle} className='titlebar_logo' />
           <div className='titlebar_btns'>
-            {/* <div className={isLogin ? 'titlebar_btn' : 'titlebar_btn_inactive'}> */}
             <a
               href='http://dockure.com/'
               className={isLogin ? 'titlebar_link' : 'titlebar_btn_inactive'}
             >
               <img src={dockureIconW} className='titlebar_icon' />
             </a>
-            {/* </div> */}
             <div
               className={
                 isLogin
