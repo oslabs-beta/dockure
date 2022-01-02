@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import moment from 'moment';
 
 const ContainerItem = ({
@@ -7,8 +7,18 @@ const ContainerItem = ({
   onCheckboxClickCallback,
   isChecked,
 }) => {
+  const [defaultCon, setDefaultCon] = useState(false);
   const utc = new Date(0);
   const date = utc.setUTCSeconds(container.Created);
+
+  useEffect(() => {
+    setDefaultCon(() => {
+      const name = container.Names[0].slice(1);
+      if (name === 'cadvisor' || name === 'prometheus' || name === 'socat') {
+        return true;
+      }
+    });
+  }, [container]);
 
   return (
     <li className='container_item'>
@@ -18,9 +28,10 @@ const ContainerItem = ({
             type='checkbox'
             value={container.Id}
             checked={isChecked}
-            className='item_checkbox'
+            className={defaultCon ? 'checkbox_invisible' : 'item_checkbox'}
             onChange={(e) => onCheckboxClickCallback(e.target.value)}
           />
+
           <div className='item_name'>{container.Names[0].slice(1)}</div>
         </div>
         <div className='item_createdat'>{moment(date).fromNow()}</div>

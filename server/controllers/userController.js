@@ -70,7 +70,6 @@ userController.userLogin = async (req, res, next) => {
 };
 
 userController.me = async (req, res, next) => {
-
   const id = req.userId;
   const params = [id];
   const query = `SELECT * FROM users WHERE id=$1 `;
@@ -86,6 +85,7 @@ userController.me = async (req, res, next) => {
 };
 
 function createJwtToken(id) {
+  console.log(config.jwt.expiresInSec);
   return jwt.sign({ id }, config.jwt.secretKey, {
     expiresIn: config.jwt.expiresInSec,
   });

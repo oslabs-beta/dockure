@@ -11,6 +11,8 @@ class TokenStorage {
   static clearToken() {
     localStorage.clear(TOKEN);
   }
+
+  s;
 }
 
 export default TokenStorage;

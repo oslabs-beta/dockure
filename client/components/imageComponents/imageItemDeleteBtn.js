@@ -1,4 +1,4 @@
-import React, { component, useState, useEffect } from 'react';
+import React from 'react';
 
 const ImageItemDeleteBtn = ({ deleteClick }) => {
   return (

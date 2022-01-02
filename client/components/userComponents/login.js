@@ -1,5 +1,6 @@
-import React, { Component, useState } from 'react';
+import React, { useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
+import Titlebar from '../titlebar';
 import UserDbService from '../../services/userDbService';
 import TokenStorage from '../../db/token';
 
@@ -8,17 +9,10 @@ const Login = () => {
   const [showError, setShowError] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  const userNameHandler = (e) => {
+  const userHandler = (e) => {
     setUserData((userData) => ({
       ...userData,
-      username: e.target.value,
-    }));
-  };
-
-  const passwordHandler = (e) => {
-    setUserData((userData) => ({
-      ...userData,
-      password: e.target.value,
+      [e.target.name]: e.target.value,
     }));
   };
 
@@ -40,7 +34,8 @@ const Login = () => {
     return setShowError(true);
   };
 
-  const userSignIn = () => {
+  const userSignIn = (e) => {
+    e.preventDefault();
     if (!userData.username || !userData.password) {
       return setShowError(true);
     }
@@ -52,41 +47,45 @@ const Login = () => {
   }
 
   return (
-    <div className='login_page'>
-      <div className='login_wallpaper'>
-        <p className='login_head'>Welcome back!</p>
-        <p className='login_intro'>You are almost in the promise land</p>
-        <Link to='/signup'>
-          <button className='login_wall_btn'>SIGN UP</button>
-        </Link>
+    <section>
+      <Titlebar />
+      <div className='login_page'>
+        <div className='login_wallpaper'>
+          <p className='login_head'>Welcome back!</p>
+          <p className='login_intro'>You are almost in the promise land</p>
+          <Link to='/signup'>
+            <button className='login_wall_btn'>SIGN UP</button>
+          </Link>
+        </div>
+        <div className='signin_page'>
+          <p className='signin_head'>Sign in to Dockure</p>
+          <form className='signin_form'>
+            <input
+              className='signin_input'
+              placeholder='Username'
+              name='username'
+              type='text'
+              value={userData.username}
+              onChange={userHandler}
+            ></input>
+            <input
+              className='signin_input signin_pw'
+              placeholder='Password'
+              name='password'
+              type='password'
+              value={userData.password}
+              onChange={userHandler}
+            ></input>
+            {showError && (
+              <div className='login_error'>Invalid username or password</div>
+            )}
+            <button className='signin_btn' type='submit' onClick={userSignIn}>
+              SIGN IN
+            </button>
+          </form>
+        </div>
       </div>
-      <div className='signin_page'>
-        <p className='signin_head'>Sign in to Dockure</p>
-        <form className='signin_form'>
-          <input
-            className='signin_input'
-            placeholder='Username'
-            type='text'
-            value={userData.username}
-            onChange={userNameHandler}
-          ></input>
-          <input
-            className='signin_input signin_pw'
-            placeholder='Password'
-            type='password'
-            value={userData.password}
-            onChange={passwordHandler}
-          ></input>
-          {showError && (
-            <div className='login_error'>Invalid username or password</div>
-          )}
-        </form>
-        {/* <a className='signin_forgotPW'>Forgot your password?</a> */}
-        <button className='signin_btn' onClick={(e) => userSignIn()}>
-          SIGN IN
-        </button>
-      </div>
-    </div>
+    </section>
   );
 };
 
