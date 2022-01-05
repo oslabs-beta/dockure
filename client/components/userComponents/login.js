@@ -18,10 +18,7 @@ const Login = () => {
 
   const postSignIn = async () => {
     const pwInput = document.querySelector('.signin_pw');
-    const result = await UserDbService.postUserData(
-      'http://localhost:3000/api/user/login',
-      userData
-    );
+    const result = await UserDbService.postUserData(userData);
     if (result.id) {
       TokenStorage.saveToken(result.token);
       return setIsAuthenticated(true);

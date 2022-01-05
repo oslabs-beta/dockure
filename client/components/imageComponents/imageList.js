@@ -17,7 +17,15 @@ const ImageList = ({ imageList, updateImage, setUpdateImage }) => {
   if (!imageList.length) return <Loader />;
 
   const image = imageList.map((image, inx) => {
-    return <ImageItem key={inx} id={image.Id} image={image} />;
+    return (
+      <ImageItem
+        key={inx}
+        id={image.Id}
+        image={image}
+        setUpdateImage={setUpdateImage}
+        updateImage={updateImage}
+      />
+    );
   });
 
   return (

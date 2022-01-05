@@ -1,45 +1,54 @@
-import axios from 'axios';
+import axiosService from './axiosService';
 
 class ImageService {
-  static async getImageInfo(url) {
+  static async getImageInfo() {
     try {
-      const result = await axios.get(url);
+      const result = await axiosService.getRequest(
+        'http://localhost:3000/api/images'
+      );
       return result.data;
     } catch (error) {
-      console.log(
-        'There was an error getting image information from services/imageService: ',
-        error
+      throw new Error(
+        'There was an error getting image information from services/imageService: '
       );
-      return error;
     }
   }
 
-  static async pullImageInfo(url, image) {
+  static async pullImageInfo(image) {
     try {
-      const result = await axios.post(url, { imageName: image });
+      const result = await axiosService.postRequest(
+        'http://localhost:3000/api/images/pull',
+        {
+          imageName: image,
+        }
+      );
       return result;
     } catch (error) {
-      console.log('There was an error pulling Image Information: ', error);
-      return error;
+      throw new Error('There was an error pulling Image Information: ', error);
     }
   }
 
-  static async startImage(url, ID) {
+  static async startImage(ID) {
     try {
-      const result = await axios.post(url, { imageID: ID });
+      const result = await axiosService.postRequest(
+        'http://localhost:3000/api/images/start',
+        { imageID: ID }
+      );
       return result;
     } catch (error) {
-      console.log('There was an error starting the Image: ', error);
-      return error;
+      throw new Error('There was an error starting the Image: ', error);
     }
   }
 
-  static async deleteImage(url, ID) {
+  static async deleteImage(ID) {
     try {
-      const result = await axios.post(url, { imageID: ID });
+      const result = await axiosService.postRequest(
+        'http://localhost:3000/api/images/delete',
+        { imageID: ID }
+      );
       return result;
     } catch (error) {
-      console.log('There was an error starting the Image: ', error);
+      throw new Error('There was an error starting the Image: ', error);
       return error;
     }
   }
@@ -48,15 +57,18 @@ class ImageService {
     return boilerPlate;
   }
 
-  static async buildImage(url, info) {
+  static async buildImage(info) {
     try {
-      const result = await axios.post(url, {
-        imageName: info.imageName,
-        path: info.dockerPath,
-      });
+      const result = await axiosService.postRequest(
+        'http://localhost:3000/api/images/build',
+        {
+          imageName: info.imageName,
+          path: info.dockerPath,
+        }
+      );
       return result;
     } catch (error) {
-      console.log('There was an error building the image: ', error);
+      throw new Error('There was an error building the image: ', error);
       return error;
     }
   }

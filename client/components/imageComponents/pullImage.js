@@ -4,16 +4,13 @@ import imageService from '../../services/imageService';
 const PullImage = ({ updateImage, setUpdateImage }) => {
   const [imageName, setImageName] = useState('');
 
-  const handlePull = async (e) => {
-    const pulledImage = await imageService.pullImageInfo(
-      '/api/images/pull',
-      imageName
-    );
+  const handlePull = async () => {
+    await imageService.pullImageInfo(imageName);
+    setUpdateImage(!updateImage);
   };
 
   const onSubmit = () => {
     const input = document.querySelector('.image_input');
-    setUpdateImage(!updateImage);
     setImageName('');
     handlePull();
     input.focus();

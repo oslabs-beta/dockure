@@ -8,7 +8,7 @@ const DockerBuild = ({ updateImage, setUpdateImage }) => {
 
   const handleBuild = async (e) => {
     e.preventDefault();
-    let result = await imageService.buildImage('/api/images/build', {
+    let result = await imageService.buildImage({
       imageName: imageName,
       path: dockerPath,
     });

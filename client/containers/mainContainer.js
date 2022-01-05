@@ -20,9 +20,7 @@ const MainContainer = (props) => {
   useEffect(() => {
     let result;
     const getUser = async () => {
-      result = await UserDbService.getUserToken(
-        'http://localhost:3000/api/user/me'
-      );
+      result = await UserDbService.getUserToken();
       if (result.token) {
         setIsLogin(true);
         setUserName(result.username);

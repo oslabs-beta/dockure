@@ -7,9 +7,7 @@ const ImageContainer = ({ toggle }) => {
   const [updateImage, setUpdateImage] = useState(false);
 
   useEffect(async () => {
-    const result = await imageService.getImageInfo(
-      'http://localhost:3000/api/images'
-    );
+    const result = await imageService.getImageInfo();
     setImageList(result);
   }, [updateImage]);
 
