@@ -1,54 +1,75 @@
-import axios from 'axios';
+import axiosService from './axiosService';
 
 class ContainerService {
-  static async getConInfo(url) {
+  static async setupCon() {
     try {
-      let result = await axios.get(url);
+      await axiosService.getRequest('http://localhost:3000/api/containers');
+    } catch (err) {
+      throw new Error(
+        'There was an error setting up Containers from services/containerService'
+      );
+    }
+  }
+
+  static async getConInfo() {
+    try {
+      let result = await axiosService.getRequest(
+        'http://localhost:3000/api/containers/containers'
+      );
       return result.data;
     } catch (err) {
-      // console.log(
-      //   'There was an error getting container information from services/containerService: ' +
-      //     err
-      // );
-      return new Error(
+      throw new Error(
         'There was an error getting container information from services/containerService'
       );
     }
   }
 
-  static async getMetrics(url, id, time) {
+  static async getMetrics(id, time) {
     try {
-      const memoryStats = await axios.get(url, {
-        params: {
-          id,
-          start: time,
-          query: `container_memory_usage_bytes{id=~'/docker/${id}'}`,
-        },
-      });
+      const memoryStats = await axiosService.getRequest(
+        'http://localhost:3000/api/metrics',
+        {
+          params: {
+            id,
+            start: time,
+            query: `container_memory_usage_bytes{id=~'/docker/${id}'}`,
+          },
+        }
+      );
 
-      const machineMem = await axios.get(url, {
-        params: {
-          id,
-          start: time,
-          query: `machine_memory_bytes`,
-        },
-      });
+      const machineMem = await axiosService.getRequest(
+        'http://localhost:3000/api/metrics',
+        {
+          params: {
+            id,
+            start: time,
+            query: `machine_memory_bytes`,
+          },
+        }
+      );
 
-      const cpuStats = await axios.get(url, {
-        params: {
-          id,
-          start: time,
-          query: `sum(rate(container_cpu_usage_seconds_total {id=~'/docker/${id}'} [5m]))`,
-        },
-      });
+      const cpuStats = await axiosService.getRequest(
+        'http://localhost:3000/api/metrics',
+        {
+          params: {
+            id,
+            start: time,
+            query: `sum(rate(container_cpu_usage_seconds_total {id=~'/docker/${id}'} [5m]))`,
+          },
+        }
+      );
 
-      const cores = await axios.get(url, {
-        params: {
-          id,
-          start: time,
-          query: 'machine_cpu_cores',
-        },
-      });
+      const cores = await axiosService.getRequest(
+        'http://localhost:3000/api/metrics',
+        {
+          params: {
+            id,
+            start: time,
+            query: 'machine_cpu_cores',
+          },
+        }
+      );
+      console.log(cores);
       const coreCount = cores.data[0][1];
       const data = {};
       data.memory = [];
@@ -73,19 +94,23 @@ class ContainerService {
 
       return data;
     } catch (err) {
-      console.log(
-        'There was an error getting container information from services/containerService: ' +
-          err
+      throw new Error(
+        'There was an error getting container information from services/containerService: '
       );
     }
   }
 
-  static postClickBtn(url, id) {
+  static postClickBtn(command, id) {
     try {
-      const result = axios.post(url, { containerID: id });
+      const result = axiosService.postRequest(
+        `http://localhost:3000/api/containers/${command}`,
+        { containerID: id }
+      );
       return result;
     } catch (err) {
-      console.log('There is error on button functions in container service');
+      throw new Error(
+        'There is error on button functions in container service'
+      );
     }
   }
 }

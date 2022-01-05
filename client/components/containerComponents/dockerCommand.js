@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import ContainerService from '../../services/containerService';
 import { throttle } from '../../services/utilities';
 
-const DockerCommand = ({ conList, conStatus, toggle, setConStatus }) => {
+const DockerCommand = ({ conList, conStatus, toggle, setConStatus, error }) => {
   const [selectedIds, setSelectedIds] = useState({});
   const [loading, setLoading] = useState(false);
   const onCheckboxClickCallback = (id) => {
@@ -18,11 +18,11 @@ const DockerCommand = ({ conList, conStatus, toggle, setConStatus }) => {
     setSelectedIds(newSelectedIds);
   };
 
-  const updateContainerStatuses = (ids, url, conStatus, loading) => {
+  const updateContainerStatuses = (ids, command, conStatus) => {
     setLoading(true);
     const promiseArr = [];
     for (let id in ids) {
-      let result = ContainerService.postClickBtn(url, id);
+      let result = ContainerService.postClickBtn(command, id);
       promiseArr.push(result);
     }
     Promise.all(promiseArr).then((values) => {
@@ -37,8 +37,8 @@ const DockerCommand = ({ conList, conStatus, toggle, setConStatus }) => {
     []
   );
 
-  const onClickButton = (url) => {
-    updateContainerStatusesThrottle(selectedIds, url, conStatus, loading);
+  const onClickButton = (command) => {
+    updateContainerStatusesThrottle(selectedIds, command, conStatus);
   };
 
   return (
@@ -51,66 +51,43 @@ const DockerCommand = ({ conList, conStatus, toggle, setConStatus }) => {
         <ul className='docker_buttons'>
           <button
             className='docker_btn docker_start'
-            onClick={(e) =>
-              onClickButton('http://localhost:3000/api/containers/start')
-            }
+            onClick={(e) => onClickButton('start')}
           >
             Start
           </button>
           <button
             className='docker_btn docker_redbtn'
-            onClick={(e) =>
-              onClickButton('http://localhost:3000/api/containers/stop')
-            }
+            onClick={(e) => onClickButton('stop')}
           >
             Stop
           </button>
           <button
             className='docker_btn docker_redbtn'
-            onClick={(e) =>
-              onClickButton('http://localhost:3000/api/containers/kill')
-            }
+            onClick={(e) => onClickButton('kill')}
           >
             Kill
           </button>
           <button
             className='docker_btn docker_commonbtn'
-            onClick={(e) =>
-              onClickButton('http://localhost:3000/api/containers/restart')
-            }
+            onClick={(e) => onClickButton('restart')}
           >
             Restart
           </button>
           <button
             className='docker_btn docker_commonbtn'
-            onClick={(e) =>
-              onClickButton(
-                'http://localhost:3000/api/containers/pause',
-                selectedIds
-              )
-            }
+            onClick={(e) => onClickButton('pause')}
           >
             Pause
           </button>
           <button
             className='docker_btn docker_commonbtn'
-            onClick={(e) =>
-              onClickButton(
-                'http://localhost:3000/api/containers/resume',
-                selectedIds
-              )
-            }
+            onClick={(e) => onClickButton('resume')}
           >
             Resume
           </button>
           <button
             className='docker_btn docker_redbtn'
-            onClick={(e) =>
-              onClickButton(
-                'http://localhost:3000/api/containers/remove',
-                selectedIds
-              )
-            }
+            onClick={(e) => onClickButton('remove')}
           >
             Remove
           </button>
@@ -121,7 +98,11 @@ const DockerCommand = ({ conList, conStatus, toggle, setConStatus }) => {
           </button>
         </Link>
       </div>
+      {error && (
+        <div>Cannot get the docker containers. Please reopen the app</div>
+      )}
       {loading && <div>Please wait...</div>}
+
       <ContainerList
         conList={conList}
         onCheckboxClickCallback={onCheckboxClickCallback}

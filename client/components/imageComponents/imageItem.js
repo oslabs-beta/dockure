@@ -5,24 +5,28 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import ImageItemDeleteBtn from './imageItemDeleteBtn';
 
-const ImageItem = ({ id, image }) => {
+const ImageItem = ({ image, setUpdateImage, updateImage }) => {
   const [isRunning, setIsRunning] = useState();
   const [optClick, setOptClick] = useState(false);
   let history = useHistory();
 
   const checkRepoTag = ({ image }) => {
-    if (image.RepoTags[0] === '<none>:<none>') {
-      image.RepoTags = ['Anonymous'];
+    if (image.RepoTags) {
+      if (image.RepoTags[0] === '<none>:<none>') {
+        image.RepoTags = ['Anonymous'];
+      }
+      return image.RepoTags[0];
+    } else if (image.RepoDigests) {
+      const nameArr = image.RepoDigests[0].split('@');
+      return nameArr[0];
+    } else {
+      return 'Anonymous';
     }
-    return image.RepoTags[0];
   };
 
   const startClick = async (e) => {
     const ID = { image }.image.Id.slice(7, 19);
-    const handleSubmit = await imageService.startImage(
-      'http://localhost:3000/api/images/start',
-      ID
-    );
+    const handleSubmit = await imageService.startImage(ID);
     if (handleSubmit.data === 'running') {
       setIsRunning(true);
       history.push('/main');
@@ -32,10 +36,8 @@ const ImageItem = ({ id, image }) => {
   const deleteClick = async (e) => {
     const ID = { image }.image.Id.slice(7, 19);
     setOptClick(false);
-    const handleSubmit = await imageService.deleteImage(
-      'http://localhost:3000/api/images/delete',
-      ID
-    );
+    await imageService.deleteImage(ID);
+    setUpdateImage(!updateImage);
   };
 
   const optHandler = () => {

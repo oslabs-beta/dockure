@@ -11,10 +11,11 @@ const ContentContainer = ({ toggle }) => {
   useEffect(() => {
     const callConStatus = async () => {
       try {
-        const result = await ContainerService.getConInfo(
-          'http://localhost:3000/api/containers/containers'
-        );
-        setConList(result);
+        await ContainerService.setupCon();
+        setTimeout(async () => {
+          const result = await ContainerService.getConInfo();
+          setConList(result);
+        }, 1000);
       } catch (err) {
         setError(true);
       }
@@ -24,13 +25,11 @@ const ContentContainer = ({ toggle }) => {
 
   return (
     <div className='content_container'>
-      {error && (
-        <div>Cannot get the docker containers. Please reopen the app</div>
-      )}
       <DockerCommand
         conList={conList}
         conStatus={conStatus}
         setConStatus={setConStatus}
+        error={error}
         toggle={toggle}
       />
       <StatsContainer />

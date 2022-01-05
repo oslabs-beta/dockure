@@ -1,4 +1,4 @@
-import React, { component, useState, useEffect } from 'react';
+import React from 'react';
 import ContainerItem from './containerItem';
 import containerService from '../../services/containerService';
 import { useDispatch } from 'react-redux';
@@ -21,11 +21,7 @@ const ContainerList = ({
       memory: [],
     };
     if (containerState === 'running')
-      stats = await containerService.getMetrics(
-        'http://localhost:3000/api/metrics',
-        id,
-        time
-      );
+      stats = await containerService.getMetrics(id, time);
     dispatch(setStateMetrics(stats));
   };
 

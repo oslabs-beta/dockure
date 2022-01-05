@@ -1,4 +1,4 @@
-import React, { component, useEffect, useState } from 'react';
+import React from 'react';
 import Graph from './graph';
 
 import { useDispatch } from 'react-redux';

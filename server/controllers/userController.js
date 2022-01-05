@@ -85,7 +85,6 @@ userController.me = async (req, res, next) => {
 };
 
 function createJwtToken(id) {
-  console.log(config.jwt.expiresInSec);
   return jwt.sign({ id }, config.jwt.secretKey, {
     expiresIn: config.jwt.expiresInSec,
   });
