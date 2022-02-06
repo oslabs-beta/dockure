@@ -69,7 +69,6 @@ class ContainerService {
           },
         }
       );
-      console.log(cores);
       const coreCount = cores.data[0][1];
       const data = {};
       data.memory = [];

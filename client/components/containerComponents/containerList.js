@@ -7,12 +7,7 @@ import { useSelector } from 'react-redux';
 import { timeSelector } from '../selectors/time.selector';
 import Loader from '../loader';
 
-const ContainerList = ({
-  conList,
-  onCheckboxClickCallback,
-  conStatus,
-  selectedIds,
-}) => {
+const ContainerList = ({ conList, onCheckboxClickCallback, selectedIds }) => {
   const { time } = useSelector(timeSelector);
   const dispatch = useDispatch();
   const getData = async (id, containerState) => {
@@ -34,11 +29,9 @@ const ContainerList = ({
     return (
       <ContainerItem
         key={inx}
-        id={container.Id}
         onCheckboxClickCallback={onCheckboxClickCallback}
         getData={() => getData(container.Id, container.State)}
         container={container}
-        conStatus={conStatus}
         isChecked={isChecked}
       />
     );

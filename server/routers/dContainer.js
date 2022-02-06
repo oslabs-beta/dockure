@@ -39,7 +39,7 @@ containerRouter.post(
   authentication,
   conController.startContainer,
   (req, res) => {
-    return res.status(res.locals.status).send(res.locals.status);
+    return res.sendStatus(res.locals.status);
   }
 );
 
@@ -48,7 +48,7 @@ containerRouter.post(
   authentication,
   conController.stopContainer,
   (req, res) => {
-    return res.status(res.locals.status).send(res.locals.status);
+    return res.sendStatus(res.locals.status);
   }
 );
 
@@ -57,7 +57,7 @@ containerRouter.post(
   authentication,
   conController.killContainer,
   (req, res) => {
-    return res.status(res.locals.status).send(res.locals.status);
+    return res.sendStatus(res.locals.status);
   }
 );
 
@@ -66,7 +66,7 @@ containerRouter.post(
   authentication,
   conController.restartContainer,
   (req, res) => {
-    return res.status(res.locals.status).send(res.locals.status);
+    return res.sendStatus(res.locals.status);
   }
 );
 
@@ -75,7 +75,7 @@ containerRouter.post(
   authentication,
   conController.pauseContainer,
   (req, res) => {
-    return res.status(res.locals.status).send(res.locals.status);
+    return res.sendStatus(res.locals.status);
   }
 );
 
@@ -84,7 +84,7 @@ containerRouter.post(
   authentication,
   conController.resumeContainer,
   (req, res) => {
-    return res.status(res.locals.status).send(res.locals.status);
+    return res.sendStatus(res.locals.status);
   }
 );
 
@@ -93,7 +93,7 @@ containerRouter.post(
   authentication,
   conController.removeContainer,
   (req, res) => {
-    return res.status(res.locals.status).send(res.locals.status);
+    return res.sendStatus(res.locals.status);
   }
 );
 

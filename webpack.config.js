@@ -1,8 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-//trim the css and style-loaders
-
 module.exports = {
   mode: process.env.NODE_ENV,
   entry: './client/index.js',
@@ -12,8 +10,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|ts|tsx)$/,
-        // test: /.(js|jsx)$/,
+        test: /\.(js|jsx|ts|tsx)$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
         options: {
@@ -30,9 +27,6 @@ module.exports = {
         use: [
           'style-loader',
           'css-loader',
-          // Needed package for resolving relative paths in url()
-          // needs to be before sass-loader in loading chain
-          // more info on https://github.com/webpack-contrib/sass-loader#problems-with-url
           'resolve-url-loader',
           'sass-loader',
         ],
@@ -84,7 +78,7 @@ module.exports = {
     filename: 'bundle.js',
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
+    extensions: ['.tsx', '.ts', '.js', '.jsx'],
     mainFields: ['main', 'module', 'browser'],
   },
   plugins: [
