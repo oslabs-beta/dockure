@@ -1,12 +1,18 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import ContainerList from './containerList';
 import { Link } from 'react-router-dom';
 import ContainerService from '../../services/containerService';
 import { throttle } from '../../services/utilities';
 
-const DockerCommand = ({ conList, conStatus, toggle, setConStatus, error }) => {
+const DockerCommand = ({
+  conList,
+  toggle,
+  callConStatus,
+  loading,
+  setLoading,
+  error,
+}) => {
   const [selectedIds, setSelectedIds] = useState({});
-  const [loading, setLoading] = useState(false);
   const onCheckboxClickCallback = (id) => {
     let newSelectedIds = { ...selectedIds };
     if (selectedIds[id]) {
@@ -18,7 +24,7 @@ const DockerCommand = ({ conList, conStatus, toggle, setConStatus, error }) => {
     setSelectedIds(newSelectedIds);
   };
 
-  const updateContainerStatuses = (ids, command, conStatus) => {
+  const updateContainerStatuses = (ids, command) => {
     setLoading(true);
     const promiseArr = [];
     for (let id in ids) {
@@ -27,8 +33,7 @@ const DockerCommand = ({ conList, conStatus, toggle, setConStatus, error }) => {
     }
     Promise.all(promiseArr).then((values) => {
       setSelectedIds({});
-      setConStatus(!conStatus);
-      setLoading(false);
+      callConStatus();
     });
   };
 
@@ -38,7 +43,7 @@ const DockerCommand = ({ conList, conStatus, toggle, setConStatus, error }) => {
   );
 
   const onClickButton = (command) => {
-    updateContainerStatusesThrottle(selectedIds, command, conStatus);
+    updateContainerStatusesThrottle(selectedIds, command);
   };
 
   return (
@@ -106,7 +111,6 @@ const DockerCommand = ({ conList, conStatus, toggle, setConStatus, error }) => {
       <ContainerList
         conList={conList}
         onCheckboxClickCallback={onCheckboxClickCallback}
-        conStatus={conStatus}
         selectedIds={selectedIds}
       />
     </div>
